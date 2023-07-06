@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        var dir = Input.GetAxis("Horizontal");
+        var dir = InputManager.GetAxisRaw(Axis.Horizontal);
         playerMove.Move(Vector3.right * dir);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (InputManager.GetKeyDown(Key.Up))
         {
             playerJump.CheckJump();
         }

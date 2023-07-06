@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 10
-  runSpeed: 0
+  runSpeed: 15
 --- !u!114 &227405001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   feet: {fileID: 563348660}
   rb: {fileID: 227405003}
-  jumpForce: 150
+  jumpForce: 350
   overlapCircleRadius: 0.25
   canJump: 0
 --- !u!50 &227405003

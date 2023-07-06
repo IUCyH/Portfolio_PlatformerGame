@@ -14,7 +14,21 @@ public class PlayerMove : MonoBehaviour
 
     public void Move(Vector3 dir)
     {
+        SetMoveSpeed();
+        
         playerTransform.position += moveSpeed * Time.deltaTime * dir;
+    }
+
+    void SetMoveSpeed()
+    {
+        if (InputManager.GetKey(Key.Run))
+        {
+            moveSpeed = runSpeed;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+        }
     }
 
     void Start()
