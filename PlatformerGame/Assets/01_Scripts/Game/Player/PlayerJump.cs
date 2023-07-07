@@ -21,7 +21,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     bool canJump;
     
-    public void CheckJump()
+    public void CheckCanJump()
     {
         if (PlayerOnGround())
         {

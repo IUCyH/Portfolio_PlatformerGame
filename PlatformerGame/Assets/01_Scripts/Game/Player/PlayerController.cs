@@ -9,15 +9,47 @@ public class PlayerController : MonoBehaviour
     PlayerMove playerMove;
     [SerializeField]
     PlayerJump playerJump;
+    [SerializeField]
+    PlayerSkill playerSkill;
 
+    bool stopMovement;
+    
+    public void StopMovement()
+    {
+        stopMovement = true;
+    }
+
+    public void ContinueMovement()
+    {
+        stopMovement = false;
+    }
+
+    void SetPlayerForward(float dir)
+    {
+        var dirVector = Vector3.one;
+
+        if (dir != 0f)
+        {
+            dirVector.x *= dir;
+            transform.localScale = dirVector;
+        }
+    }
+    
     void Update()
     {
-        var dir = InputManager.GetAxisRaw(Axis.Horizontal);
-        playerMove.Move(Vector3.right * dir);
+        if (!stopMovement)
+        {
+            var dir = InputManager.GetAxisRaw(Axis.Horizontal);
+            
+            playerMove.Move(Vector3.right * dir);
+            SetPlayerForward(dir);
+        }
 
+        playerSkill.ExecuteSkills();
+        
         if (InputManager.GetKeyDown(Key.Up))
         {
-            playerJump.CheckJump();
+            playerJump.CheckCanJump();
         }
     }
 

@@ -15,7 +15,10 @@ public enum Key
     Up,
     Down,
     Run,
-    Attack
+    DefaultAttack,
+    Dash,
+    Skill3,
+    Skill4,
 }
 
 public static class InputManager
@@ -29,7 +32,11 @@ public static class InputManager
         keys.Add(Key.Up, KeyCode.UpArrow);
         keys.Add(Key.Down, KeyCode.DownArrow);
         keys.Add(Key.Run, KeyCode.LeftShift);
-        keys.Add(Key.Attack, KeyCode.Space);
+        //Init Skill keys
+        keys.Add(Key.DefaultAttack, KeyCode.Space);
+        keys.Add(Key.Dash, KeyCode.Q);
+        keys.Add(Key.Skill3, KeyCode.W);
+        keys.Add(Key.Skill4, KeyCode.E);
     }
 
     public static float GetAxisRaw(Axis axis)
