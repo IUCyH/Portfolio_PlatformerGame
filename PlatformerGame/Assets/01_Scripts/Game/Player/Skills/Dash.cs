@@ -17,7 +17,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
     [SerializeField]
     Vector3 targetVector;
     
-    public float cooldownTimer;
+    float cooldownTimer;
     [SerializeField]
     float cooldown;
     
@@ -36,7 +36,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
                 playerTransform.position += dashSpeed * Time.deltaTime * dir;
                 
                 bool isOverThanTarget = dir.x > 0f ? playerTransform.position.x > targetVector.x : playerTransform.position.x < targetVector.x;
-                
+
                 if (isOverThanTarget)
                 {
                     Debug.Log("Stop");
@@ -62,7 +62,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
         playerSkill.ExecutingSkill = true;
         NotReadyForExecute = true;
 
-        targetVector = playerTransform.localScale.x * (playerTransform.position + dashDistance);
+        targetVector = playerTransform.position + playerTransform.localScale.x * dashDistance;
     }
 
     public void CalculateCooldown()
