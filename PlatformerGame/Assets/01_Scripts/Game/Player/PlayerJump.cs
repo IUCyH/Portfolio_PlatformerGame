@@ -56,7 +56,7 @@ public class PlayerJump : MonoBehaviour
             Debug.Log("IT'S TRUE!");
             jumpCount = 0;
         }
-        jumpCountText.text = string.Format("Jump Count : {0}", jumpCount);
+        jumpCountText.text = string.Format("Jump Count : {0}", jumpCount); //Just test
     }
 
     bool PlayerOnGround()
