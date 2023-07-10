@@ -34,23 +34,24 @@ public class PlayerController : MonoBehaviour
             transform.localScale = dirVector;
         }
     }
-    
+
     void Update()
-    {
+    {   
         if (!stopMovement)
         {
             var dir = InputManager.GetAxisRaw(Axis.Horizontal);
-            
+
             playerMove.Move(Vector3.right * dir);
             SetPlayerForward(dir);
         }
 
         playerSkill.ExecuteSkills();
-        
+
         if (InputManager.GetKeyDown(Key.Up))
         {
             playerJump.CheckCanJump();
         }
+        playerJump.SetJumpCountToZero();
     }
 
     void FixedUpdate()
