@@ -48,7 +48,7 @@ public class PlayerJump : MonoBehaviour
         canJump = false;
     }
 
-    public void SetJumpCountToZero()
+    public void SetJumpCountToZeroWhenPlayerOnTheGround()
     {
         var ground = PlayerOnGround();
         if (ground)

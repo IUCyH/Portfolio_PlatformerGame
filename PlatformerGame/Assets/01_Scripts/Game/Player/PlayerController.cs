@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             playerJump.CheckCanJump();
         }
-        playerJump.SetJumpCountToZero();
+        playerJump.SetJumpCountToZeroWhenPlayerOnTheGround();
     }
 
     void FixedUpdate()
