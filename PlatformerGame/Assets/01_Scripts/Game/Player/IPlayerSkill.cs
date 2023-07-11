@@ -5,6 +5,8 @@ using UnityEngine;
 public interface IPlayerSkill
 {
     bool NotReadyForExecute { get; set; }
+    float GaugeUsage { get; set; }
+    
     void Execute();
     void CalculateCooldown();
 }

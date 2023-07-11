@@ -1,10 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("UI")]
+    [SerializeField]
+    TextMeshProUGUI jumpCountText;
+    [SerializeField]
+    Image skillGaugeImg;
+    
+    [Header("")]
     [SerializeField]
     PlayerMove playerMove;
     [SerializeField]
@@ -13,6 +22,16 @@ public class PlayerController : MonoBehaviour
     PlayerSkill playerSkill;
 
     bool stopMovement;
+
+    public void UpdateJumpCountText(int count)
+    {
+        PlayerUIManager.Instance.UpdateJumpCountText(jumpCountText, count);
+    }
+
+    public void UpdateSkillGauge(float value)
+    {
+        PlayerUIManager.Instance.UpdateSkillGauge(skillGaugeImg, value);
+    }
     
     public void StopMovement()
     {

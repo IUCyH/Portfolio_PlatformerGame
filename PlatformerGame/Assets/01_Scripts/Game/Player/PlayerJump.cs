@@ -1,16 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI jumpCountText;
+    PlayerController playerCtr;
     [SerializeField]
     Transform feet;
-
     [SerializeField]
     Rigidbody2D rb;
     
@@ -56,7 +54,7 @@ public class PlayerJump : MonoBehaviour
             Debug.Log("IT'S TRUE!");
             jumpCount = 0;
         }
-        jumpCountText.text = string.Format("Jump Count : {0}", jumpCount); //Just test
+        playerCtr.UpdateJumpCountText(jumpCount);
     }
 
     bool PlayerOnGround()
@@ -68,6 +66,7 @@ public class PlayerJump : MonoBehaviour
     void Start()
     {
         groundLayer = 1 << LayerMask.NameToLayer("Ground");
+        Debug.unityLogger.logEnabled = false;
     }
 
     void OnDrawGizmos()

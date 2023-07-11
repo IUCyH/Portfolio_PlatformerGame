@@ -25,6 +25,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
     float dashSpeed;
 
     public bool NotReadyForExecute { get; set; }
+    public float GaugeUsage { get; set; }
 
     IEnumerator Coroutine_Update()
     {
@@ -56,7 +57,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
 
     public void Execute()
     {
-        Debug.Log("Execute Dash");
+        //Debug.Log("Execute Dash");
         playerController.StopMovement();
         
         playerSkill.ExecutingSkill = true;
@@ -85,6 +86,8 @@ public class Dash : MonoBehaviour, IPlayerSkill
         playerTransform = playerTrans;
         playerSkill = playerTrans.GetComponent<PlayerSkill>();
         playerController = playerTransform.GetComponent<PlayerController>();
+
+        GaugeUsage = 1f;
 
         StartCoroutine(Coroutine_Update());
     }
