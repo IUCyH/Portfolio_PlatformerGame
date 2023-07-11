@@ -8,15 +8,29 @@ using UnityEngine.UI;
 public class PlayerUIManager : Singleton<PlayerUIManager>
 {
     StringBuilder sb = new StringBuilder();
-    
-    public void UpdateSkillGauge(Image skillGauge, float value)
+
+    public void UpdateFillAmountOfSkillGaugeImage(Image skillGauge, float value, bool isDecrease = true)
     {
-        skillGauge.fillAmount -= value;
+        if (isDecrease)
+        {
+            skillGauge.fillAmount -= value;
+        }
+        else
+        {
+            skillGauge.fillAmount += value;
+        }
     }
 
-    public void UpdateHpBar(Image hpBar, float value)
+    public void UpdateFillAmountOfHpBarImage(Image hpBar, float value, bool isDecrease = true)
     {
-        hpBar.fillAmount -= value;
+        if (isDecrease)
+        {
+            hpBar.fillAmount -= value;
+        }
+        else
+        {
+            hpBar.fillAmount += value;
+        }
     }
 
     public void UpdateSkillCooldownText(TextMeshProUGUI cooldownText, float cooldown)

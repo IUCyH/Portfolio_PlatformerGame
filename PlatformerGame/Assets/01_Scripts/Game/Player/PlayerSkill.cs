@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Skills
+{
+    DefaultAttack,
+    Dash,
+    Max
+}
+
 public class PlayerSkill : MonoBehaviour
 {
-    enum Skills
-    {
-        DefaultAttack,
-        Dash,
-        Max
-    }
-
     [SerializeField]
     PlayerController playerCtr;
     IPlayerSkill[] skills = new IPlayerSkill[(int)Skills.Max];
@@ -40,6 +40,11 @@ public class PlayerSkill : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void UpdateCooldownUIText(Skills skill, float cooldown)
+    {
+        playerCtr.UpdateSkillCooldownText(skill, cooldown);
     }
 
     void DecreaseGauge(float gaugeWillUse)

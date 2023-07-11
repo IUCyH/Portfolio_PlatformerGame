@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField]
+    TextMeshProUGUI[] skillCooldownTexts;
+    [SerializeField]
     TextMeshProUGUI jumpCountText;
     [SerializeField]
     Image skillGaugeImg;
@@ -30,7 +32,13 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateSkillGauge(float value)
     {
-        PlayerUIManager.Instance.UpdateSkillGauge(skillGaugeImg, value);
+        PlayerUIManager.Instance.UpdateFillAmountOfSkillGaugeImage(skillGaugeImg, value);
+    }
+
+    public void UpdateSkillCooldownText(Skills skill, float cooldown)
+    {
+        float result = (float)Math.Round(cooldown, 2);
+        PlayerUIManager.Instance.UpdateSkillCooldownText(skillCooldownTexts[(int)skill], result);
     }
     
     public void StopMovement()

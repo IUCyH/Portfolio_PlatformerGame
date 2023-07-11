@@ -19,7 +19,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
     
     float cooldownTimer;
     [SerializeField]
-    float cooldown;
+    float maxCooldown;
     
     [SerializeField]
     float dashSpeed;
@@ -44,7 +44,6 @@ public class Dash : MonoBehaviour, IPlayerSkill
                     playerController.ContinueMovement();
                     
                     playerSkill.ExecutingSkill = false;
-                    cooldownTimer = 0f;
                     targetVector = Vector3.zero;
                 }
             }
@@ -60,6 +59,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
         //Debug.Log("Execute Dash");
         playerController.StopMovement();
         
+        cooldownTimer = maxCooldown;
         playerSkill.ExecutingSkill = true;
         NotReadyForExecute = true;
 
@@ -68,15 +68,16 @@ public class Dash : MonoBehaviour, IPlayerSkill
 
     public void CalculateCooldown()
     {
-        if(playerSkill.ExecutingSkill) return;
-        
-        cooldownTimer += Time.deltaTime;
+        if (!NotReadyForExecute) return;
 
-        if (cooldownTimer > cooldown)
+        cooldownTimer -= Time.deltaTime;
+
+        if (cooldownTimer <= 0f)
         {
             cooldownTimer = 0f;
             NotReadyForExecute = false;
         }
+        playerSkill.UpdateCooldownUIText(Skills.DefaultAttack, cooldownTimer);
     }
 
     void Start()
@@ -88,7 +89,8 @@ public class Dash : MonoBehaviour, IPlayerSkill
         playerController = playerTransform.GetComponent<PlayerController>();
 
         GaugeUsage = 1f;
-
+        cooldownTimer = maxCooldown;
+        
         StartCoroutine(Coroutine_Update());
     }
 }
