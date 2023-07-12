@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField]
+    PlayerController playerCtr;
     Transform playerTransform;
+    
     [SerializeField]
     float walkSpeed;
     [SerializeField]

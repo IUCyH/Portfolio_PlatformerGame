@@ -14,37 +14,33 @@ public class PlayerSkill : MonoBehaviour
 {
     [SerializeField]
     PlayerController playerCtr;
+    
     IPlayerSkill[] skills = new IPlayerSkill[(int)Skills.Max];
 
+    public int indexOfExecutingSkill;
     [SerializeField]
     float currSkillGauge;
     
-    bool executingSkill;
+    public bool executingSkill;
 
-    public bool ExecutingSkill { get => executingSkill; set => executingSkill = value; }
-    
     public void ExecuteSkills()
     {
-        //Debug.Log(executingSkill);
         if (executingSkill) return;
         
         for (int i = 0; i < skills.Length; i++)
         {
             var key = (Key)((int)Key.DefaultAttack + i);
-            //Debug.Log(key);
+            
             bool canUse = !skills[i].NotReadyForExecute && (currSkillGauge >= skills[i].GaugeUsage);
             if(InputManager.GetKeyDown(key) && canUse)
             {
                 skills[i].Execute();
+                indexOfExecutingSkill = i;
+
                 DecreaseGauge(skills[i].GaugeUsage);
                 return;
             }
         }
-    }
-
-    public void UpdateCooldownUIText(Skills skill, float cooldown)
-    {
-        playerCtr.UpdateSkillCooldownText(skill, cooldown);
     }
 
     void DecreaseGauge(float gaugeWillUse)
@@ -58,7 +54,12 @@ public class PlayerSkill : MonoBehaviour
     void Start()
     {
         skills = GetComponentsInChildren<IPlayerSkill>();
-        currSkillGauge = 100f;
+        currSkillGauge = 100f; //임시로 게이지의 기본 최대치 설정
         for (int i = 0; i < skills.Length; i++) Debug.Log(skills[i]);
+    }
+
+    void Update()
+    {
+        executingSkill = skills[indexOfExecutingSkill].ExecutingSkill;
     }
 }

@@ -38,7 +38,7 @@ public class PlayerJump : MonoBehaviour
     public void Jump()
     {
         if (!canJump) return;
-        
+
         rb.velocity = Vector2.zero;
         rb.AddForce(jumpForce * Time.fixedDeltaTime * Vector2.up, ForceMode2D.Impulse);
         
@@ -66,7 +66,7 @@ public class PlayerJump : MonoBehaviour
     void Start()
     {
         groundLayer = 1 << LayerMask.NameToLayer("Ground");
-        Debug.unityLogger.logEnabled = false;
+        //Debug.unityLogger.logEnabled = false;
     }
 
     void OnDrawGizmos()

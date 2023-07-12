@@ -5,6 +5,7 @@ using UnityEngine;
 public interface IPlayerSkill
 {
     bool NotReadyForExecute { get; set; }
+    bool ExecutingSkill { get; set; }
     float GaugeUsage { get; set; }
     
     void Execute();

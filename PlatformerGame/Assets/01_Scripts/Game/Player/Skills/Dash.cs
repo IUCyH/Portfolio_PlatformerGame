@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour, IPlayerSkill
 {
+    const float LeftRotation = 180f;
+    
     [SerializeField]
-    PlayerSkill playerSkill;
-    [SerializeField]
-    PlayerController playerController;
+    PlayerController playerCtr;
     [SerializeField]
     Transform playerTransform;
     
@@ -16,35 +16,33 @@ public class Dash : MonoBehaviour, IPlayerSkill
     Vector3 dashDistance;
     [SerializeField]
     Vector3 targetVector;
+    Vector3 dashDir;
     
     float cooldownTimer;
     [SerializeField]
     float maxCooldown;
-    
     [SerializeField]
     float dashSpeed;
 
     public bool NotReadyForExecute { get; set; }
+    public bool ExecutingSkill { get; set; }
     public float GaugeUsage { get; set; }
 
     IEnumerator Coroutine_Update()
     {
         while (true)
         {
-            if (targetVector != Vector3.zero)
+            if (ExecutingSkill)
             {
-                var dir = Vector3.right * playerTransform.localScale.x;
-                playerTransform.position += dashSpeed * Time.deltaTime * dir;
+                playerTransform.position += dashSpeed * Time.deltaTime * dashDir;
                 
-                bool isOverThanTarget = dir.x > 0f ? playerTransform.position.x > targetVector.x : playerTransform.position.x < targetVector.x;
+                bool isOverThanTarget = dashDir.x > 0f ? playerTransform.position.x > targetVector.x : playerTransform.position.x < targetVector.x;
 
                 if (isOverThanTarget)
                 {
                     Debug.Log("Stop");
-                    playerController.ContinueMovement();
-                    
-                    playerSkill.ExecutingSkill = false;
-                    targetVector = Vector3.zero;
+                    ExecutingSkill = false;
+                    playerCtr.ContinueMovement();
                 }
             }
 
@@ -56,14 +54,15 @@ public class Dash : MonoBehaviour, IPlayerSkill
 
     public void Execute()
     {
-        //Debug.Log("Execute Dash");
-        playerController.StopMovement();
+        var playerForward = GetPlayerForward();
+        playerCtr.StopMovement();
         
         cooldownTimer = maxCooldown;
-        playerSkill.ExecutingSkill = true;
         NotReadyForExecute = true;
+        ExecutingSkill = true;
 
-        targetVector = playerTransform.position + playerTransform.localScale.x * dashDistance;
+        targetVector = playerTransform.position + playerForward * dashDistance;
+        dashDir = Vector3.right * playerForward;
     }
 
     public void CalculateCooldown()
@@ -77,7 +76,18 @@ public class Dash : MonoBehaviour, IPlayerSkill
             cooldownTimer = 0f;
             NotReadyForExecute = false;
         }
-        playerSkill.UpdateCooldownUIText(Skills.DefaultAttack, cooldownTimer);
+        playerCtr.UpdateSkillCooldownText(Skills.Dash, cooldownTimer);
+    }
+
+    float GetPlayerForward()
+    {
+        var yRotation = playerTransform.rotation.eulerAngles.y;
+        if (Mathf.Approximately(yRotation, LeftRotation))
+        {
+            return -1f;
+        }
+
+        return 1f;
     }
 
     void Start()
@@ -85,8 +95,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
         var playerTrans = transform.parent.parent;
         
         playerTransform = playerTrans;
-        playerSkill = playerTrans.GetComponent<PlayerSkill>();
-        playerController = playerTransform.GetComponent<PlayerController>();
+        playerCtr = playerTransform.GetComponent<PlayerController>();
 
         GaugeUsage = 1f;
         cooldownTimer = maxCooldown;

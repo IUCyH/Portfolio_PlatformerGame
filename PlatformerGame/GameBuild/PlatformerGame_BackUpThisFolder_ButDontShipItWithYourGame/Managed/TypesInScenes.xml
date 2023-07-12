@@ -40,7 +40,9 @@
 		<type fullname="UnityEngine.RenderSettings" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Assembly-CSharp">
+		<type fullname="CameraController" preserve="nothing"/>
 		<type fullname="Dash" preserve="nothing"/>
+		<type fullname="DefaultAttack" preserve="nothing"/>
 		<type fullname="PlayerController" preserve="nothing"/>
 		<type fullname="PlayerJump" preserve="nothing"/>
 		<type fullname="PlayerMove" preserve="nothing"/>

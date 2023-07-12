@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    const float RightRotation = 0f;
+    const float LeftRotation = 180f;
+    
     [Header("UI")]
     [SerializeField]
     TextMeshProUGUI[] skillCooldownTexts;
@@ -14,8 +17,10 @@ public class PlayerController : MonoBehaviour
     TextMeshProUGUI jumpCountText;
     [SerializeField]
     Image skillGaugeImg;
-    
+
     [Header("")]
+    [SerializeField]
+    PlayerAnimation playerAnimation;
     [SerializeField]
     PlayerMove playerMove;
     [SerializeField]
@@ -40,6 +45,16 @@ public class PlayerController : MonoBehaviour
         float result = (float)Math.Round(cooldown, 2);
         PlayerUIManager.Instance.UpdateSkillCooldownText(skillCooldownTexts[(int)skill], result);
     }
+
+    public void PlayAnimation(PlayerAnimations motion)
+    {
+        playerAnimation.PlayAnimation(motion);
+    }
+
+    public void BackToIdleAnimation()
+    {
+        playerAnimation.BackToIdleAnimation();
+    }
     
     public void StopMovement()
     {
@@ -53,12 +68,14 @@ public class PlayerController : MonoBehaviour
 
     void SetPlayerForward(float dir)
     {
-        var dirVector = Vector3.one;
-
         if (dir != 0f)
         {
-            dirVector.x *= dir;
-            transform.localScale = dirVector;
+            var playerForward = dir > 0 ? RightRotation : LeftRotation;
+
+            var playerXRotation = transform.rotation.eulerAngles.x;
+            var playerZRotation = transform.rotation.eulerAngles.z;
+
+            transform.rotation = Quaternion.Euler(playerXRotation, playerForward, playerZRotation);
         }
     }
 
