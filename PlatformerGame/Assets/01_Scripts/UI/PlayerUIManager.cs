@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class PlayerUIManager : Singleton<PlayerUIManager>
 {
     StringBuilder sb = new StringBuilder();
+    
+    //Prev Values
+    int prevJumpCount;
 
     public void UpdateFillAmountOfSkillGaugeImage(Image skillGauge, float value, bool isDecrease = true)
     {
@@ -42,8 +45,12 @@ public class PlayerUIManager : Singleton<PlayerUIManager>
 
     public void UpdateJumpCountText(TextMeshProUGUI jumpCountText, int count)
     {
+        if (prevJumpCount == count) return;
+        
         sb.Clear();
         sb.Append(count);
         jumpCountText.text = sb.ToString();
+        
+        prevJumpCount = count;
     }
 }
