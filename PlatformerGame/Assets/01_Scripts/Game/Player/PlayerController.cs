@@ -5,6 +5,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum PlayerState
+{
+    Idle,
+    Move,
+    Attack,
+    Hit,
+    Die,
+    Max
+}
+
 public class PlayerController : MonoBehaviour
 {
     const float RightRotation = 0f;
@@ -28,7 +38,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     PlayerSkill playerSkill;
 
+    PlayerState playerState = PlayerState.Idle;
+    PlayerState prevState = PlayerState.Idle;
+
     bool stopMovement;
+
+    public void SetPlayerState(PlayerState state)
+    {
+        playerState = state;
+    }
 
     public void UpdateJumpCountText(int count)
     {
@@ -46,16 +64,6 @@ public class PlayerController : MonoBehaviour
         PlayerUIManager.Instance.UpdateSkillCooldownText(skillCooldownTexts[(int)skill], result);
     }
 
-    public void PlayAnimation(PlayerAnimations motion)
-    {
-        playerAnimation.PlayAnimation(motion);
-    }
-
-    public void BackToIdleAnimation()
-    {
-        playerAnimation.BackToIdleAnimation();
-    }
-    
     public void StopMovement()
     {
         stopMovement = true;
@@ -78,6 +86,37 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(playerXRotation, playerForward, playerZRotation);
         }
     }
+    
+    void PlayAnimation(PlayerAnimations motion)
+    {
+        playerAnimation.PlayAnimation(motion);
+    }
+
+    void PlayAnimationByPlayerState()
+    {
+        if (playerState == prevState) return;
+        
+        switch (playerState)
+        {
+            case PlayerState.Idle:
+                PlayAnimation(PlayerAnimations.Idle);
+                break;
+            case PlayerState.Move:
+                PlayAnimation(PlayerAnimations.Move);
+                break;
+            case PlayerState.Attack:
+                PlayAnimation(PlayerAnimations.Attack);
+                break;
+            case PlayerState.Hit:
+                PlayAnimation(PlayerAnimations.Hit);
+                break;
+            case PlayerState.Die:
+                PlayAnimation(PlayerAnimations.Die);
+                break;
+        }
+
+        prevState = playerState;
+    }
 
     void Update()
     {   
@@ -96,6 +135,8 @@ public class PlayerController : MonoBehaviour
             playerJump.CheckCanJump();
         }
         playerJump.SetJumpCountToZeroWhenPlayerOnTheGround();
+
+        PlayAnimationByPlayerState();
     }
 
     void FixedUpdate()

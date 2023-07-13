@@ -5,11 +5,11 @@ using UnityEngine;
 
 public enum PlayerAnimations
 {
+    Idle,
     Move,
     Attack,
     Hit,
     Die,
-    Stop,
     Max
 }
 
@@ -25,11 +25,6 @@ public class PlayerAnimation : MonoBehaviour
         if (animId.Length <= indexOfId) return;
         
         animator.SetTrigger(animId[indexOfId]);
-    }
-
-    public void BackToIdleAnimation()
-    {
-        animator.SetTrigger(animId[(int)PlayerAnimations.Stop]);
     }
 
     void Start()
