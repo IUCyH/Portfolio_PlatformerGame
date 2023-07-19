@@ -120,7 +120,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
         if (!stopMovement)
         {
             var dir = InputManager.GetAxisRaw(Axis.Horizontal);
