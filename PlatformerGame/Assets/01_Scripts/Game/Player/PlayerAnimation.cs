@@ -16,31 +16,32 @@ public enum PlayerAnimations
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField]
-    Animator animator; 
-    int[] animId = new int[(int)PlayerAnimations.Max];
+    Animator animator;
+
+    int[] animID = new int[(int)PlayerAnimations.Max];
 
     public void PlayAnimation(PlayerAnimations motion)
     {
         var indexOfId = (int)motion;
-        if (animId.Length <= indexOfId) return;
-        
-        animator.SetTrigger(animId[indexOfId]);
+        if (animID.Length <= indexOfId) return;
+
+        animator.SetTrigger(animID[indexOfId]);
     }
 
     void Start()
     {
-        var length = animId.Length;
+        var length = animID.Length;
         for (int i = 0; i < length; i++)
         {
             var animation = (PlayerAnimations)i;
             var id = Animator.StringToHash(animation.ToString());
-            
-            animId[i] = id;
+
+            animID[i] = id;
         }
 
         for (int i = 0; i < length; i++)
         {
-            Debug.Log(animId[i]);
+            Debug.Log(animID[i]);
         }
     }
 }

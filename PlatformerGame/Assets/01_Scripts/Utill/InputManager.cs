@@ -18,7 +18,7 @@ public enum Key
     DefaultAttack,
     Dash,
     Skill3,
-    Skill4,
+    Skill4
 }
 
 public static class InputManager

@@ -132,13 +132,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 227404999}
-  - component: {fileID: 227404998}
-  - component: {fileID: 227405007}
   - component: {fileID: 227405001}
   - component: {fileID: 227405000}
   - component: {fileID: 227405002}
   - component: {fileID: 227405005}
   - component: {fileID: 227405006}
+  - component: {fileID: 227404998}
+  - component: {fileID: 227405007}
   - component: {fileID: 227405003}
   - component: {fileID: 227405004}
   m_Layer: 0
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCtr: {fileID: 227405001}
-  walkSpeed: 10
-  runSpeed: 15
+  walkSpeed: 5
+  runSpeed: 8
 --- !u!114 &227405001
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,7 +30,6 @@ public class PlayerJump : MonoBehaviour
     {
         if (jumpCount < maxJumpCount)
         {
-            Debug.Log("Jump Key Pressed");
             canJump = true;
         }
     }
@@ -51,7 +50,6 @@ public class PlayerJump : MonoBehaviour
         var ground = PlayerOnGround();
         if (ground)
         {
-            Debug.Log("IT'S TRUE!");
             jumpCount = 0;
         }
         playerCtr.UpdateJumpCountText(jumpCount);

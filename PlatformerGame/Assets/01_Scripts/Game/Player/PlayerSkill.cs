@@ -17,28 +17,32 @@ public class PlayerSkill : MonoBehaviour
     
     IPlayerSkill[] skills = new IPlayerSkill[(int)Skills.Max];
 
-    public int indexOfExecutingSkill;
+    int indexOfExecutingSkill;
     [SerializeField]
     float currSkillGauge;
     
-    public bool executingSkill;
+    bool executingSkill;
 
     public void ExecuteSkills()
     {
         if (executingSkill) return;
-        
+
         for (int i = 0; i < skills.Length; i++)
         {
             var key = (Key)((int)Key.DefaultAttack + i);
-            
+
             bool canUse = !skills[i].NotReadyForExecute && (currSkillGauge >= skills[i].GaugeUsage);
-            if(InputManager.GetKeyDown(key) && canUse)
+            if (InputManager.GetKeyDown(key) && canUse)
             {
                 skills[i].Execute();
-                indexOfExecutingSkill = i;
 
-                DecreaseGauge(skills[i].GaugeUsage);
-                return;
+                if (key != Key.DefaultAttack)
+                {
+                    indexOfExecutingSkill = i;
+                    DecreaseGauge(skills[i].GaugeUsage);
+
+                    return;
+                }
             }
         }
     }

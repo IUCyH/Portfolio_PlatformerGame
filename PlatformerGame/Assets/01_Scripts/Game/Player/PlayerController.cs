@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
     void PlayAnimationByPlayerState()
     {
         if (playerState == prevState) return;
-        
+
         switch (playerState)
         {
             case PlayerState.Idle:
@@ -119,7 +119,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
+        
         if (!stopMovement)
         {
             var dir = InputManager.GetAxisRaw(Axis.Horizontal);
@@ -128,14 +129,15 @@ public class PlayerController : MonoBehaviour
             SetPlayerForward(dir);
         }
 
-        playerSkill.ExecuteSkills();
-
         if (InputManager.GetKeyDown(Key.Up))
         {
+            Debug.Log("JUMP KEY GET");
             playerJump.CheckCanJump();
         }
         playerJump.SetJumpCountToZeroWhenPlayerOnTheGround();
 
+        playerSkill.ExecuteSkills();
+        
         PlayAnimationByPlayerState();
     }
 
