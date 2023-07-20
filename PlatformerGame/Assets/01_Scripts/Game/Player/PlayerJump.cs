@@ -24,6 +24,19 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     bool canJump;
 
+    void Start()
+    {
+        groundLayer = 1 << LayerMask.NameToLayer("Ground");
+        //Debug.unityLogger.logEnabled = false;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(feet.position, overlapCircleRadius);
+        //Gizmos.DrawSphere();
+    }
+    
     public void CheckCanJump()
     {
         if (jumpCount < maxJumpCount)
@@ -57,18 +70,5 @@ public class PlayerJump : MonoBehaviour
     {
         bool isGround = Physics2D.OverlapCircle(feet.position, overlapCircleRadius, groundLayer);
         return isGround;
-    }
-
-    void Start()
-    {
-        groundLayer = 1 << LayerMask.NameToLayer("Ground");
-        //Debug.unityLogger.logEnabled = false;
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(feet.position, overlapCircleRadius);
-        //Gizmos.DrawSphere();
     }
 }

@@ -22,6 +22,21 @@ public class PlayerSkill : MonoBehaviour
     [SerializeField]
     float currSkillGauge;
     bool executingSkill;
+    
+    void Start()
+    {
+        skills = GetComponentsInChildren<IPlayerSkill>();
+        currSkillGauge = 100f; //임시로 게이지의 기본 최대치 설정
+        for (int i = 0; i < skills.Length; i++) Debug.Log(skills[i]);
+    }
+
+    void Update()
+    {
+        if (indexOfExecutingSkill != (int)Skills.None)
+        {
+            executingSkill = skills[indexOfExecutingSkill].ExecutingSkill;
+        }
+    }
 
     public void ExecuteSkills()
     {
@@ -54,20 +69,5 @@ public class PlayerSkill : MonoBehaviour
 
         currSkillGauge -= gaugeWillUse; //currSkillGauge는 정규화 되지 않은 값이므로 그냥 쓸 게이지 양만큼을 빼준다.
         playerCtr.UpdateSkillGauge(gaugeUsage);
-    }
-
-    void Start()
-    {
-        skills = GetComponentsInChildren<IPlayerSkill>();
-        currSkillGauge = 100f; //임시로 게이지의 기본 최대치 설정
-        for (int i = 0; i < skills.Length; i++) Debug.Log(skills[i]);
-    }
-
-    void Update()
-    {
-        if (indexOfExecutingSkill != (int)Skills.None)
-        {
-            executingSkill = skills[indexOfExecutingSkill].ExecutingSkill;
-        }
     }
 }

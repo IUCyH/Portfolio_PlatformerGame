@@ -51,6 +51,19 @@ public class Dash : MonoBehaviour, IPlayerSkill
             yield return null;
         }
     }
+    
+    void Start()
+    {
+        var playerTrans = transform.parent.parent;
+        
+        playerTransform = playerTrans;
+        playerCtr = playerTransform.GetComponent<PlayerController>();
+
+        GaugeUsage = 1f;
+        cooldownTimer = maxCooldown;
+        
+        StartCoroutine(Coroutine_Update());
+    }
 
     public void Execute()
     {
@@ -88,18 +101,5 @@ public class Dash : MonoBehaviour, IPlayerSkill
         }
 
         return 1f;
-    }
-
-    void Start()
-    {
-        var playerTrans = transform.parent.parent;
-        
-        playerTransform = playerTrans;
-        playerCtr = playerTransform.GetComponent<PlayerController>();
-
-        GaugeUsage = 1f;
-        cooldownTimer = maxCooldown;
-        
-        StartCoroutine(Coroutine_Update());
     }
 }

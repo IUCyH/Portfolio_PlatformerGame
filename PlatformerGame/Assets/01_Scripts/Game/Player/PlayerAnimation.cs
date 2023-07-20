@@ -19,15 +19,7 @@ public class PlayerAnimation : MonoBehaviour
     Animator animator;
 
     int[] animID = new int[(int)PlayerAnimations.Max];
-
-    public void PlayAnimation(PlayerAnimations motion)
-    {
-        var indexOfId = (int)motion;
-        if (animID.Length <= indexOfId) return;
-
-        animator.SetTrigger(animID[indexOfId]);
-    }
-
+    
     void Start()
     {
         var length = animID.Length;
@@ -43,5 +35,13 @@ public class PlayerAnimation : MonoBehaviour
         {
             Debug.Log(animID[i]);
         }
+    }
+
+    public void PlayAnimation(PlayerAnimations motion)
+    {
+        var indexOfId = (int)motion;
+        if (animID.Length <= indexOfId) return;
+
+        animator.SetTrigger(animID[indexOfId]);
     }
 }

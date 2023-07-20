@@ -43,6 +43,38 @@ public class PlayerController : MonoBehaviour
 
     bool stopMovement;
 
+    void Start()
+    {
+        playerTransform = transform;
+    }
+
+    void Update()
+    {
+        if (!stopMovement)
+        {
+            var dir = InputManager.GetAxisRaw(Axis.Horizontal);
+
+            playerMove.Move(Vector3.right * dir);
+            SetPlayerForward(dir);
+        }
+
+        if (InputManager.GetKeyDown(Key.Up))
+        {
+            Debug.Log("JUMP KEY GET");
+            playerJump.CheckCanJump();
+        }
+        playerJump.SetJumpCountToZeroWhenPlayerOnTheGround();
+
+        playerSkill.ExecuteSkills();
+        
+        PlayAnimationByPlayerState();
+    }
+
+    void FixedUpdate()
+    {
+        playerJump.Jump();
+    }
+    
     public void SetPlayerState(PlayerState state)
     {
         playerState = state;
@@ -116,37 +148,5 @@ public class PlayerController : MonoBehaviour
         }
 
         prevState = playerState;
-    }
-
-    void Start()
-    {
-        playerTransform = transform;
-    }
-
-    void Update()
-    {
-        if (!stopMovement)
-        {
-            var dir = InputManager.GetAxisRaw(Axis.Horizontal);
-
-            playerMove.Move(Vector3.right * dir);
-            SetPlayerForward(dir);
-        }
-
-        if (InputManager.GetKeyDown(Key.Up))
-        {
-            Debug.Log("JUMP KEY GET");
-            playerJump.CheckCanJump();
-        }
-        playerJump.SetJumpCountToZeroWhenPlayerOnTheGround();
-
-        playerSkill.ExecuteSkills();
-        
-        PlayAnimationByPlayerState();
-    }
-
-    void FixedUpdate()
-    {
-        playerJump.Jump();
     }
 }

@@ -15,6 +15,12 @@ public class PlayerMove : MonoBehaviour
     float runSpeed;
     float moveSpeed;
     bool playingWalkingAnim;
+    
+    void Start()
+    {
+        playerTransform = transform;
+        moveSpeed = walkSpeed;
+    }
 
     public void Move(Vector3 dir)
     {
@@ -44,11 +50,5 @@ public class PlayerMove : MonoBehaviour
         {
             moveSpeed = walkSpeed;
         }
-    }
-
-    void Start()
-    {
-        playerTransform = transform;
-        moveSpeed = walkSpeed;
     }
 }
