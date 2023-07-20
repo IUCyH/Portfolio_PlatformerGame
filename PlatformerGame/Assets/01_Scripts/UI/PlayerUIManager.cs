@@ -45,7 +45,7 @@ public class PlayerUIManager : Singleton<PlayerUIManager>
 
     public void UpdateJumpCountText(TextMeshProUGUI jumpCountText, int count)
     {
-        if (prevJumpCount == count) return;
+        if (prevJumpCount == count) return; //GC 최적화 위해 이전값과 비교했을때 변동사항이 없다면 text를 업데이트 하지 않음
         
         sb.Clear();
         sb.Append(count);

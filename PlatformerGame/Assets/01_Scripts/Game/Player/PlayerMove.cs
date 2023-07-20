@@ -14,7 +14,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     float runSpeed;
     float moveSpeed;
-
     bool playingWalkingAnim;
 
     public void Move(Vector3 dir)

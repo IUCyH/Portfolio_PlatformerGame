@@ -16,13 +16,11 @@ public class PlayerJump : MonoBehaviour
     float jumpForce;
     [SerializeField]
     float overlapCircleRadius;
-
     [SerializeField]
     int maxJumpCount;
     [SerializeField]
     int jumpCount;
     int groundLayer;
-    
     [SerializeField]
     bool canJump;
 

@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     Transform cam;
     [SerializeField]
     Transform target;
+    
     [SerializeField]
     float moveSpeed;
 

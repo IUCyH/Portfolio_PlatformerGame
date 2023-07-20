@@ -5,6 +5,7 @@ using UnityEngine;
 
 public enum Skills
 {
+    None = -1,
     DefaultAttack,
     Dash,
     Max
@@ -20,13 +21,13 @@ public class PlayerSkill : MonoBehaviour
     int indexOfExecutingSkill;
     [SerializeField]
     float currSkillGauge;
-    
     bool executingSkill;
 
     public void ExecuteSkills()
     {
         if (executingSkill) return;
 
+        indexOfExecutingSkill = (int)Skills.None;
         for (int i = 0; i < skills.Length; i++)
         {
             var key = (Key)((int)Key.DefaultAttack + i);
@@ -64,6 +65,9 @@ public class PlayerSkill : MonoBehaviour
 
     void Update()
     {
-        executingSkill = skills[indexOfExecutingSkill].ExecutingSkill;
+        if (indexOfExecutingSkill != (int)Skills.None)
+        {
+            executingSkill = skills[indexOfExecutingSkill].ExecutingSkill;
+        }
     }
 }

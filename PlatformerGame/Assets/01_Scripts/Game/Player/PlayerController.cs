@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     TextMeshProUGUI jumpCountText;
     [SerializeField]
     Image skillGaugeImg;
-
     [Header("")]
     [SerializeField]
     PlayerAnimation playerAnimation;
@@ -37,7 +36,8 @@ public class PlayerController : MonoBehaviour
     PlayerJump playerJump;
     [SerializeField]
     PlayerSkill playerSkill;
-
+    Transform playerTransform;
+    
     PlayerState playerState = PlayerState.Idle;
     PlayerState prevState = PlayerState.Idle;
 
@@ -80,10 +80,10 @@ public class PlayerController : MonoBehaviour
         {
             var playerForward = dir > 0 ? RightRotation : LeftRotation;
 
-            var playerXRotation = transform.rotation.eulerAngles.x;
-            var playerZRotation = transform.rotation.eulerAngles.z;
+            var playerXRotation = playerTransform.rotation.eulerAngles.x;
+            var playerZRotation = playerTransform.rotation.eulerAngles.z;
 
-            transform.rotation = Quaternion.Euler(playerXRotation, playerForward, playerZRotation);
+            playerTransform.rotation = Quaternion.Euler(playerXRotation, playerForward, playerZRotation);
         }
     }
     
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Move:
                 PlayAnimation(PlayerAnimations.Move);
                 break;
-            case PlayerState.Attack:
+            case PlayerState.Attack: //TODO : 기본 공격 이외의 스킬 애니메이션들도 이곳에서 구분해 재생할 수 있도록 구현
                 PlayAnimation(PlayerAnimations.Attack);
                 break;
             case PlayerState.Hit:
@@ -116,6 +116,11 @@ public class PlayerController : MonoBehaviour
         }
 
         prevState = playerState;
+    }
+
+    void Start()
+    {
+        playerTransform = transform;
     }
 
     void Update()
