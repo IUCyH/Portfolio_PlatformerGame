@@ -18,10 +18,12 @@ public class PlayerSkill : MonoBehaviour
     
     IPlayerSkill[] skills = new IPlayerSkill[(int)Skills.Max];
 
-    int indexOfExecutingSkill;
+    int indexOfRunningSkill;
     [SerializeField]
     float currSkillGauge;
-    bool executingSkill;
+    bool skillInUse;
+    
+    public IPlayerSkill SkillCurrentlyUsing { get; private set; }
     
     void Start()
     {
@@ -32,17 +34,31 @@ public class PlayerSkill : MonoBehaviour
 
     void Update()
     {
-        if (indexOfExecutingSkill != (int)Skills.None)
+        if (indexOfRunningSkill != (int)Skills.None)
         {
-            executingSkill = skills[indexOfExecutingSkill].ExecutingSkill;
+            var skill = skills[indexOfRunningSkill];
+            var isRunning = skill.SkillRunning;
+
+            if (isRunning && indexOfRunningSkill > (int)Skills.DefaultAttack)
+            {
+                skillInUse = true;
+            }
+
+            else if(!isRunning)
+            {
+                SkillCurrentlyUsing = null;
+                indexOfRunningSkill = (int)Skills.None;
+
+                skillInUse = false;
+            }
         }
+        Debug.Log(skills[0].SkillRunning);
     }
 
     public void ExecuteSkills()
     {
-        if (executingSkill) return;
+        if (skillInUse) return;
 
-        indexOfExecutingSkill = (int)Skills.None;
         for (int i = 0; i < skills.Length; i++)
         {
             var key = (Key)((int)Key.DefaultAttack + i);
@@ -51,10 +67,11 @@ public class PlayerSkill : MonoBehaviour
             if (InputManager.GetKeyDown(key) && canUse)
             {
                 skills[i].Execute();
-
+                SkillCurrentlyUsing = skills[i];
+                indexOfRunningSkill = i;
+                
                 if (key != Key.DefaultAttack)
                 {
-                    indexOfExecutingSkill = i;
                     DecreaseGauge(skills[i].GaugeUsage);
 
                     return;

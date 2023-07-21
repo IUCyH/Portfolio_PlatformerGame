@@ -25,14 +25,14 @@ public class Dash : MonoBehaviour, IPlayerSkill
     float dashSpeed;
 
     public bool NotReadyForExecute { get; set; }
-    public bool ExecutingSkill { get; set; }
+    public bool SkillRunning { get; set; }
     public float GaugeUsage { get; set; }
 
     IEnumerator Coroutine_Update()
     {
         while (true)
         {
-            if (ExecutingSkill)
+            if (SkillRunning)
             {
                 playerTransform.position += dashSpeed * Time.deltaTime * dashDir;
                 
@@ -41,7 +41,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
                 if (isOverThanTarget)
                 {
                     Debug.Log("Stop");
-                    ExecutingSkill = false;
+                    SkillRunning = false;
                     playerCtr.ContinueMovement();
                 }
             }
@@ -72,7 +72,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
         
         cooldownTimer = maxCooldown;
         NotReadyForExecute = true;
-        ExecutingSkill = true;
+        SkillRunning = true;
 
         targetVector = playerTransform.position + playerForward * dashDistance;
         dashDir = Vector3.right * playerForward;
