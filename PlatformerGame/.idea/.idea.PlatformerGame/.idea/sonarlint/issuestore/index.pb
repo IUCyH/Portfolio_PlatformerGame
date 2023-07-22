@@ -1,6 +1,4 @@
 
-`
-0Assets/01_Scripts/Utill/Singleton_DontDestroy.cs,a\a\aa162e082c1d52147d80b4182f7aab7ea2517c68
 W
 'Assets/01_Scripts/Utill/InputManager.cs,a\5\a5887df4b276787b09b5b830144c00bd1966d673
 T
@@ -9,20 +7,22 @@ W
 'Assets/01_Scripts/UI/PlayerUIManager.cs,d\9\d91f9e01d027a219ebbd129fe00572353e853288
 U
 %Assets/01_Scripts/Utill/ObjectPool.cs,e\5\e52e552eb0b6b9302cf22ba920b8274f3e6a0f35
+[
++Assets/01_Scripts/Game/Player/PlayerJump.cs,e\8\e84d4f2e70f385b85fb614eaecd4f6d3ddc3d6f8
 Z
 *Assets/01_Scripts/Game/CameraController.cs,e\4\e451f7cf28416dd1218de8f426e9ba5c3e339f55
 [
-+Assets/01_Scripts/Game/Player/PlayerJump.cs,e\8\e84d4f2e70f385b85fb614eaecd4f6d3ddc3d6f8
-[
 +Assets/01_Scripts/Game/Player/PlayerMove.cs,d\b\db1df78111cde0b047db49806192318d19c022d9
-\
-,Assets/01_Scripts/Game/Player/Skills/Dash.cs,f\6\f6bf1d296bc475d96df27d8675a049903dad047e
+`
+0Assets/01_Scripts/Utill/Singleton_DontDestroy.cs,a\a\aa162e082c1d52147d80b4182f7aab7ea2517c68
 ]
 -Assets/01_Scripts/Game/Player/IPlayerSkill.cs,a\8\a8142671c5e143d461e4dec2a6ebe4d8074b6cf1
-a
-1Assets/01_Scripts/Game/Player/PlayerController.cs,8\b\8b041e7fda6d41101560c87f1cac0a5899342a4f
+\
+,Assets/01_Scripts/Game/Player/Skills/Dash.cs,f\6\f6bf1d296bc475d96df27d8675a049903dad047e
 \
 ,Assets/01_Scripts/Game/Player/PlayerSkill.cs,c\2\c25f0e0306190b7a56788b72b5f571f3371f95da
+a
+1Assets/01_Scripts/Game/Player/PlayerController.cs,8\b\8b041e7fda6d41101560c87f1cac0a5899342a4f
 e
 5Assets/01_Scripts/Game/Player/Skills/DefaultAttack.cs,8\b\8b42d53c495b07cc33836d9866beb37ac5c6cb32
 `

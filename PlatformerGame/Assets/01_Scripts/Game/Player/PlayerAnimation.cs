@@ -5,10 +5,10 @@ using UnityEngine;
 
 public enum PlayerAnimations
 {
-    Idle,
     Move,
-    Attack,
     Hit,
+    Idle,
+    Attack,
     Die,
     Max
 }
@@ -17,9 +17,10 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField]
     Animator animator;
-
     int[] animIDs = new int[(int)PlayerAnimations.Max];
-    int[] animRunningTimes = new int[(int)PlayerAnimations.Max];
+    float[] animRunningTimes = new float[(int)PlayerAnimations.Max];
+
+    int prevMotion;
     
     void Start()
     {
@@ -28,35 +29,34 @@ public class PlayerAnimation : MonoBehaviour
         
         for (int i = 0; i < length; i++)
         {
-            var animation = (PlayerAnimations)i;
-            var id = Animator.StringToHash(animation.ToString());
-
-            
+            var motion = (PlayerAnimations)i;
+            var id = Animator.StringToHash(motion.ToString());
             
             animIDs[i] = id;
+            animRunningTimes[i] = clips[i].length;
         }
 
+        prevMotion = animIDs[(int)PlayerAnimations.Idle];
         //for checking
         for (int i = 0; i < length; i++)
         {
             Debug.Log(animIDs[i]);
+            Debug.Log(animRunningTimes[i]);
         }
     }
 
     public void PlayAnimation(PlayerAnimations motion)
     {
-        var indexOfId = (int)motion;
-        if (animIDs.Length <= indexOfId) return;
-
-        animator.SetTrigger(animIDs[indexOfId]);
+        var animId = animIDs[(int)motion];
+        
+        animator.ResetTrigger(prevMotion);
+        animator.SetTrigger(animId);
+        
+        prevMotion = animId;
     }
 
-    void InsertClipRunningTimeIntoRunningTimeArray(string animName)
+    public float GetAnimationRunningTime(PlayerAnimations motion)
     {
-        var length = (int)PlayerAnimations.Max;
-        for (int i = 0; i < length; i++)
-        {
-            
-        }
+        return animRunningTimes[(int)motion];
     }
 }

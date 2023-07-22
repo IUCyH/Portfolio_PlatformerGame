@@ -37,7 +37,7 @@ public class PlayerSkill : MonoBehaviour
         if (indexOfRunningSkill != (int)Skills.None)
         {
             var skill = skills[indexOfRunningSkill];
-            var isRunning = skill.SkillRunning;
+            var isRunning = skill.SkillIsRunning;
 
             if (isRunning && indexOfRunningSkill > (int)Skills.DefaultAttack)
             {
@@ -52,7 +52,7 @@ public class PlayerSkill : MonoBehaviour
                 skillInUse = false;
             }
         }
-        Debug.Log(skills[0].SkillRunning);
+        //Debug.Log(skills[0].SkillIsRunning);
     }
 
     public void ExecuteSkills()

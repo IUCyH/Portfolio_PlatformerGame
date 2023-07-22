@@ -218,7 +218,7 @@ static const int32_t s_InvokerIndices[53] =
 	1985,
 	1907,
 	1882,
-	2774,
+	2775,
 	2002,
 	2147,
 	2299,
@@ -252,7 +252,7 @@ static const int32_t s_InvokerIndices[53] =
 	1966,
 	2069,
 	2220,
-	2739,
+	2740,
 	1968,
 };
 extern const CustomAttributesCacheGenerator g_UnityEngine_PhysicsModule_AttributeGenerators[];

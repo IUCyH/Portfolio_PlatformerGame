@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         //플레이어가 스킬 애니메이션을 재생중 이라면 다른 애니메이션은 재생되지 않아야 하므로
         if (playerSkill.SkillCurrentlyUsing != null) return;
-        Debug.Log("Changing state");
+       
         playerState = state;
     }
 
@@ -107,6 +107,11 @@ public class PlayerController : MonoBehaviour
     public void ContinueMovement()
     {
         stopMovement = false;
+    }
+    
+    public float GetAnimationRunningTime(PlayerAnimations motion)
+    {
+        return playerAnimation.GetAnimationRunningTime(motion);
     }
 
     void SetPlayerForward(float dir)
