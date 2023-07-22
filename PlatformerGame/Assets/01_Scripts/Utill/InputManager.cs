@@ -15,6 +15,7 @@ public enum Key
     Up,
     Down,
     Run,
+    Interaction,
     DefaultAttack,
     Dash,
     Skill3,
@@ -32,6 +33,7 @@ public static class InputManager
         keys.Add(Key.Up, KeyCode.UpArrow);
         keys.Add(Key.Down, KeyCode.DownArrow);
         keys.Add(Key.Run, KeyCode.LeftShift);
+        keys.Add(Key.Interaction, KeyCode.F);
         //Init Skill keys
         keys.Add(Key.DefaultAttack, KeyCode.Space);
         keys.Add(Key.Dash, KeyCode.Q);
