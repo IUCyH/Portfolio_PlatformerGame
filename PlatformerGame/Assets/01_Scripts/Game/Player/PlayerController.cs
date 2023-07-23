@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
     
     PlayerState playerState = PlayerState.Idle;
     PlayerState prevState = PlayerState.Idle;
-
     bool stopMovement;
 
     void Start()

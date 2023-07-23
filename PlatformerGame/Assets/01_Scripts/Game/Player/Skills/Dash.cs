@@ -17,7 +17,6 @@ public class Dash : MonoBehaviour, IPlayerSkill
     [SerializeField]
     Vector3 targetVector;
     Vector3 dashDir;
-    
     float cooldownTimer;
     [SerializeField]
     float maxCooldown;

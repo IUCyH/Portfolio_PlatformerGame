@@ -15,9 +15,8 @@ public class PlayerSkill : MonoBehaviour
 {
     [SerializeField]
     PlayerController playerCtr;
-    
     IPlayerSkill[] skills = new IPlayerSkill[(int)Skills.Max];
-
+    
     int indexOfRunningSkill;
     [SerializeField]
     float currSkillGauge;
