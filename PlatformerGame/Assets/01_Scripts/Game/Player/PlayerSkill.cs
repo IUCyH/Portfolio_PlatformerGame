@@ -84,6 +84,6 @@ public class PlayerSkill : MonoBehaviour
         var gaugeUsage = gaugeWillUse / 100f; //최대치를 100으로 가정하고 이미지의 fill amount는 0~1로 정규화 되있으므로 최대치로 나눠 정규화 시킨다.
 
         currSkillGauge -= gaugeWillUse; //currSkillGauge는 정규화 되지 않은 값이므로 그냥 쓸 게이지 양만큼을 빼준다.
-        playerCtr.UpdateSkillGauge(gaugeUsage);
+        PlayerUIManager.Instance.UpdateSkillGauge(gaugeUsage);
     }
 }

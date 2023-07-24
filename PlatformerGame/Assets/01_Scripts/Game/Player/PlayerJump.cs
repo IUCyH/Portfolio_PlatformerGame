@@ -63,7 +63,7 @@ public class PlayerJump : MonoBehaviour
         {
             jumpCount = 0;
         }
-        playerCtr.UpdateJumpCountText(jumpCount);
+        PlayerUIManager.Instance.UpdateJumpCountText(jumpCount);
     }
 
     bool PlayerOnGround()

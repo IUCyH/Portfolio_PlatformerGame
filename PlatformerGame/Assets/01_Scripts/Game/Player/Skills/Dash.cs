@@ -88,7 +88,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
             cooldownTimer = 0f;
             NotReadyForExecute = false;
         }
-        playerCtr.UpdateSkillCooldownText(Skills.Dash, cooldownTimer);
+        PlayerUIManager.Instance.UpdateSkillCooldownText(Skills.Dash, cooldownTimer);
     }
 
     float GetPlayerForward()

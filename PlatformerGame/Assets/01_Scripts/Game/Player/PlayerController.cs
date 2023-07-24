@@ -19,15 +19,7 @@ public class PlayerController : MonoBehaviour
 {
     const float RightRotation = 0f;
     const float LeftRotation = 180f;
-    
-    [Header("UI")]
-    [SerializeField]
-    TextMeshProUGUI[] skillCooldownTexts;
-    [SerializeField]
-    TextMeshProUGUI jumpCountText;
-    [SerializeField]
-    Image skillGaugeImg;
-    [Header("")]
+
     [SerializeField]
     PlayerAnimation playerAnimation;
     [SerializeField]
@@ -80,22 +72,6 @@ public class PlayerController : MonoBehaviour
         if (playerSkill.SkillCurrentlyUsing != null) return;
        
         playerState = state;
-    }
-
-    public void UpdateJumpCountText(int count)
-    {
-        PlayerUIManager.Instance.UpdateJumpCountText(jumpCountText, count);
-    }
-
-    public void UpdateSkillGauge(float value)
-    {
-        PlayerUIManager.Instance.UpdateFillAmountOfSkillGaugeImage(skillGaugeImg, value);
-    }
-
-    public void UpdateSkillCooldownText(Skills skill, float cooldown)
-    {
-        float result = (float)Math.Round(cooldown, 2);
-        PlayerUIManager.Instance.UpdateSkillCooldownText(skillCooldownTexts[(int)skill], result);
     }
 
     public void StopMovement()

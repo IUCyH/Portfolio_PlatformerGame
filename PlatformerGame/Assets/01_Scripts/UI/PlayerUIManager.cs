@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -8,42 +9,52 @@ using UnityEngine.UI;
 public class PlayerUIManager : Singleton<PlayerUIManager>
 {
     StringBuilder sb = new StringBuilder();
+    [SerializeField]
+    TextMeshProUGUI[] skillCooldownTexts;
+    [SerializeField]
+    TextMeshProUGUI jumpCountText;
+    [SerializeField]
+    Image skillGaugeImg;
+    [SerializeField]
+    Image hpBarImg;
     
     //Prev Values
     int prevJumpCount;
 
-    public void UpdateFillAmountOfSkillGaugeImage(Image skillGauge, float value, bool isDecrease = true)
+    public void UpdateSkillGauge(float value, bool isDecrease = true)
     {
         if (isDecrease)
         {
-            skillGauge.fillAmount -= value;
+            skillGaugeImg.fillAmount -= value;
         }
         else
         {
-            skillGauge.fillAmount += value;
+            skillGaugeImg.fillAmount += value;
         }
     }
 
-    public void UpdateFillAmountOfHpBarImage(Image hpBar, float value, bool isDecrease = true)
+    public void UpdateHpBar(float value, bool isDecrease = true)
     {
         if (isDecrease)
         {
-            hpBar.fillAmount -= value;
+            hpBarImg.fillAmount -= value;
         }
         else
         {
-            hpBar.fillAmount += value;
+            hpBarImg.fillAmount += value;
         }
     }
 
-    public void UpdateSkillCooldownText(TextMeshProUGUI cooldownText, float cooldown)
+    public void UpdateSkillCooldownText(Skills skill, float cooldown)
     {
+        float result = (float)Math.Round(cooldown, 2);
+        
         sb.Clear();
-        sb.Append(cooldown);
-        cooldownText.text = sb.ToString();
+        sb.Append(result);
+        skillCooldownTexts[(int)skill].text = sb.ToString();
     }
 
-    public void UpdateJumpCountText(TextMeshProUGUI jumpCountText, int count)
+    public void UpdateJumpCountText(int count)
     {
         if (prevJumpCount == count) return; //GC 최적화 위해 이전값과 비교했을때 변동사항이 없다면 text를 업데이트 하지 않음
         
