@@ -17,8 +17,8 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
-    const float RightRotation = 0f;
-    const float LeftRotation = 180f;
+    const float RightYRotationValue = 0f;
+    const float LeftYRotationValue = 180f;
 
     [SerializeField]
     PlayerAnimation playerAnimation;
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         if (dir != 0f)
         {
-            var playerForward = dir > 0 ? RightRotation : LeftRotation;
+            var playerForward = dir > 0 ? RightYRotationValue : LeftYRotationValue;
 
             var playerXRotation = playerTransform.rotation.eulerAngles.x;
             var playerZRotation = playerTransform.rotation.eulerAngles.z;
