@@ -12,15 +12,21 @@ public class MonsterController : MonoBehaviour
 
     [SerializeField]
     Vector3 additionalPosFromSpawnPos;
+    [SerializeField]
     Vector3 maxRightPos;
+    [SerializeField]
     Vector3 maxLeftPos;
     [SerializeField]
+    float maxRaycastDistance;
+    [SerializeField]
     float moveSpeed;
+    int boundaryWallLayerMask;
     bool movingRightSide;
     
     public void InitMonster(Transform parent)
     {
         monsterTransform = transform;
+        boundaryWallLayerMask = 1 << LayerMask.NameToLayer("BoundaryLayer");
      
         monsterTransform.SetParent(parent);
     }
@@ -29,8 +35,8 @@ public class MonsterController : MonoBehaviour
     {
         monsterTransform.position = spawnPos;
         
-        maxRightPos = additionalPosFromSpawnPos + spawnPos;
-        maxLeftPos = additionalPosFromSpawnPos - spawnPos;
+        maxRightPos = spawnPos + additionalPosFromSpawnPos;
+        maxLeftPos = spawnPos - additionalPosFromSpawnPos;
     }
 
     public void Move()
@@ -47,7 +53,7 @@ public class MonsterController : MonoBehaviour
 
     void MoveToRightSide()
     {
-        if (monsterTransform.position.x > maxRightPos.x)
+        if (monsterTransform.position.x > maxRightPos.x || BoundaryWallDetected())
         {
             movingRightSide = false;
             SetMonsterForward(LeftYRotationValue);
@@ -59,7 +65,7 @@ public class MonsterController : MonoBehaviour
 
     void MoveToLeftSide()
     {
-        if (monsterTransform.position.x < maxLeftPos.x)
+        if (monsterTransform.position.x < maxLeftPos.x || BoundaryWallDetected())
         {
             movingRightSide = true;
             SetMonsterForward(RightYRotationValue);
@@ -67,6 +73,30 @@ public class MonsterController : MonoBehaviour
         }
 
         monsterTransform.position += moveSpeed * Time.deltaTime * Vector3.left;
+    }
+
+    bool BoundaryWallDetected()
+    {
+        var forward = GetMonsterForward();
+        var isDetected = Physics2D.Raycast(monsterTransform.position, forward, maxRaycastDistance, boundaryWallLayerMask);
+
+        return isDetected;
+    }
+
+    Vector2 GetMonsterForward()
+    {
+        Vector2 forwardVector;
+        
+        if (movingRightSide)
+        {
+            forwardVector = Vector2.right;
+        }
+        else
+        {
+            forwardVector = Vector2.left;
+        }
+
+        return forwardVector;
     }
 
     void SetMonsterForward(float yRotationValue)

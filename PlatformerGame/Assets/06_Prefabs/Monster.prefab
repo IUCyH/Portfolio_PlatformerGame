@@ -96,4 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalPosFromSpawnPos: {x: 5, y: 0, z: 0}
-  moveSpeed: 55
+  maxRightPos: {x: 0, y: 0, z: 0}
+  maxLeftPos: {x: 0, y: 0, z: 0}
+  maxRaycastDistance: 0.5
+  moveSpeed: 5
