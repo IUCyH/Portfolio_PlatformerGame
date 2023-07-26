@@ -1,0 +1,6 @@
+
+_csharpsquid:S2094
+"BRemove this empty class, write its code or make it an "interface".(ßşÍù
+Jcsharpsquid:S3903"-Move 'MonsterMotions' into a named namespace.(ˆêÊ
+Lcsharpsquid:S3903
+"/Move 'MonsterAnimation' into a named namespace.(ßşÍù

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Dash : MonoBehaviour, IPlayerSkill
@@ -10,8 +11,10 @@ public class Dash : MonoBehaviour, IPlayerSkill
     [SerializeField]
     PlayerController playerCtr;
     [SerializeField]
+    PlayerSkill playerSkill;
+    [SerializeField]
     Transform playerTransform;
-    
+
     [SerializeField]
     Vector3 dashDistance;
     [SerializeField]
@@ -53,11 +56,6 @@ public class Dash : MonoBehaviour, IPlayerSkill
     
     void Start()
     {
-        var playerTrans = transform.parent.parent;
-        
-        playerTransform = playerTrans;
-        playerCtr = playerTransform.GetComponent<PlayerController>();
-
         GaugeUsage = 1f;
         cooldownTimer = maxCooldown;
         
@@ -88,7 +86,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
             cooldownTimer = 0f;
             NotReadyForExecute = false;
         }
-        PlayerUIManager.Instance.UpdateSkillCooldownText(Skills.Dash, cooldownTimer);
+        playerSkill.UpdateCooldownText(Skills.Dash, cooldownTimer);
     }
 
     float GetPlayerForward()

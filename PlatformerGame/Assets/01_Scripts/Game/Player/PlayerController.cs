@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
     public void SetPlayerState(PlayerState state)
     {
         //플레이어가 스킬 애니메이션을 재생중 이라면 다른 애니메이션은 재생되지 않아야 하므로
-        if (playerSkill.SkillCurrentlyUsing != null) return;
+        if (playerSkill.SkillInUse) return;
        
         playerState = state;
     }

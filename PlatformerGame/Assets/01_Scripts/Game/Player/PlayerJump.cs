@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    [SerializeField]
-    PlayerController playerCtr;
+    [SerializeField]              
+    TextMeshProUGUI jumpCountText;
     [SerializeField]
     Transform feet;
     [SerializeField]
@@ -27,14 +28,12 @@ public class PlayerJump : MonoBehaviour
     void Start()
     {
         groundLayer = 1 << LayerMask.NameToLayer("Ground");
-        //Debug.unityLogger.logEnabled = false;
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(feet.position, overlapCircleRadius);
-        //Gizmos.DrawSphere();
     }
     
     public void CheckCanJump()
@@ -63,7 +62,7 @@ public class PlayerJump : MonoBehaviour
         {
             jumpCount = 0;
         }
-        PlayerUIManager.Instance.UpdateJumpCountText(jumpCount);
+        GameUIManager.Instance.UpdateText(jumpCountText, jumpCount);
     }
 
     bool PlayerOnGround()

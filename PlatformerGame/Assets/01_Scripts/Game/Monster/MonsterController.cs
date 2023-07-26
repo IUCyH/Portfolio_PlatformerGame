@@ -11,7 +11,7 @@ public class MonsterController : MonoBehaviour
     Transform monsterTransform;
 
     [SerializeField]
-    Vector3 additionalPosFromSpawnPos;
+    Vector3 maxMoveDistanceFromSpawnPos;
     [SerializeField]
     Vector3 maxRightPos;
     [SerializeField]
@@ -35,8 +35,8 @@ public class MonsterController : MonoBehaviour
     {
         monsterTransform.position = spawnPos;
         
-        maxRightPos = spawnPos + additionalPosFromSpawnPos;
-        maxLeftPos = spawnPos - additionalPosFromSpawnPos;
+        maxRightPos = spawnPos + maxMoveDistanceFromSpawnPos;
+        maxLeftPos = spawnPos - maxMoveDistanceFromSpawnPos;
     }
 
     public void Move()

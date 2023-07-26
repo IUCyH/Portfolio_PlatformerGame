@@ -32,7 +32,7 @@ public class MonsterManager : Singleton<MonsterManager>
             return monster;
         });
         
-        CreateMonsters(3);
+        CreateMonsters(5);
     }
 
     void Update()

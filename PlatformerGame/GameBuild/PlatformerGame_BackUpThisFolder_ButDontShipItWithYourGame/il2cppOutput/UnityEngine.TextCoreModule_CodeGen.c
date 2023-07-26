@@ -489,12 +489,12 @@ static const int32_t s_InvokerIndices[102] =
 	1760,
 	1760,
 	1760,
-	2765,
+	2766,
 	335,
 	1760,
 	1319,
 	1297,
-	2791,
+	2792,
 	1796,
 	1796,
 	1796,
@@ -528,11 +528,11 @@ static const int32_t s_InvokerIndices[102] =
 	1755,
 	1750,
 	1750,
-	2768,
-	2768,
+	2769,
+	2769,
 	2397,
 	2397,
-	2764,
+	2765,
 	2620,
 	2628,
 	2280,
@@ -549,8 +549,8 @@ static const int32_t s_InvokerIndices[102] =
 	2632,
 	-1,
 	-1,
-	2747,
-	2791,
+	2748,
+	2792,
 	2205,
 };
 static const Il2CppTokenRangePair s_rgctxIndices[2] = 
@@ -560,12 +560,12 @@ static const Il2CppTokenRangePair s_rgctxIndices[2] =
 };
 static const Il2CppRGCTXDefinition s_rgctxValues[6] = 
 {
-	{ (Il2CppRGCTXDataType)3, 7133 },
-	{ (Il2CppRGCTXDataType)2, 2323 },
-	{ (Il2CppRGCTXDataType)3, 12543 },
 	{ (Il2CppRGCTXDataType)3, 7134 },
-	{ (Il2CppRGCTXDataType)2, 2324 },
-	{ (Il2CppRGCTXDataType)3, 12544 },
+	{ (Il2CppRGCTXDataType)2, 2332 },
+	{ (Il2CppRGCTXDataType)3, 12555 },
+	{ (Il2CppRGCTXDataType)3, 7135 },
+	{ (Il2CppRGCTXDataType)2, 2333 },
+	{ (Il2CppRGCTXDataType)3, 12556 },
 };
 extern const CustomAttributesCacheGenerator g_UnityEngine_TextCoreModule_AttributeGenerators[];
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_TextCoreModule_CodeGenModule;

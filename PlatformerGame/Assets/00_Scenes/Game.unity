@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42815eda45630834fa2ecc377b50af3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCtr: {fileID: 227405001}
+  jumpCountText: {fileID: 1018623201}
   feet: {fileID: 563348660}
   rb: {fileID: 227405003}
   jumpForce: 400
@@ -362,7 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edb9e72332fbde48b30993f91c349fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCtr: {fileID: 227405001}
+  skillGaugeImg: {fileID: 1656080053}
+  skillCooldownTextsParent: {fileID: 554184642}
   currSkillGauge: 0
 --- !u!114 &227405006
 MonoBehaviour:
@@ -440,9 +441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPrefab: {fileID: 6468946740402753558, guid: 6fd549c601a34304a8e6d9529664868a, type: 3}
-  maxSpawnPosOnRight: {x: -24.51, y: 15.225, z: 0}
-  maxSpawnPosOnLeft: {x: -32.5, y: 15.225, z: 0}
-  minDistanceBetweenTwoMonsters: 2
+  maxSpawnPosOnRight: {x: -9.11, y: 15.225, z: 0}
+  maxSpawnPosOnLeft: {x: -42.94, y: 15.225, z: 0}
+  minDistanceBetweenTwoMonsters: 1.5
 --- !u!1 &325215651
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723787099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.85, y: 16.71, z: 0}
+  m_LocalPosition: {x: -6.29, y: 16.71, z: 0}
   m_LocalScale: {x: 5, y: 20, z: 5}
   m_Children: []
   m_Father: {fileID: 1245320873}
@@ -1065,7 +1066,7 @@ GameObject:
   - component: {fileID: 793956035}
   - component: {fileID: 793956034}
   m_Layer: 0
-  m_Name: PlayerUIManager
+  m_Name: GameUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1083,12 +1084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3291979e731ecd4bb7d615f6fc21a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCooldownTexts:
-  - {fileID: 1538613085}
-  - {fileID: 1378834712}
-  jumpCountText: {fileID: 1018623201}
-  skillGaugeImg: {fileID: 1656080053}
-  hpBarImg: {fileID: 0}
 --- !u!4 &793956035
 Transform:
   m_ObjectHideFlags: 0
@@ -1146,8 +1141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd761399d71bce84ea757b195c633fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCtr: {fileID: 0}
-  playerTransform: {fileID: 0}
+  playerCtr: {fileID: 227405001}
+  playerSkill: {fileID: 227405005}
+  playerTransform: {fileID: 227404999}
   dashDistance: {x: 3, y: 0, z: 0}
   targetVector: {x: 0, y: 0, z: 0}
   maxCooldown: 0.5
@@ -1665,7 +1661,7 @@ GameObject:
   - component: {fileID: 1378834712}
   m_Layer: 5
   m_Name: Text (TMP)_Cooldown
-  m_TagString: Untagged
+  m_TagString: CooldownText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1967,7 +1963,7 @@ GameObject:
   - component: {fileID: 1538613085}
   m_Layer: 5
   m_Name: Text (TMP)_Cooldown
-  m_TagString: Untagged
+  m_TagString: CooldownText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2672,7 +2668,7 @@ Transform:
   m_GameObject: {fileID: 1869986505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -25.58, y: 11.21, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children:
   - {fileID: 1444637398}
   - {fileID: 1976363272}
@@ -2891,7 +2887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6468946740402753555, guid: 6fd549c601a34304a8e6d9529664868a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32.5
+      value: -9.11
       objectReference: {fileID: 0}
     - target: {fileID: 6468946740402753555, guid: 6fd549c601a34304a8e6d9529664868a, type: 3}
       propertyPath: m_LocalPosition.y
