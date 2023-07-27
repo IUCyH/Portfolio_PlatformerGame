@@ -13,15 +13,28 @@ public enum PlayerAnimations
     Max
 }
 
-public class PlayerAnimation : MonoBehaviour
+public class PlayerAnimation : IAnimationControl<PlayerAnimations>
 {
-    [SerializeField]
     Animator animator;
     int[] animIDs = new int[(int)PlayerAnimations.Max];
     float[] animRunningTimes = new float[(int)PlayerAnimations.Max];
 
     int prevMotion;
-    
+
+    public void Init()
+    {
+        
+    }
+
+    public void Play(PlayerAnimations motion)
+    {
+        
+    }
+
+    public void GetRunningTime(PlayerAnimations motion)
+    {
+        
+    }
     void Start()
     {
         var length = (int)PlayerAnimations.Max;
