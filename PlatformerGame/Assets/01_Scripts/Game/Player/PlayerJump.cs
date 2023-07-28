@@ -21,6 +21,7 @@ public class PlayerJump : MonoBehaviour
     int maxJumpCount;
     [SerializeField]
     int jumpCount;
+    int prevJumpCount;
     int groundLayer;
     [SerializeField]
     bool canJump;
@@ -62,7 +63,13 @@ public class PlayerJump : MonoBehaviour
         {
             jumpCount = 0;
         }
-        GameUIManager.Instance.UpdateText(jumpCountText, jumpCount);
+
+        if (prevJumpCount != jumpCount)
+        {
+            GameUIManager.Instance.UpdateText(jumpCountText, jumpCount);
+        }
+
+        prevJumpCount = jumpCount;
     }
 
     bool PlayerOnGround()

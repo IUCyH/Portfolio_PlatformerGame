@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
 {
     const float RightYRotationValue = 0f;
     const float LeftYRotationValue = 180f;
-
-    [SerializeField]
+    
     PlayerAnimation playerAnimation;
     [SerializeField]
     PlayerMove playerMove;
@@ -37,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerTransform = transform;
+        playerAnimation = new PlayerAnimation(GetComponent<Animator>());
     }
 
     void Update()
@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
 
         if (InputManager.GetKeyDown(Key.Up))
         {
-            Debug.Log("JUMP KEY GET");
             playerJump.CheckCanJump();
         }
         playerJump.SetJumpCountToZeroWhenPlayerOnTheGround();
@@ -86,7 +85,7 @@ public class PlayerController : MonoBehaviour
     
     public float GetAnimationRunningTime(PlayerAnimations motion)
     {
-        return playerAnimation.GetAnimationRunningTime(motion);
+        return playerAnimation.GetRunningTime(motion);
     }
 
     void SetPlayerForward(float dir)
@@ -104,7 +103,7 @@ public class PlayerController : MonoBehaviour
     
     void PlayAnimation(PlayerAnimations motion)
     {
-        playerAnimation.PlayAnimation(motion);
+        playerAnimation.Play(motion);
     }
 
     void PlayAnimationByPlayerState()

@@ -7,7 +7,8 @@ public class MonsterController : MonoBehaviour
 {
     const float RightYRotationValue = 0f;
     const float LeftYRotationValue = 180f;
-    
+
+    MonsterAnimation monsterAnimation;
     Transform monsterTransform;
 
     [SerializeField]
@@ -22,10 +23,12 @@ public class MonsterController : MonoBehaviour
     float moveSpeed;
     int boundaryWallLayerMask;
     bool movingRightSide;
+    bool moveAnimIsPlaying;
     
     public void InitMonster(Transform parent)
     {
         monsterTransform = transform;
+        monsterAnimation = new MonsterAnimation(GetComponent<Animator>());
         boundaryWallLayerMask = 1 << LayerMask.NameToLayer("BoundaryLayer");
      
         monsterTransform.SetParent(parent);
@@ -48,6 +51,12 @@ public class MonsterController : MonoBehaviour
         else
         {
             MoveToLeftSide();
+        }
+
+        if (!moveAnimIsPlaying)
+        {
+            monsterAnimation.Play(MonsterMotions.Move);
+            moveAnimIsPlaying = true;
         }
     }
 

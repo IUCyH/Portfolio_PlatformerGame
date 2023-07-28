@@ -13,63 +13,20 @@ public enum PlayerAnimations
     Max
 }
 
-public class PlayerAnimation : IAnimationControl<PlayerAnimations>
+public class PlayerAnimation : AnimationControl
 {
-    Animator animator;
-    int[] animIDs = new int[(int)PlayerAnimations.Max];
-    float[] animRunningTimes = new float[(int)PlayerAnimations.Max];
-
-    int prevMotion;
-
-    public void Init()
+    public PlayerAnimation(Animator animator)
     {
-        
+        base.Init(animator, (int)PlayerAnimations.Max);
     }
 
     public void Play(PlayerAnimations motion)
     {
-        
+        base.Play((int)motion);
     }
 
-    public void GetRunningTime(PlayerAnimations motion)
+    public float GetRunningTime(PlayerAnimations motion)
     {
-        
-    }
-    void Start()
-    {
-        var length = (int)PlayerAnimations.Max;
-        var clips = animator.runtimeAnimatorController.animationClips;
-        
-        for (int i = 0; i < length; i++)
-        {
-            var motion = (PlayerAnimations)i;
-            var id = Animator.StringToHash(motion.ToString());
-            
-            animIDs[i] = id;
-            animRunningTimes[i] = clips[i].length;
-        }
-
-        prevMotion = animIDs[(int)PlayerAnimations.Idle];
-        //for checking
-        for (int i = 0; i < length; i++)
-        {
-            Debug.Log(animIDs[i]);
-            Debug.Log(animRunningTimes[i]);
-        }
-    }
-
-    public void PlayAnimation(PlayerAnimations motion)
-    {
-        var animId = animIDs[(int)motion];
-        
-        animator.ResetTrigger(prevMotion);
-        animator.SetTrigger(animId);
-        
-        prevMotion = animId;
-    }
-
-    public float GetAnimationRunningTime(PlayerAnimations motion)
-    {
-        return animRunningTimes[(int)motion];
+        return base.GetRunningTime((int)motion);
     }
 }

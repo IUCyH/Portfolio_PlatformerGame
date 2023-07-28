@@ -52,7 +52,6 @@
 		<type fullname="GameUIManager" preserve="nothing"/>
 		<type fullname="MonsterController" preserve="nothing"/>
 		<type fullname="MonsterManager" preserve="nothing"/>
-		<type fullname="PlayerAnimation" preserve="nothing"/>
 		<type fullname="PlayerController" preserve="nothing"/>
 		<type fullname="PlayerJump" preserve="nothing"/>
 		<type fullname="PlayerMove" preserve="nothing"/>

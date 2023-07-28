@@ -1,10 +1,0 @@
-
-Qcsharpsquid:S3903"/Move 'PlayerAnimations' into a named namespace.(´¢Šüÿÿÿÿ
-Rcsharpsquid:S3903".Move 'PlayerAnimation' into a named namespace.(ÄÕ­Û8„»Œ¯˜1
-¢csharpsquid:S1186"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(ûÀ²“üÿÿÿÿ8Ó¸®²™1
-csharpsquid:S1186"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(Îô¸Ÿ8úü®²™1
-csharpsquid:S1186""yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(™ƒî8ûü®²™1
-Ccsharpsquid:S2933"Make 'animIDs' 'readonly'.(±ÅõÙıÿÿÿÿ8„»Œ¯˜1
-Gcsharpsquid:S2933"#Make 'animRunningTimes' 'readonly'.(¹À¥ô8„»Œ¯˜1
-Ycsharpsquid:S3459"5Remove unassigned field 'animator', or set its value.(€ğ²¡8±œ«²™1
-Rcsharpsquid:S1144&")Remove the unused private method 'Start'.(ûàîºûÿÿÿÿ8Úìª²™1

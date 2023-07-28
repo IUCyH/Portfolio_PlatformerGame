@@ -521,13 +521,6 @@
         {
             "managedAssemblyName": "Assembly-CSharp.dll",
             "nativeClass": "",
-            "fullManagedTypeName": "PlayerAnimation",
-            "moduleName": "",
-            "usedInScenes": []
-        },
-        {
-            "managedAssemblyName": "Assembly-CSharp.dll",
-            "nativeClass": "",
             "fullManagedTypeName": "PlayerController",
             "moduleName": "",
             "usedInScenes": []
