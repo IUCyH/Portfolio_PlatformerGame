@@ -118,5 +118,6 @@ MonoBehaviour:
   maxMoveDistanceFromSpawnPos: {x: 5, y: 0, z: 0}
   maxRightPos: {x: 0, y: 0, z: 0}
   maxLeftPos: {x: 0, y: 0, z: 0}
-  maxRaycastDistance: 0.5
+  maxWallDetectionDist: 0.5
+  maxPlayerDetectionDist: 2
   moveSpeed: 5

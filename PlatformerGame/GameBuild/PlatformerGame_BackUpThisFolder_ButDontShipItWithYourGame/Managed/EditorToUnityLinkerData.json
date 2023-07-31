@@ -388,15 +388,6 @@
         },
         {
             "managedAssemblyName": "UnityEngine.dll",
-            "nativeClass": "AnimatorOverrideController",
-            "fullManagedTypeName": "UnityEngine.AnimatorOverrideController",
-            "moduleName": "Animation",
-            "usedInScenes": [
-                "Assets/00_Scenes/Game.unity"
-            ]
-        },
-        {
-            "managedAssemblyName": "UnityEngine.dll",
             "nativeClass": "LightmapSettings",
             "fullManagedTypeName": "UnityEngine.LightmapSettings",
             "moduleName": "Core",

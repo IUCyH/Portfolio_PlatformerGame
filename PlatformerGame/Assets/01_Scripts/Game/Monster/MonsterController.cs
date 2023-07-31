@@ -18,10 +18,13 @@ public class MonsterController : MonoBehaviour
     [SerializeField]
     Vector3 maxLeftPos;
     [SerializeField]
-    float maxRaycastDistance;
+    float maxWallDetectionDist;
+    [SerializeField]
+    float maxPlayerDetectionDist;
     [SerializeField]
     float moveSpeed;
-    int boundaryWallLayerMask;
+    int playerLayer;
+    int boundaryWallLayer;
     bool movingRightSide;
     bool moveAnimIsPlaying;
     
@@ -29,7 +32,8 @@ public class MonsterController : MonoBehaviour
     {
         monsterTransform = transform;
         monsterAnimation = new MonsterAnimation(GetComponent<Animator>());
-        boundaryWallLayerMask = 1 << LayerMask.NameToLayer("BoundaryLayer");
+        boundaryWallLayer = 1 << LayerMask.NameToLayer("BoundaryLayer");
+        playerLayer = 1 << LayerMask.NameToLayer("Player");
      
         monsterTransform.SetParent(parent);
     }
@@ -60,6 +64,21 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    public void AttackWhenDetectedPlayer()
+    {
+        if (CanAttack())
+        {
+            Debug.Log("Attack Player!");
+        }
+    }
+
+    bool CanAttack()
+    {
+        var playerDetected = UseRayCast(maxPlayerDetectionDist, playerLayer);
+
+        return playerDetected;
+    }
+
     void MoveToRightSide()
     {
         if (monsterTransform.position.x > maxRightPos.x || BoundaryWallDetected())
@@ -86,8 +105,7 @@ public class MonsterController : MonoBehaviour
 
     bool BoundaryWallDetected()
     {
-        var forward = GetMonsterForward();
-        var isDetected = Physics2D.Raycast(monsterTransform.position, forward, maxRaycastDistance, boundaryWallLayerMask);
+        var isDetected = UseRayCast(maxWallDetectionDist, boundaryWallLayer);
 
         return isDetected;
     }
@@ -106,6 +124,18 @@ public class MonsterController : MonoBehaviour
         }
 
         return forwardVector;
+    }
+
+    bool UseRayCast(float distance, int layer)
+    {
+        var forward = GetMonsterForward();
+
+        Color rayColor = layer == playerLayer ? Color.magenta : Color.white;
+        var debugPos = monsterTransform.position;
+        debugPos.y += 0.5f;
+        Debug.DrawRay(debugPos, forward * distance, rayColor);
+        
+        return Physics2D.Raycast(monsterTransform.position, forward, distance, layer);
     }
 
     void SetMonsterForward(float yRotationValue)

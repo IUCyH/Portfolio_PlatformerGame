@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 227405007}
   - component: {fileID: 227405003}
   - component: {fileID: 227405004}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -762,7 +762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 563348660}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1093,7 +1093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 871750781}
   - component: {fileID: 871750782}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 01_Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2182,7 +2182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1610355097}
   - component: {fileID: 1610355098}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 00_DefaultAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2746,7 +2746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1905078826}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
