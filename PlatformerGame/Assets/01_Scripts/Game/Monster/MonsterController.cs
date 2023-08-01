@@ -10,6 +10,8 @@ public class MonsterController : MonoBehaviour
 
     MonsterAnimation monsterAnimation;
     Transform monsterTransform;
+    [SerializeField]
+    Transform playerTransform;
 
     [SerializeField]
     Vector3 maxMoveDistanceFromSpawnPos;
@@ -23,31 +25,38 @@ public class MonsterController : MonoBehaviour
     float maxPlayerDetectionDist;
     [SerializeField]
     float moveSpeed;
+    float timeSinceChasingPlayer;
+    [SerializeField]
+    float maxTimeForChasingPlayer;
     int playerLayer;
     int boundaryWallLayer;
+    bool isChasing;
     bool movingRightSide;
     bool moveAnimIsPlaying;
-    
+
     public void InitMonster(Transform parent)
     {
+        playerTransform = GameObject.FindWithTag("Player").transform;
         monsterTransform = transform;
         monsterAnimation = new MonsterAnimation(GetComponent<Animator>());
         boundaryWallLayer = 1 << LayerMask.NameToLayer("BoundaryLayer");
         playerLayer = 1 << LayerMask.NameToLayer("Player");
-     
+
         monsterTransform.SetParent(parent);
     }
 
     public void SetMonsterSpawnPos(Vector3 spawnPos)
     {
         monsterTransform.position = spawnPos;
-        
+
         maxRightPos = spawnPos + maxMoveDistanceFromSpawnPos;
         maxLeftPos = spawnPos - maxMoveDistanceFromSpawnPos;
     }
 
     public void Move()
     {
+        if (isChasing) return;
+
         if (movingRightSide)
         {
             MoveToRightSide();
@@ -64,17 +73,39 @@ public class MonsterController : MonoBehaviour
         }
     }
 
-    public void AttackWhenDetectedPlayer()
+    public void ChasePlayer()
     {
-        if (CanAttack())
+        var playerDetected = DetectPlayer();
+
+        if (!isChasing && playerDetected)
         {
-            Debug.Log("Attack Player!");
+            isChasing = true;
+        }
+
+        if (isChasing)
+        {
+            if (!playerDetected && timeSinceChasingPlayer <= maxTimeForChasingPlayer)
+            {
+                timeSinceChasingPlayer += Time.deltaTime;
+            }
+            else if (timeSinceChasingPlayer > maxTimeForChasingPlayer)
+            {
+                timeSinceChasingPlayer = 0f;
+                isChasing = false;
+            }
+            else
+            {
+                timeSinceChasingPlayer = 0f;
+            }
+
+            //TODO : Make Chase Logic
         }
     }
 
-    bool CanAttack()
+    bool DetectPlayer()
     {
-        var playerDetected = UseRayCast(maxPlayerDetectionDist, playerLayer);
+        Vector3 distBetweenThisAndPlayer = (playerTransform.position - monsterTransform.position).normalized;
+        var playerDetected = UseRayCast(distBetweenThisAndPlayer, maxPlayerDetectionDist, playerLayer);
 
         return playerDetected;
     }
@@ -105,7 +136,8 @@ public class MonsterController : MonoBehaviour
 
     bool BoundaryWallDetected()
     {
-        var isDetected = UseRayCast(maxWallDetectionDist, boundaryWallLayer);
+        var forward = GetMonsterForward();
+        var isDetected = UseRayCast(forward, maxWallDetectionDist, boundaryWallLayer);
 
         return isDetected;
     }
@@ -126,16 +158,14 @@ public class MonsterController : MonoBehaviour
         return forwardVector;
     }
 
-    bool UseRayCast(float distance, int layer)
+    bool UseRayCast(Vector2 direction, float distance, int layer)
     {
-        var forward = GetMonsterForward();
-
         Color rayColor = layer == playerLayer ? Color.magenta : Color.white;
         var debugPos = monsterTransform.position;
         debugPos.y += 0.5f;
-        Debug.DrawRay(debugPos, forward * distance, rayColor);
-        
-        return Physics2D.Raycast(monsterTransform.position, forward, distance, layer);
+        Debug.DrawRay(debugPos, direction * distance, rayColor);
+
+        return Physics2D.Raycast(monsterTransform.position, direction, distance, layer);
     }
 
     void SetMonsterForward(float yRotationValue)

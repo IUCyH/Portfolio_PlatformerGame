@@ -39,7 +39,7 @@ public class MonsterManager : Singleton<MonsterManager>
     {
         for (int i = 0; i < createdMonsters.Count; i++)
         {
-            createdMonsters[i].AttackWhenDetectedPlayer();
+            createdMonsters[i].ChasePlayer();
             createdMonsters[i].Move();
         }
     }
