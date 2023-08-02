@@ -73,9 +73,16 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    public void ChaseAndAttack()
+    {
+        var dist = (playerTransform.position - monsterTransform.position).magnitude;
+        Debug.Log(dist); //TODO : should complete to make chase and attack logic
+    }
+
     public void ChasePlayer()
     {
-        var playerDetected = DetectPlayer();
+        var raycastHitInfo = UseRayToPlayer();
+        bool playerDetected = raycastHitInfo;
 
         if (!isChasing && playerDetected)
         {
@@ -102,12 +109,12 @@ public class MonsterController : MonoBehaviour
         }
     }
 
-    bool DetectPlayer()
+    RaycastHit2D UseRayToPlayer()
     {
-        Vector3 distBetweenThisAndPlayer = (playerTransform.position - monsterTransform.position).normalized;
-        var playerDetected = UseRayCast(distBetweenThisAndPlayer, maxPlayerDetectionDist, playerLayer);
+        var forward = GetMonsterForward();
+        var raycastHit2D = UseRayCast(forward, maxPlayerDetectionDist, playerLayer);
 
-        return playerDetected;
+        return raycastHit2D;
     }
 
     void MoveToRightSide()
@@ -158,7 +165,7 @@ public class MonsterController : MonoBehaviour
         return forwardVector;
     }
 
-    bool UseRayCast(Vector2 direction, float distance, int layer)
+    RaycastHit2D UseRayCast(Vector2 direction, float distance, int layer)
     {
         Color rayColor = layer == playerLayer ? Color.magenta : Color.white;
         var debugPos = monsterTransform.position;
