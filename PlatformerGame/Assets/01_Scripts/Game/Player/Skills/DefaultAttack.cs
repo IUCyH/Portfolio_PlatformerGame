@@ -55,6 +55,6 @@ public class DefaultAttack : MonoBehaviour, IPlayerSkill
 
     public void CalculateCooldown()
     {
-        //기본공격은 쿨타임을 갖고있지 않지만 인터페이스 상속으로 인해 함수를 지울수는 없으니 비워놓는다.
+        //기본공격은 쿨타임을 갖고있지 않지만 인터페이스 상속으로 인해 함수를 지울수는 없으니 비워놓는다
     }
 }

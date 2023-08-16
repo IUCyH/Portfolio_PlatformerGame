@@ -115,11 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c063ad75764e14482971288d185606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
   maxMoveDistanceFromSpawnPos: {x: 5, y: 0, z: 0}
   maxRightPos: {x: 0, y: 0, z: 0}
   maxLeftPos: {x: 0, y: 0, z: 0}
   maxWallDetectionDist: 0.5
-  maxPlayerDetectionDist: 2
+  maxPlayerDetectionDist: 0.8
   moveSpeed: 5
-  maxTimeForChasingPlayer: 1

@@ -32,15 +32,14 @@ public class MonsterManager : Singleton<MonsterManager>
             return monster;
         });
         
-        CreateMonsters(1);
+        CreateMonsters(5);
     }
 
     void Update()
     {
         for (int i = 0; i < createdMonsters.Count; i++)
         {
-            createdMonsters[i].ChaseAndAttack();
-            createdMonsters[i].ChasePlayer();
+            createdMonsters[i].Attack();
             createdMonsters[i].Move();
         }
     }

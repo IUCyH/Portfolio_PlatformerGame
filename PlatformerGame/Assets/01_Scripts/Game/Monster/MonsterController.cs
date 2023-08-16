@@ -10,8 +10,6 @@ public class MonsterController : MonoBehaviour
 
     MonsterAnimation monsterAnimation;
     Transform monsterTransform;
-    [SerializeField]
-    Transform playerTransform;
 
     [SerializeField]
     Vector3 maxMoveDistanceFromSpawnPos;
@@ -25,18 +23,14 @@ public class MonsterController : MonoBehaviour
     float maxPlayerDetectionDist;
     [SerializeField]
     float moveSpeed;
-    float timeSinceChasingPlayer;
-    [SerializeField]
-    float maxTimeForChasingPlayer;
     int playerLayer;
     int boundaryWallLayer;
-    bool isChasing;
     bool movingRightSide;
-    bool moveAnimIsPlaying;
+    bool isMoving;
+    bool isAttacking;
 
     public void InitMonster(Transform parent)
     {
-        playerTransform = GameObject.FindWithTag("Player").transform;
         monsterTransform = transform;
         monsterAnimation = new MonsterAnimation(GetComponent<Animator>());
         boundaryWallLayer = 1 << LayerMask.NameToLayer("BoundaryLayer");
@@ -55,7 +49,11 @@ public class MonsterController : MonoBehaviour
 
     public void Move()
     {
-        if (isChasing) return;
+        if (isAttacking)
+        {
+            isMoving = false;
+            return;
+        }
 
         if (movingRightSide)
         {
@@ -66,55 +64,27 @@ public class MonsterController : MonoBehaviour
             MoveToLeftSide();
         }
 
-        if (!moveAnimIsPlaying)
+        if (!isMoving)
         {
             monsterAnimation.Play(MonsterMotions.Move);
-            moveAnimIsPlaying = true;
+            isMoving = true;
         }
     }
 
-    public void ChaseAndAttack()
-    {
-        var dist = (playerTransform.position - monsterTransform.position).magnitude;
-        Debug.Log(dist); //TODO : should complete to make chase and attack logic
-    }
-
-    public void ChasePlayer()
-    {
-        var raycastHitInfo = UseRayToPlayer();
-        bool playerDetected = raycastHitInfo;
-
-        if (!isChasing && playerDetected)
-        {
-            isChasing = true;
-        }
-
-        if (isChasing)
-        {
-            if (!playerDetected && timeSinceChasingPlayer <= maxTimeForChasingPlayer)
-            {
-                timeSinceChasingPlayer += Time.deltaTime;
-            }
-            else if (timeSinceChasingPlayer > maxTimeForChasingPlayer)
-            {
-                timeSinceChasingPlayer = 0f;
-                isChasing = false;
-            }
-            else
-            {
-                timeSinceChasingPlayer = 0f;
-            }
-
-            //TODO : Make Chase Logic
-        }
-    }
-
-    RaycastHit2D UseRayToPlayer()
+    public void Attack()
     {
         var forward = GetMonsterForward();
-        var raycastHit2D = UseRayCast(forward, maxPlayerDetectionDist, playerLayer);
+        var playerDetected = UseRayCast(forward, maxPlayerDetectionDist, playerLayer);
 
-        return raycastHit2D;
+        if (!isAttacking && playerDetected) //애니메이션 재생 함수는 딱 한번만 호출되야 하므로 isAttacking이 false일때를 조건으로 추가
+        {
+            isAttacking = true;
+            monsterAnimation.Play(MonsterMotions.Attack);
+        }
+        else if(!playerDetected) //isAttacking을 false로 만드는 조건은 플레이어가 감지되지 않았을때로 충분하므로 별다른 조건은 추가하지 않음
+        {
+            isAttacking = false;
+        }
     }
 
     void MoveToRightSide()
