@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class MonsterManager : Singleton<MonsterManager>
 {
-    const int MaxGetPositionTryCount = 50;
+    const int MaxGetPositionTryCount = 500;
     
     [SerializeField]
     GameObject monsterPrefab;

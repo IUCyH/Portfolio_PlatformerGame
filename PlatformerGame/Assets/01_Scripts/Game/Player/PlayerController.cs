@@ -28,13 +28,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     PlayerSkill playerSkill;
     Transform playerTransform;
+    [SerializeField]
+    Image hpBar;
     
     PlayerState playerState = PlayerState.Idle;
     PlayerState prevState = PlayerState.Idle;
+    [SerializeField]
+    float maxHP;
+    float hp;
     bool stopMovement;
 
     void Start()
     {
+        hp = maxHP;
         playerTransform = transform;
         playerAnimation = new PlayerAnimation(GetComponent<Animator>());
     }
@@ -63,6 +69,14 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         playerJump.Jump();
+    }
+
+    public void SetDamage(float damage)
+    {
+        if (hp <= 0f) return;
+        
+        hp -= damage;
+        GameUIManager.Instance.UpdateImageFillAmount(hpBar, damage / maxHP);
     }
     
     public void SetPlayerState(PlayerState state)

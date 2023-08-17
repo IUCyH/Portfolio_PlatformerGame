@@ -8,6 +8,7 @@ public class MonsterController : MonoBehaviour
     const float RightYRotationValue = 0f;
     const float LeftYRotationValue = 180f;
 
+    PlayerController playerCtr;
     MonsterAnimation monsterAnimation;
     Transform monsterTransform;
 
@@ -23,15 +24,19 @@ public class MonsterController : MonoBehaviour
     float maxPlayerDetectionDist;
     [SerializeField]
     float moveSpeed;
+    [SerializeField]
+    float attackDamage;
     int playerLayer;
     int boundaryWallLayer;
     bool movingRightSide;
     bool isMoving;
     bool isAttacking;
+    bool playerDetected;
 
     public void InitMonster(Transform parent)
     {
         monsterTransform = transform;
+        playerCtr = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         monsterAnimation = new MonsterAnimation(GetComponent<Animator>());
         boundaryWallLayer = 1 << LayerMask.NameToLayer("BoundaryLayer");
         playerLayer = 1 << LayerMask.NameToLayer("Player");
@@ -74,7 +79,7 @@ public class MonsterController : MonoBehaviour
     public void Attack()
     {
         var forward = GetMonsterForward();
-        var playerDetected = UseRayCast(forward, maxPlayerDetectionDist, playerLayer);
+        playerDetected = UseRayCast(forward, maxPlayerDetectionDist, playerLayer);
 
         if (!isAttacking && playerDetected) //애니메이션 재생 함수는 딱 한번만 호출되야 하므로 isAttacking이 false일때를 조건으로 추가
         {
@@ -85,6 +90,13 @@ public class MonsterController : MonoBehaviour
         {
             isAttacking = false;
         }
+    }
+
+    public void GiveDamageToPlayer()
+    {
+        if (!playerDetected) return;
+        
+        playerCtr.SetDamage(attackDamage);
     }
 
     void MoveToRightSide()

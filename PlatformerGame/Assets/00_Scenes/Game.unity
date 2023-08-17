@@ -281,6 +281,8 @@ MonoBehaviour:
   playerMove: {fileID: 227405000}
   playerJump: {fileID: 227405002}
   playerSkill: {fileID: 227405005}
+  hpBar: {fileID: 1117700164}
+  maxHP: 200
 --- !u!114 &227405002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2872,11 +2874,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6468946740402753555, guid: 6fd549c601a34304a8e6d9529664868a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.11
+      value: 2.46
       objectReference: {fileID: 0}
     - target: {fileID: 6468946740402753555, guid: 6fd549c601a34304a8e6d9529664868a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.225
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6468946740402753555, guid: 6fd549c601a34304a8e6d9529664868a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2910,6 +2912,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6468946740402753557, guid: 6fd549c601a34304a8e6d9529664868a, type: 3}
+      propertyPath: playerCtr
+      value: 
+      objectReference: {fileID: 227405001}
     - target: {fileID: 6468946740402753558, guid: 6fd549c601a34304a8e6d9529664868a, type: 3}
       propertyPath: m_Name
       value: Monster
