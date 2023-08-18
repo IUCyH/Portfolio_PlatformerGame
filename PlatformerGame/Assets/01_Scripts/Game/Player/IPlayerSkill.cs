@@ -7,7 +7,8 @@ public interface IPlayerSkill
     bool NotReadyForExecute { get; set; }
     bool SkillIsRunning { get; set; }
     float GaugeUsage { get; set; }
-    
+
     void Execute();
     void CalculateCooldown();
+    void GiveDamageToMonsters();
 }

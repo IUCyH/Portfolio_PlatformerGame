@@ -7,7 +7,11 @@ public class DefaultAttack : MonoBehaviour, IPlayerSkill
 {
     [SerializeField]
     PlayerController playerCtr;
+    [SerializeField]
+    MultipleAttackArea attackArea;
 
+    [SerializeField]
+    float attackDamage;
     float durationTimer;
     float duration;
     
@@ -25,6 +29,7 @@ public class DefaultAttack : MonoBehaviour, IPlayerSkill
 
                 if (durationTimer > duration)
                 {
+                    GiveDamageToMonsters();
                     durationTimer = 0f;
                     
                     SkillIsRunning = false;
@@ -32,7 +37,6 @@ public class DefaultAttack : MonoBehaviour, IPlayerSkill
                     
                     playerCtr.SetPlayerState(PlayerState.Idle);
                 }
-                Debug.Log("Default attack is running?" + SkillIsRunning);
             }
             
             yield return null;
@@ -56,5 +60,21 @@ public class DefaultAttack : MonoBehaviour, IPlayerSkill
     public void CalculateCooldown()
     {
         //기본공격은 쿨타임을 갖고있지 않지만 인터페이스 상속으로 인해 함수를 지울수는 없으니 비워놓는다
+    }
+
+    public void GiveDamageToMonsters()
+    {
+        if (!SkillIsRunning) return;
+        
+        var monsters = attackArea.MonstersInsideOfArea;
+
+        for (int i = 0; i < monsters.Count; i++)
+        {
+            var monster = monsters[i].GetComponent<MonsterController>();
+            if (!ReferenceEquals(monster, null))
+            {
+                monster.SetDamage(attackDamage);
+            }
+        }
     }
 }

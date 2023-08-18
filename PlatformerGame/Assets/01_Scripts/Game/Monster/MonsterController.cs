@@ -26,6 +26,9 @@ public class MonsterController : MonoBehaviour
     float moveSpeed;
     [SerializeField]
     float attackDamage;
+    [SerializeField]
+    float maxHp;
+    float hp;
     int playerLayer;
     int boundaryWallLayer;
     bool movingRightSide;
@@ -36,6 +39,7 @@ public class MonsterController : MonoBehaviour
     public void InitMonster(Transform parent)
     {
         monsterTransform = transform;
+        hp = maxHp;
         playerCtr = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         monsterAnimation = new MonsterAnimation(GetComponent<Animator>());
         boundaryWallLayer = 1 << LayerMask.NameToLayer("BoundaryLayer");
@@ -89,6 +93,18 @@ public class MonsterController : MonoBehaviour
         else if(!playerDetected) //isAttacking을 false로 만드는 조건은 플레이어가 감지되지 않았을때로 충분하므로 별다른 조건은 추가하지 않음
         {
             isAttacking = false;
+        }
+    }
+
+    public void SetDamage(float damage)
+    {
+        if(hp <= 0f) return;
+
+        hp -= damage;
+        if (hp <= 0f)
+        {
+            Debug.Log("Im die!");
+            gameObject.SetActive(false);
         }
     }
 
