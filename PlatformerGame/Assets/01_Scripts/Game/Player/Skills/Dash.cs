@@ -23,6 +23,7 @@ public class Dash : MonoBehaviour, IPlayerSkill
     [SerializeField]
     Vector3 targetVector;
     Vector3 dashDir;
+    int monsterLayer;
     float cooldownTimer;
     [SerializeField]
     float maxCooldown;
@@ -30,7 +31,8 @@ public class Dash : MonoBehaviour, IPlayerSkill
     float dashSpeed;
     [SerializeField]
     float attackDamage;
-    bool collisionWithMonster;
+    [SerializeField]
+    float monsterDetectionDistance;
 
     public bool NotReadyForExecute { get; set; }
     public bool SkillIsRunning { get; set; }
@@ -45,14 +47,13 @@ public class Dash : MonoBehaviour, IPlayerSkill
                 playerTransform.position += dashSpeed * Time.deltaTime * dashDir;
 
                 bool overTheTarget = dashDir.x > 0f ? playerTransform.position.x > targetVector.x : playerTransform.position.x < targetVector.x;
-                bool shouldStopDash = collisionWithMonster || overTheTarget;
+                bool shouldStopDash = CollidedWithMonster() || overTheTarget;
 
                 if (shouldStopDash)
                 {
                     GiveDamageToMonsters();
                     
                     SkillIsRunning = false;
-                    collisionWithMonster = false;
                     playerCtr.ContinueMovement();
                 }
             }
@@ -67,18 +68,9 @@ public class Dash : MonoBehaviour, IPlayerSkill
     {
         GaugeUsage = 1f;
         cooldownTimer = maxCooldown;
+        monsterLayer = 1 << LayerMask.NameToLayer("Monster");
         
         StartCoroutine(Coroutine_Update());
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(!SkillIsRunning) return;
-        
-        if (other.gameObject.CompareTag(MonsterTag))
-        {
-            collisionWithMonster = true;
-        } //RayCast로 변경 예정
     }
 
     public void Execute()
@@ -122,6 +114,14 @@ public class Dash : MonoBehaviour, IPlayerSkill
                 monster.SetDamage(attackDamage);
             }
         }
+    }
+
+    bool CollidedWithMonster()
+    {
+        var playerForward = new Vector2(GetPlayerForward(), 0f);
+        var isCollided = Physics2D.Raycast(playerTransform.position, playerForward, monsterDetectionDistance, monsterLayer);
+        Debug.DrawRay(playerTransform.position, playerForward * monsterDetectionDistance, Color.red);
+        return isCollided;
     }
 
     float GetPlayerForward()

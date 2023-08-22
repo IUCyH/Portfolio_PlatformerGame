@@ -1170,6 +1170,7 @@ MonoBehaviour:
   maxCooldown: 0.5
   dashSpeed: 20
   attackDamage: 5
+  monsterDetectionDistance: 0.8
 --- !u!1 &901489510
 GameObject:
   m_ObjectHideFlags: 0
