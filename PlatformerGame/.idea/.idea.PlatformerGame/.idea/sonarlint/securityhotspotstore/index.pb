@@ -21,3 +21,5 @@ b
 0Assets/01_Scripts/Game/Monster/MonsterManager.cs,d\2\d258503d880ecf9322a0416dc566dd65e3073f71
 Z
 *Assets/01_Scripts/Game/AnimationControl.cs,5\b\5bd051b0c751c008abbd175f56b3174a000d6fc6
+[
++Assets/01_Scripts/Game/Player/PlayerJump.cs,e\8\e84d4f2e70f385b85fb614eaecd4f6d3ddc3d6f8
