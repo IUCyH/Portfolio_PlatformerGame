@@ -11,5 +11,10 @@ public enum PopupType
 
 public class PopupManager : Singleton_DontDestroy<PopupManager>
 {
-    
+    ObjectPool<IPopup> popupPool;
+
+    protected override void OnStart()
+    {
+        
+    }
 }
