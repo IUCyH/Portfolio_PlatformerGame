@@ -12,7 +12,6 @@ public class DataManager : Singleton_DontDestroy<DataManager>
     protected override void OnAwake()
     {
         dbReference = FirebaseDatabase.DefaultInstance.RootReference;
-        Load();
     }
 
     public void Save()
