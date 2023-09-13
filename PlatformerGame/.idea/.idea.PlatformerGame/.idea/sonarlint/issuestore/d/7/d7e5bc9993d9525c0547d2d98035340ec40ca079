@@ -1,5 +1,4 @@
 
-Jcsharpsquid:S3903"(Move 'PopupType' into a named namespace.(û¶úèşÿÿÿÿ
-Mcsharpsquid:S3903"+Move 'PopupManager' into a named namespace.(¤ó˜Ãùÿÿÿÿ
-Zcsharpsquid:S1481"1Remove the unused local variable 'generateCount'.(åÃ›šúÿÿÿÿ8ù›îê¨1
-Gcsharpsquid:S125"Remove this commented out code.(ÒÌâ–øÿÿÿÿ8ù›îê¨1
+Jcsharpsquid:S3903"(Move 'PopupType' into a named namespace.(û¶úèşÿÿÿÿ
+Mcsharpsquid:S3903"+Move 'PopupManager' into a named namespace.(¤ó˜Ãùÿÿÿÿ
+}csharpsquid:S1450"YRemove the field 'popupPools' and declare it as a local variable in the relevant methods.(È¼ë˜8×‹Èû¨1

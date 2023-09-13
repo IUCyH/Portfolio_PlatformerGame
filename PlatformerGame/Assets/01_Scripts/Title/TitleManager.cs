@@ -8,7 +8,7 @@ public class TitleManager : Singleton<TitleManager>
     protected override void OnAwake()
     {
         //Load and Apply Setting Data
-        DataManager.Instance.Load();
+        //DataManager.Instance.Load();
     }
 
     public void OnPressStartButton()
