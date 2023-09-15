@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IPopup
 {
     PopupType Type { get; }
-    
+    GameObject ThisGameObject { get; }
 }

@@ -40,4 +40,22 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
             popupPools.Add((PopupType)i, pool);
         }
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            var popup = popupPools[PopupType.Ok].Get();
+            WindowManager.Instance.OpenWindow(popup.ThisGameObject);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            var popup = WindowManager.Instance.CloseWindow();
+            if (popup != null)
+            {
+                popupPools[PopupType.Ok].Set(popup.GetComponent<IPopup>());
+            }
+        }
+    }
 }
