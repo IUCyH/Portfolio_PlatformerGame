@@ -7,7 +7,6 @@ using UnityEngine;
 [Serializable]
 public class PlayerData
 {
-    public string userID;
     public string name;
     public uint level;
     public float hp;

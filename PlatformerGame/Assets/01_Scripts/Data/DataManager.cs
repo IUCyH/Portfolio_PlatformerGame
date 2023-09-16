@@ -8,29 +8,25 @@ public class DataManager : Singleton_DontDestroy<DataManager>
 {
     PlayerData playerData;
     DatabaseReference dbReference;
+    string uuid;
 
     protected override void OnAwake()
     {
         dbReference = FirebaseDatabase.DefaultInstance.RootReference;
+        playerData = new PlayerData();
+        uuid = SystemInfo.deviceUniqueIdentifier;
     }
 
     public void Save()
     {
         var jsonData = JsonUtility.ToJson(playerData);
 
-        dbReference.Child(playerData.userID).SetRawJsonValueAsync(jsonData);
+        dbReference.Child(uuid).SetRawJsonValueAsync(jsonData);
     }
 
     public void Load()
     {
-        if (playerData == null)
-        {
-            playerData = new PlayerData { userID = "0001" };
-            Save();
-            return;
-        }
-        
-        dbReference.Child(playerData.userID).GetValueAsync().ContinueWith(task =>
+        dbReference.Child(uuid).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
@@ -42,6 +38,7 @@ public class DataManager : Singleton_DontDestroy<DataManager>
             }
             else
             {
+                Debug.Log("Data Load was success");
                 var snapshot = task.Result;
                 playerData.SetData(snapshot);
             }

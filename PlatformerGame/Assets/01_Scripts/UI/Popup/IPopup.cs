@@ -6,4 +6,6 @@ public interface IPopup
 {
     PopupType Type { get; }
     GameObject ThisGameObject { get; }
+
+    void SetPopup(string title, string content);
 }

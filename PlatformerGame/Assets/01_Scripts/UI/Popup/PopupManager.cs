@@ -41,21 +41,11 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
         }
     }
 
-    void Update()
+    public void OpenPopup(PopupType type, string title, string content)
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            var popup = popupPools[PopupType.Ok].Get();
-            WindowManager.Instance.OpenWindow(popup.ThisGameObject);
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            var popup = WindowManager.Instance.CloseWindow();
-            if (popup != null)
-            {
-                popupPools[PopupType.Ok].Set(popup.GetComponent<IPopup>());
-            }
-        }
+        var popup = popupPools[type].Get();
+        popup.SetPopup(title, content);
+        
+        WindowManager.Instance.OpenAndPushIntoStack(popup.ThisGameObject);
     }
 }

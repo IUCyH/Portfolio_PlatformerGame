@@ -6,7 +6,7 @@ public class WindowManager : Singleton_DontDestroy<WindowManager>
 {
     Stack<GameObject> openWindows = new Stack<GameObject>();
 
-    public void OpenWindow(GameObject window)
+    public void OpenAndPushIntoStack(GameObject window)
     {
         if (openWindows.Contains(window)) return;
         
@@ -14,7 +14,7 @@ public class WindowManager : Singleton_DontDestroy<WindowManager>
         window.SetActive(true);
     }
 
-    public GameObject CloseWindow()
+    public GameObject CloseAndPopFromStack()
     {
         if (openWindows.Count <= 0) return null;
         

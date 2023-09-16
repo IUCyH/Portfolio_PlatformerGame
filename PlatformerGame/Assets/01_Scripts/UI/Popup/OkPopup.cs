@@ -1,10 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class OkPopup : MonoBehaviour, IPopup
 {
+    [SerializeField]
+    TextMeshProUGUI title;
+    [SerializeField]
+    TextMeshProUGUI content;
+    
     public PopupType Type { get; } = PopupType.Ok;
     public GameObject ThisGameObject { get; private set; }
 
@@ -13,8 +19,9 @@ public class OkPopup : MonoBehaviour, IPopup
         ThisGameObject = gameObject;
     }
 
-    public void OnPress()
+    public void SetPopup(string title, string content)
     {
-        gameObject.SetActive(false);
+        this.title.text = title;
+        this.content.text = content;
     }
 }
