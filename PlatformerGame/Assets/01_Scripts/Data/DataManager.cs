@@ -40,7 +40,16 @@ public class DataManager : Singleton_DontDestroy<DataManager>
             {
                 Debug.Log("Data Load was success");
                 var snapshot = task.Result;
-                playerData.SetData(snapshot);
+
+                if (!snapshot.Exists)
+                {
+                    //TODO : open a input field popup and get user name
+                    Debug.Log("Data is not exist");
+                }
+                else
+                {
+                    playerData.SetData(snapshot);
+                }
             }
         });
     }
