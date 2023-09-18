@@ -45,13 +45,13 @@ T
 $Assets/01_Scripts/UI/Popup/IPopup.cs,0\7\07b9c1437b1a0da34b7eb773a0afadfe12ed84e9
 U
 %Assets/01_Scripts/UI/WindowManager.cs,a\9\a973b4e6f31ed7a8b090cf6fd871c280b413278e
+Z
+*Assets/01_Scripts/UI/Popup/PopupManager.cs,d\7\d7e5bc9993d9525c0547d2d98035340ec40ca079
 e
 5Assets/01_Scripts/Game/Player/Skills/DefaultAttack.cs,8\b\8b42d53c495b07cc33836d9866beb37ac5c6cb32
 [
 +Assets/01_Scripts/Game/Player/PlayerJump.cs,e\8\e84d4f2e70f385b85fb614eaecd4f6d3ddc3d6f8
 N
 Assets/01_Scripts/Data/Data.cs,d\0\d0332d87100b45876c60fcc09b27c02fbef7f649
-Z
-*Assets/01_Scripts/UI/Popup/PopupManager.cs,d\7\d7e5bc9993d9525c0547d2d98035340ec40ca079
 U
 %Assets/01_Scripts/Data/DataManager.cs,c\3\c3a6cf9d96e064a4072a439ab8a3ca59721b60aa
