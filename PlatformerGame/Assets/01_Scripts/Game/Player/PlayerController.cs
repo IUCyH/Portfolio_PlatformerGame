@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if (hp <= 0f) return;
         
         hp -= damage;
-        GameUIManager.Instance.UpdateImageFillAmount(hpBar, damage / maxHP);
+        InGameUIManager.Instance.UpdateImageFillAmount(hpBar, damage / maxHP);
     }
     
     public void SetPlayerState(PlayerState state)

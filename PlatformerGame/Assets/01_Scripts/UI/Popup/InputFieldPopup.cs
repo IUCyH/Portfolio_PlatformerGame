@@ -1,17 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class OkPopup : MonoBehaviour, IPopup
+public class InputFieldPopup : MonoBehaviour, IPopup
 {
     [SerializeField]
     TextMeshProUGUI title;
     [SerializeField]
     TextMeshProUGUI content;
 
-    public PopupType Type { get; } = PopupType.Ok;
+    public PopupType Type { get; } = PopupType.InputField;
     public GameObject ThisGameObject { get; private set; }
 
     void Awake()
@@ -24,7 +23,7 @@ public class OkPopup : MonoBehaviour, IPopup
         this.title.text = title;
         this.content.text = content;
     }
-
+    
     public void OnPressOkButton()
     {
         PopupManager.Instance.ClosePopup(Type);

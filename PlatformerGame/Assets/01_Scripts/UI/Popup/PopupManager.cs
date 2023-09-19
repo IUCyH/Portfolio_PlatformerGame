@@ -12,14 +12,14 @@ public enum PopupType
 
 public class PopupManager : Singleton_DontDestroy<PopupManager>
 {
-    Dictionary<PopupType, ObjectPool<IPopup>> popupPools;
+    List<ObjectPool<IPopup>> popupPools;
     [SerializeField]
     RectTransform popupCanvasRectTransform;
 
     protected override void OnStart()
     {
         var popups = Resources.LoadAll<GameObject>("Prefabs");
-        popupPools = new Dictionary<PopupType, ObjectPool<IPopup>>();
+        popupPools = new List<ObjectPool<IPopup>>();
 
         for (int i = 0; i < popups.Length; i++)
         {
@@ -37,15 +37,42 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
                 return obj.GetComponent<IPopup>();
             });
             
-            popupPools.Add((PopupType)i, pool);
+            popupPools.Add(pool);
         }
     }
 
     public void OpenPopup(PopupType type, string title, string content)
     {
-        var popup = popupPools[type].Get();
+        var popup = popupPools[(int)type].Get();
         popup.SetPopup(title, content);
         
         WindowManager.Instance.OpenAndPushIntoStack(popup.ThisGameObject);
+    }
+
+    public void ClosePopup(PopupType type)
+    {
+        var popupObj = WindowManager.Instance.CloseAndPopFromStack();
+        var popup = popupObj.GetComponent<IPopup>();
+
+        if (popup.Type == type)
+        {
+            popupPools[(int)type].Set(popup);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            OpenPopup(PopupType.Ok, "TEST", "IT'S JUST A TEST");
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            OpenPopup(PopupType.OkCancel, "TEST", "IT'S JUST A TEST");
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            OpenPopup(PopupType.InputField, "TEST", "IT'S JUST A TEST");
+        }
     }
 }

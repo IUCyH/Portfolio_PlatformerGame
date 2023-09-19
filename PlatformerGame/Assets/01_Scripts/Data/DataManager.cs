@@ -45,6 +45,7 @@ public class DataManager : Singleton_DontDestroy<DataManager>
                 {
                     //TODO : open a input field popup and get user name
                     Debug.Log("Data is not exist");
+                    //PopupManager.Instance.
                 }
                 else
                 {

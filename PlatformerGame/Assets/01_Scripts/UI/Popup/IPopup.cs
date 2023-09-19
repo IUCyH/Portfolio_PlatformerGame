@@ -8,4 +8,5 @@ public interface IPopup
     GameObject ThisGameObject { get; }
 
     void SetPopup(string title, string content);
+    void OnPressOkButton();
 }

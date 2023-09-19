@@ -66,7 +66,7 @@ public class PlayerJump : MonoBehaviour
 
         if (prevJumpCount != jumpCount)
         {
-            GameUIManager.Instance.UpdateText(jumpCountText, jumpCount);
+            InGameUIManager.Instance.UpdateText(jumpCountText, jumpCount);
         }
 
         prevJumpCount = jumpCount;

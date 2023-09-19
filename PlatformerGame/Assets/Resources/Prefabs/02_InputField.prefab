@@ -370,6 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7624321660116620308}
   - component: {fileID: 7624321660116620306}
+  - component: {fileID: 2110909557004721663}
   m_Layer: 0
   m_Name: 02_InputField
   m_TagString: Untagged
@@ -410,6 +411,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7624321660116620311}
   m_CullTransparentMesh: 1
+--- !u!114 &2110909557004721663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7624321660116620311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e950fbec3f03c5c44bb4655bb4c4b7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 7624321661237849491}
+  content: {fileID: 7624321660746594917}
 --- !u!1 &7624321660392745667
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +679,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7624321660523711493}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110909557004721663}
+        m_TargetAssemblyTypeName: InputFieldPopup, Assembly-CSharp
+        m_MethodName: OnPressOkButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7624321660746594919
 GameObject:
   m_ObjectHideFlags: 0

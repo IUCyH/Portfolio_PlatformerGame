@@ -64,7 +64,7 @@ public class PlayerSkill : MonoBehaviour
     public void UpdateCooldownText(Skills skill, float cooldown)
     {
         var result = (float)Math.Round(cooldown, 2);
-        GameUIManager.Instance.UpdateText(skillCooldownTexts[(int)skill], result);
+        InGameUIManager.Instance.UpdateText(skillCooldownTexts[(int)skill], result);
     }
 
     public void ExecuteSkills()
@@ -98,6 +98,6 @@ public class PlayerSkill : MonoBehaviour
 
         currSkillGauge -= gaugeWillUse; //currSkillGauge는 정규화 되지 않은 값이므로 그냥 쓸 게이지 양만큼을 빼준다.
         
-        GameUIManager.Instance.UpdateImageFillAmount(skillGaugeImg, gaugeUsage);
+        InGameUIManager.Instance.UpdateImageFillAmount(skillGaugeImg, gaugeUsage);
     }
 }
