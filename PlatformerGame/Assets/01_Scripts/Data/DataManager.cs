@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Firebase.Database;
 using UnityEngine;
 
@@ -8,13 +9,34 @@ public class DataManager : Singleton_DontDestroy<DataManager>
 {
     PlayerData playerData;
     DatabaseReference dbReference;
+    DataSnapshot snapshot;
     string uuid;
+
+    bool loaded;
 
     protected override void OnAwake()
     {
         dbReference = FirebaseDatabase.DefaultInstance.RootReference;
         playerData = new PlayerData();
         uuid = SystemInfo.deviceUniqueIdentifier;
+    }
+    
+    IEnumerator Coroutine_SetData()
+    {
+        var waitUntilLoaded = new WaitUntil(() => loaded);
+        
+        yield return waitUntilLoaded;
+        
+        if (snapshot.Exists)
+        {
+            playerData.SetData(snapshot);
+        }
+        else
+        {
+            PopupManager.Instance.OpenPopup(PopupType.InputField, "Notice", "Type your nick name");
+        }
+
+        loaded = false;
     }
 
     public void Save()
@@ -38,20 +60,11 @@ public class DataManager : Singleton_DontDestroy<DataManager>
             }
             else
             {
-                Debug.Log("Data Load was success");
-                var snapshot = task.Result;
-
-                if (!snapshot.Exists)
-                {
-                    //TODO : open a input field popup and get user name
-                    Debug.Log("Data is not exist");
-                    //PopupManager.Instance.
-                }
-                else
-                {
-                    playerData.SetData(snapshot);
-                }
+                snapshot = task.Result;
+                loaded = true;
             }
         });
+        
+        StartCoroutine(Coroutine_SetData());
     }
 }

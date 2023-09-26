@@ -7,6 +7,6 @@ public interface IPopup
     PopupType Type { get; }
     GameObject ThisGameObject { get; }
 
-    void SetPopup(string title, string content);
+    void SetPopup(string titleText, string contentText);
     void OnPressOkButton();
 }

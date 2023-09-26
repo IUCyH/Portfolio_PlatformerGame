@@ -24,7 +24,7 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
         for (int i = 0; i < popups.Length; i++)
         {
             var popup = popups[i];
-            var pool = new ObjectPool<IPopup>(3, () =>
+            popupPools.Add(new ObjectPool<IPopup>(3, () =>
             {
                 var obj = Instantiate(popup);
                 var rectTransform = obj.GetComponent<RectTransform>();
@@ -35,9 +35,7 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
                 
                 obj.SetActive(false);
                 return obj.GetComponent<IPopup>();
-            });
-            
-            popupPools.Add(pool);
+            }));
         }
     }
 
@@ -52,8 +50,9 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
     public void ClosePopup(PopupType type)
     {
         var popupObj = WindowManager.Instance.CloseAndPopFromStack();
+        if (popupObj == null) return;
+        
         var popup = popupObj.GetComponent<IPopup>();
-
         if (popup.Type == type)
         {
             popupPools[(int)type].Set(popup);

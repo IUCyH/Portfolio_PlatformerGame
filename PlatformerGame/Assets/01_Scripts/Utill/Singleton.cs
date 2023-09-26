@@ -25,7 +25,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
     void Start()
     {
-        if (Instance != null)
+        if (Instance == this)
         {
             OnStart();
         }

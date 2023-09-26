@@ -19,10 +19,10 @@ public class OkPopup : MonoBehaviour, IPopup
         ThisGameObject = gameObject;
     }
 
-    public void SetPopup(string title, string content)
+    public void SetPopup(string titleText, string contentText)
     {
-        this.title.text = title;
-        this.content.text = content;
+        title.text = titleText;
+        content.text = contentText;
     }
 
     public void OnPressOkButton()

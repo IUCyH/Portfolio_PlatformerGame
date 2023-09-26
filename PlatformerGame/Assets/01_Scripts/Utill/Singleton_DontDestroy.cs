@@ -26,7 +26,7 @@ public class Singleton_DontDestroy<T> : MonoBehaviour where T : Singleton_DontDe
 
     void Start()
     {
-        if (Instance != null)
+        if (Instance == this)
         {
             OnStart();
         }
