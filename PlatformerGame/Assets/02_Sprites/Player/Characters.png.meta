@@ -213,7 +213,7 @@ TextureImporter:
       213: 7476128397175872570
     second: RAA
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -230,10 +230,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -272,6 +274,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -311,6 +315,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1804,9 +1820,79 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      BA Attack: 9018646923762226945
+      BA Die: -1539689639676168921
+      BA Hit: 5835498782827802035
+      BA Hit Red: 8777974672713614842
+      BA Idle: 4749904528282777558
+      BAA: -5937618121108508431
+      BAU Attack: -3813782614545376446
+      BAU Die: -2559619762054003050
+      BAU Hit: 3690784489133827997
+      BAU Hit Red: -5256083238790965588
+      BAU Idle: -3875180428987827631
+      BG Attack: 2473687490876715158
+      BG Die: 8678331415430427435
+      BG Hit: 2222463801079782474
+      BG Hit Red: -598267159285503414
+      BG Idle: -5908743213997753785
+      BGU Attack: 207178968290740852
+      BGU Die: -797345288293334197
+      BGU Hit: -6180721501070938765
+      BGU Hit Red: -8110590899558308026
+      BGU Idle: 661860490801623818
+      BS Attack: -3387478527075654864
+      BS Die: -5877259873991932285
+      BS Hit: -7808734593389313954
+      BS Hit Red: 4837840602407752856
+      BS Idle: -3154150011874791226
+      BSU Attack: 7893245450136125235
+      BSU Die: 5145048823938965306
+      BSU Hit: 631651796801477924
+      BSU Hit Red: 7339906270656204948
+      BSU Idle: -8364913047766280116
+      BW Attack: 163955602261942339
+      BW Idle: 3805063247507766641
+      BWU Attack: 1814896009074319080
+      BWU Idle: 1145669499519311739
+      RA Attack: 5026972546934958715
+      RA Die: 842016502522805355
+      RA Hit: 8439226999888801368
+      RA Hit Red: -6978555727864421618
+      RA Idle: 7110494968479972978
+      RAA: 7476128397175872570
+      RAU Attack: -4587385282965195550
+      RAU Die: -1213746384843948844
+      RAU Hit: 4934799652423699161
+      RAU Hit Red: 75332205279178075
+      RAU Idle: 2055389008599032140
+      RG Attack: 5136357203674067128
+      RG Die: -6220024457818614411
+      RG Hit: -6025379319900620545
+      RG Hit Red: 3751373364110516562
+      RG Idle: 6196606555088352618
+      RGU Attack: 8338569888481040020
+      RGU Die: 5699590749204039412
+      RGU Hit: 2334716070153093768
+      RGU Hit Red: -8176412890931608422
+      RGU Idle: -3385372371976808063
+      RS Attack: -8816038613044792324
+      RS Die: -6145295764767102903
+      RS Hit: 9132216423428076053
+      RS Hit Red: 8319982639285221730
+      RS Idle: 8759150981705163766
+      RSU Attack: -1620700546512529360
+      RSU Die: 973039004434376389
+      RSU Hit: 6053436177387001487
+      RSU Hit Red: -504634504403816024
+      RSU Idle: -5325714947843674390
+      RW Attack: -4068256151103285213
+      RW Idle: -4667628145153450467
+      RWU Attack: -3296969412554215656
+      RWU Idle: 1552125296048368602
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

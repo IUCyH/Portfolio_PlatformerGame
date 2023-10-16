@@ -59,3 +59,9 @@ Z
 *Assets/01_Scripts/UI/Popup/PopupManager.cs,d\7\d7e5bc9993d9525c0547d2d98035340ec40ca079
 U
 %Assets/01_Scripts/Data/DataManager.cs,c\3\c3a6cf9d96e064a4072a439ab8a3ca59721b60aa
+U
+%Assets/01_Scripts/Utill/GridLayout.cs,8\e\8e0fd3763077103f98ffde9bcc8c753484bd7004
+[
++Assets/01_Scripts/UI/InventoryController.cs,3\b\3b05a4874aa6172ea1e3dd2c7f0fe1309dc075c7
+Z
+*Assets/Firebase/Editor/AppDependencies.xml,1\3\13331efe170a9c0f75651e1da887aa04a0a6ec6e

@@ -8,7 +8,14 @@ using UnityEngine.UI;
 
 public class InGameUIManager : Singleton<InGameUIManager>
 {
+    [SerializeField]
+    InventoryController inventory;
     StringBuilder sb = new StringBuilder();
+
+    protected override void OnStart()
+    {
+        inventory.gameObject.SetActive(false);
+    }
 
     public void UpdateImageFillAmount(Image img, float value, bool isDecrease = true)
     {
@@ -34,6 +41,21 @@ public class InGameUIManager : Singleton<InGameUIManager>
         sb.Clear();
         sb.Append(value);
         text.text = sb.ToString();
+    }
+
+    void Update()
+    {
+        if (InputManager.GetKeyDown(Key.Escape))
+        {
+            if (!inventory.gameObject.activeSelf)
+            {
+                WindowManager.Instance.OpenAndPushIntoStack(inventory.gameObject);
+            }
+            else
+            {
+                WindowManager.Instance.CloseAndPopFromStack();
+            }
+        }
     }
 }
 

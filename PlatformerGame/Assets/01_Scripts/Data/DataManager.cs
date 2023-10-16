@@ -2,69 +2,76 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Firebase.Database;
+using Firebase.Extensions;
+using Firebase.Firestore;
 using UnityEngine;
 
 public class DataManager : Singleton_DontDestroy<DataManager>
 {
-    PlayerData playerData;
-    DatabaseReference dbReference;
-    DataSnapshot snapshot;
-    string uuid;
+    const string PlayerDataCollection = "PlayerData";
 
+    Dictionary<string, string> dataDic = new Dictionary<string, string>();
+    PlayerData playerData;
+    FirebaseFirestore db;
+    string uuid;
+    char[] trimChars = new[] { '"', '{', '}' };
+    
     bool loaded;
 
     protected override void OnAwake()
     {
-        dbReference = FirebaseDatabase.DefaultInstance.RootReference;
-        playerData = new PlayerData();
+        db = FirebaseFirestore.DefaultInstance;
         uuid = SystemInfo.deviceUniqueIdentifier;
-    }
-    
-    IEnumerator Coroutine_SetData()
-    {
-        var waitUntilLoaded = new WaitUntil(() => loaded);
         
-        yield return waitUntilLoaded;
-        
-        if (snapshot.Exists)
-        {
-            playerData.SetData(snapshot);
-        }
-        else
-        {
-            PopupManager.Instance.OpenPopup(PopupType.InputField, "Notice", "Type your nick name");
-        }
-
-        loaded = false;
+        Load();
     }
 
     public void Save()
     {
         var jsonData = JsonUtility.ToJson(playerData);
+        var docRef = db.Collection(PlayerDataCollection).Document(uuid);
+        var result = jsonData.Split(",");
 
-        dbReference.Child(uuid).SetRawJsonValueAsync(jsonData);
-    }
-
-    public void Load()
-    {
-        dbReference.Child(uuid).GetValueAsync().ContinueWith(task =>
+        foreach (var data in result)
         {
-            if (task.IsCanceled)
+            var split = data.Split(":");
+            var key = split[0].Trim(trimChars);
+            var value = split[1].Trim(trimChars);
+            
+            dataDic.Add(key, value);
+        }
+        
+        docRef.SetAsync(dataDic).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
             {
-                Debug.Log("Data Load is Canceled");
-            }
-            else if (task.IsFaulted)
-            {
-                Debug.Log("Data Load is Faulted");
-            }
-            else
-            {
-                snapshot = task.Result;
-                loaded = true;
+                Debug.Log("Data Save Completed");
             }
         });
-        
-        StartCoroutine(Coroutine_SetData());
+    }
+
+    public async void Load()
+    {
+        var userRef = db.Collection(PlayerDataCollection).Document(uuid);
+        var snapShot = await userRef.GetSnapshotAsync();
+
+        if (!snapShot.Exists)
+        {
+            playerData = new PlayerData
+            {
+                attackDamage = 5f,
+                hp = 100f,
+                level = 1,
+                name = "User"
+            };
+            
+            Save();
+            return;
+        }
+
+        foreach (var data in snapShot.ToDictionary())
+        {
+            Debug.Log(data.Value);
+        }
     }
 }

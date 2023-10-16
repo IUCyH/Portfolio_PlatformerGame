@@ -19,7 +19,8 @@ public enum Key
     DefaultAttack,
     Dash,
     Skill3,
-    Skill4
+    Skill4,
+    Escape
 }
 
 public static class InputManager
@@ -39,6 +40,7 @@ public static class InputManager
         keys.Add(Key.Dash, KeyCode.Q);
         keys.Add(Key.Skill3, KeyCode.W);
         keys.Add(Key.Skill4, KeyCode.E);
+        keys.Add(Key.Escape, KeyCode.Escape);
     }
 
     public static float GetAxisRaw(Axis axis)

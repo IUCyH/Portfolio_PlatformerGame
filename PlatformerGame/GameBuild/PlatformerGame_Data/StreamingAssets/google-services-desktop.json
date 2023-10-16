@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "596600817665",
+    "firebase_url": "https://platformergame-3ccf7-default-rtdb.firebaseio.com",
+    "project_id": "platformergame-3ccf7",
+    "storage_bucket": "platformergame-3ccf7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596600817665:android:4bd5bacf5fb6ef0812d800",
+        "android_client_info": {
+          "package_name": "com.IUCyH.PlatformerGame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596600817665-ojoqngujd0vrhr3hujc9imhkt1eem4em.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPTjYPwoQdW9KVQGuZCVHSf-a-tTOLVOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596600817665-ojoqngujd0vrhr3hujc9imhkt1eem4em.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
