@@ -14,7 +14,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     float runSpeed;
     float moveSpeed;
-    bool playingWalkingAnim;
+    
+    public bool IsMoving { get; private set; }
     
     void Start()
     {
@@ -28,15 +29,15 @@ public class PlayerMove : MonoBehaviour
         
         playerTransform.position += moveSpeed * Time.deltaTime * dir;
 
-        playingWalkingAnim = dir != Vector3.zero && playingWalkingAnim;
-
         if (dir != Vector3.zero)
         {
             playerCtr.SetPlayerState(PlayerState.Move);
+            IsMoving = true;
         }
         else
         {
             playerCtr.SetPlayerState(PlayerState.Idle);
+            IsMoving = false;
         }
     }
 

@@ -7,9 +7,7 @@ public class TitleManager : Singleton<TitleManager>
 {
     public void OnPressStartButton()
     {
-        //Load or Create Data
-        //Load Game Scene
-        DataManager.Instance.Load();
+        SceneLoadManager.Instance.Load(LoadScene.Game);
     }
 
     public void OnPressOptionsButton()

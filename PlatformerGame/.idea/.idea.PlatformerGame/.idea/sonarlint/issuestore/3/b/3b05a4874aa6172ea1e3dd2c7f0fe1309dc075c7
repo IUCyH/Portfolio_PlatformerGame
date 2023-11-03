@@ -1,3 +1,4 @@
 
 Ocsharpsquid:S3903"2Move 'InventoryController' into a named namespace.(‚™÷¨
-¢csharpsquid:S1186"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(ûàîºûÿÿÿÿ8¦îò±³1
+{csharpsquid:S1450"WRemove the field 'slotPool' and declare it as a local variable in the relevant methods.(±„Žò8¶Šîø¶1
+‚csharpsquid:S1450"YRemove the field 'gridLayout' and declare it as a local variable in the relevant methods.(Ô©˜Îüÿÿÿÿ8ñÏîø¶1

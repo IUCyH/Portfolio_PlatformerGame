@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
 {
     const float RightYRotationValue = 0f;
     const float LeftYRotationValue = 180f;
-    
+
+    MovingPlatformController movingPlatform;
     PlayerAnimation playerAnimation;
     [SerializeField]
     PlayerMove playerMove;
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
             playerMove.Move(Vector3.right * dir);
             SetPlayerForward(dir);
         }
-
+        
         if (InputManager.GetKeyDown(Key.Up))
         {
             playerJump.CheckCanJump();
@@ -64,11 +65,38 @@ public class PlayerController : MonoBehaviour
         playerSkill.ExecuteSkills();
         
         PlayAnimationByPlayerState();
+        
+        if (!ReferenceEquals(movingPlatform, null) && !playerMove.IsMoving && !playerJump.IsJumping)
+        {
+            playerTransform.position += movingPlatform.MoveDistancePerFrame;
+        }
+
+        if (InputManager.GetKeyDown(Key.OpenInventory))
+        {
+            InGameUIManager.Instance.OpenOrHideInventory();
+        }
     }
 
     void FixedUpdate()
     {
         playerJump.Jump();
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!other.gameObject.CompareTag("MovingPlatform")) return;
+
+        movingPlatform = other.gameObject.GetComponent<MovingPlatformController>();
+        movingPlatform.OnPlayerGoUp();
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (!ReferenceEquals(movingPlatform, null))
+        {
+            movingPlatform.OnPlayerGoDown();
+            movingPlatform = null;
+        }
     }
 
     public void SetDamage(float damage)

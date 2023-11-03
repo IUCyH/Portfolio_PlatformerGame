@@ -10,13 +10,9 @@ public class DataManager : Singleton_DontDestroy<DataManager>
 {
     const string PlayerDataCollection = "PlayerData";
 
-    Dictionary<string, string> dataDic = new Dictionary<string, string>();
     PlayerData playerData;
     FirebaseFirestore db;
     string uuid;
-    char[] trimChars = new[] { '"', '{', '}' };
-    
-    bool loaded;
 
     protected override void OnAwake()
     {
@@ -30,16 +26,7 @@ public class DataManager : Singleton_DontDestroy<DataManager>
     {
         var jsonData = JsonUtility.ToJson(playerData);
         var docRef = db.Collection(PlayerDataCollection).Document(uuid);
-        var result = jsonData.Split(",");
-
-        foreach (var data in result)
-        {
-            var split = data.Split(":");
-            var key = split[0].Trim(trimChars);
-            var value = split[1].Trim(trimChars);
-            
-            dataDic.Add(key, value);
-        }
+        var dataDic = JsonToDitionary.Convert(jsonData);
         
         docRef.SetAsync(dataDic).ContinueWithOnMainThread(task =>
         {
@@ -69,9 +56,7 @@ public class DataManager : Singleton_DontDestroy<DataManager>
             return;
         }
 
-        foreach (var data in snapShot.ToDictionary())
-        {
-            Debug.Log(data.Value);
-        }
+        var json = DictionaryToJson.Convert(snapShot.ToDictionary());
+        playerData = JsonUtility.FromJson<PlayerData>(json);
     }
 }

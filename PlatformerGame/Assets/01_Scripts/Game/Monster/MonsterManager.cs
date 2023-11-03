@@ -44,6 +44,11 @@ public class MonsterManager : Singleton<MonsterManager>
         }
     }
 
+    public void DestroyMonster(MonsterController monster)
+    {
+        monsterPool.Set(monster);
+    }
+
     void CreateMonsters(int count)
     {
         for (int i = 0; i < count; i++)

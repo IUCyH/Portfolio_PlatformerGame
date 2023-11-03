@@ -67,7 +67,7 @@ public class DefaultAttack : MonoBehaviour, IPlayerSkill
         if (!SkillIsRunning) return;
         
         var monsters = attackArea.MonstersInsideOfArea;
-
+        
         for (int i = 0; i < monsters.Count; i++)
         {
             var monster = monsters[i].GetComponent<MonsterController>();

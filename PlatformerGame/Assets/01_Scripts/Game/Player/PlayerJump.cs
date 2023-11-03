@@ -25,6 +25,8 @@ public class PlayerJump : MonoBehaviour
     int groundLayer;
     [SerializeField]
     bool canJump;
+    
+    public bool IsJumping { get; private set; }
 
     void Start()
     {
@@ -51,6 +53,7 @@ public class PlayerJump : MonoBehaviour
 
         rb.velocity = Vector2.zero;
         rb.AddForce(jumpForce * Time.fixedDeltaTime * Vector2.up, ForceMode2D.Impulse);
+        IsJumping = true;
         
         jumpCount++;
         canJump = false;
@@ -62,6 +65,7 @@ public class PlayerJump : MonoBehaviour
         if (ground)
         {
             jumpCount = 0;
+            IsJumping = false;
         }
 
         if (prevJumpCount != jumpCount)

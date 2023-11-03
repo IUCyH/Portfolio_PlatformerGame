@@ -20,7 +20,8 @@ public enum Key
     Dash,
     Skill3,
     Skill4,
-    Escape
+    Escape,
+    OpenInventory
 }
 
 public static class InputManager
@@ -40,7 +41,9 @@ public static class InputManager
         keys.Add(Key.Dash, KeyCode.Q);
         keys.Add(Key.Skill3, KeyCode.W);
         keys.Add(Key.Skill4, KeyCode.E);
+        //Init Util Keys
         keys.Add(Key.Escape, KeyCode.Escape);
+        keys.Add(Key.OpenInventory, KeyCode.Tab);
     }
 
     public static float GetAxisRaw(Axis axis)

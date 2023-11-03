@@ -18,9 +18,6 @@ public class PortalController : MonoBehaviour
         if(!ReferenceEquals(target, null) && InputManager.GetKeyDown(Key.Interaction))
         {
             target.position = linkedPortal.position;
-            
-            targetEnter = false;
-            target = null;
         }
     }
     

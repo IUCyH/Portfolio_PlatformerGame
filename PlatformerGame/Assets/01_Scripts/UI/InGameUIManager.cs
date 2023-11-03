@@ -28,6 +28,11 @@ public class InGameUIManager : Singleton<InGameUIManager>
             img.fillAmount += value;
         }
     }
+    
+    public void SetImageFillAmount(Image img, float value)
+    {
+        img.fillAmount = value;
+    }
 
     public void UpdateText(TextMeshProUGUI text, float value)
     {
@@ -43,19 +48,10 @@ public class InGameUIManager : Singleton<InGameUIManager>
         text.text = sb.ToString();
     }
 
-    void Update()
+    public void OpenOrHideInventory()
     {
-        if (InputManager.GetKeyDown(Key.Escape))
-        {
-            if (!inventory.gameObject.activeSelf)
-            {
-                WindowManager.Instance.OpenAndPushIntoStack(inventory.gameObject);
-            }
-            else
-            {
-                WindowManager.Instance.CloseAndPopFromStack();
-            }
-        }
+        var isOpen = !inventory.gameObject.activeSelf;
+        inventory.gameObject.SetActive(isOpen);
     }
 }
 

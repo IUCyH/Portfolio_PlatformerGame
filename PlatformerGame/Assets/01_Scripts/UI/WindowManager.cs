@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class WindowManager : Singleton_DontDestroy<WindowManager>
 {
-    Stack<GameObject> openWindows = new Stack<GameObject>();
+    Stack<IWindow> openWindows = new Stack<IWindow>();
 
-    public void OpenAndPushIntoStack(GameObject window)
+    public void OpenAndPushIntoStack(IWindow window)
     {
         if (openWindows.Contains(window)) return;
         
         openWindows.Push(window);
-        window.SetActive(true);
+        window.Open();
     }
 
-    public GameObject CloseAndPopFromStack()
+    public IWindow CloseAndPopFromStack()
     {
         if (openWindows.Count <= 0) return null;
         
         var window = openWindows.Pop();
-        window.SetActive(false);
+        window.Close();
 
         return window;
     }

@@ -13,7 +13,7 @@ public class AnimationControl
 
     protected void Init(Animator animator, int numberOfMotions)
     {
-        Debug.Log("Name : " + this + " " + "motions : " + numberOfMotions);
+        //Debug.Log("Name : " + this + " " + "motions : " + numberOfMotions);
         this.animator = animator;
         animIDs = new int[numberOfMotions];
         animRunningTimes = new float[numberOfMotions];
@@ -32,13 +32,13 @@ public class AnimationControl
 
         prevMotion = animIDs[0];
         
-        Debug.Log(this);
+        //Debug.Log(this);
         //for checking
         for (int i = 0; i < length; i++)
         {
-            Debug.Log(clips[i].name);
+            /*Debug.Log(clips[i].name);
             Debug.Log(animIDs[i]);
-            Debug.Log(animRunningTimes[i]);
+            Debug.Log(animRunningTimes[i]);*/
         }
     }
 

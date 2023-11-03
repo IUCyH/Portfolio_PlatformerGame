@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class MonsterController : MonoBehaviour
@@ -8,16 +9,17 @@ public class MonsterController : MonoBehaviour
     const float RightYRotationValue = 0f;
     const float LeftYRotationValue = 180f;
 
+    StringBuilder sb = new StringBuilder();
     PlayerController playerCtr;
     MonsterAnimation monsterAnimation;
     Transform monsterTransform;
+    SpriteRenderer monsterSprite;
 
+    Vector3 dir = Vector3.right;
+    Vector3 originPos;
+    float targetPosX;
     [SerializeField]
-    Vector3 maxMoveDistanceFromSpawnPos;
-    [SerializeField]
-    Vector3 maxRightPos;
-    [SerializeField]
-    Vector3 maxLeftPos;
+    float maxDistance;
     [SerializeField]
     float maxWallDetectionDist;
     [SerializeField]
@@ -31,10 +33,11 @@ public class MonsterController : MonoBehaviour
     float hp;
     int playerLayer;
     int boundaryWallLayer;
-    bool movingRightSide;
     bool isMoving;
     bool isAttacking;
     bool playerDetected;
+    
+    public float LevelUpCost { get; private set; }
 
     public void InitMonster(Transform parent)
     {
@@ -44,16 +47,17 @@ public class MonsterController : MonoBehaviour
         monsterAnimation = new MonsterAnimation(GetComponent<Animator>());
         boundaryWallLayer = 1 << LayerMask.NameToLayer("BoundaryLayer");
         playerLayer = 1 << LayerMask.NameToLayer("Player");
+        monsterSprite = GetComponent<SpriteRenderer>();
 
         monsterTransform.SetParent(parent);
+        originPos = monsterTransform.position;
+        targetPosX = originPos.x + maxDistance * dir.x;
+        LevelUpCost = 3f;
     }
 
     public void SetMonsterSpawnPos(Vector3 spawnPos)
     {
         monsterTransform.position = spawnPos;
-
-        maxRightPos = spawnPos + maxMoveDistanceFromSpawnPos;
-        maxLeftPos = spawnPos - maxMoveDistanceFromSpawnPos;
     }
 
     public void Move()
@@ -63,15 +67,16 @@ public class MonsterController : MonoBehaviour
             isMoving = false;
             return;
         }
-
-        if (movingRightSide)
+        
+        if ((targetPosX - monsterTransform.position.x) * dir.x <= 0f || BoundaryWallDetected())
         {
-            MoveToRightSide();
+            dir *= -1;
+            targetPosX = originPos.x + maxDistance * dir.x;
+            
+            SetMonsterForward(dir.x);
         }
-        else
-        {
-            MoveToLeftSide();
-        }
+        
+        monsterTransform.position += moveSpeed * Time.deltaTime * dir;
 
         if (!isMoving)
         {
@@ -98,13 +103,21 @@ public class MonsterController : MonoBehaviour
 
     public void SetDamage(float damage)
     {
-        if(hp <= 0f) return;
-
+        var pos = transform.position;
+        pos.x += monsterSprite.size.x / 2;
+        pos.y += (monsterSprite.size.y / 2);
+        
         hp -= damage;
-        if (hp <= 0f)
+        sb.Clear();
+        sb.Append(damage);
+        DamageHUDManager.Instance.ShowDamageHUD(pos, sb.ToString());
+        
+        if (hp < 0f)
         {
-            Debug.Log("Im die!");
+            hp = maxHp;
+            GameSystemManager.Instance.UpdateStateBar(StateBar.levelUpCost, LevelUpCost);
             gameObject.SetActive(false);
+            MonsterManager.Instance.DestroyMonster(this);
         }
     }
 
@@ -113,30 +126,6 @@ public class MonsterController : MonoBehaviour
         if (!playerDetected) return;
         
         playerCtr.SetDamage(attackDamage);
-    }
-
-    void MoveToRightSide()
-    {
-        if (monsterTransform.position.x > maxRightPos.x || BoundaryWallDetected())
-        {
-            movingRightSide = false;
-            SetMonsterForward(LeftYRotationValue);
-            return;
-        }
-
-        monsterTransform.position += moveSpeed * Time.deltaTime * Vector3.right;
-    }
-
-    void MoveToLeftSide()
-    {
-        if (monsterTransform.position.x < maxLeftPos.x || BoundaryWallDetected())
-        {
-            movingRightSide = true;
-            SetMonsterForward(RightYRotationValue);
-            return;
-        }
-
-        monsterTransform.position += moveSpeed * Time.deltaTime * Vector3.left;
     }
 
     bool BoundaryWallDetected()
@@ -151,7 +140,7 @@ public class MonsterController : MonoBehaviour
     {
         Vector2 forwardVector;
         
-        if (movingRightSide)
+        if (dir.x > 0)
         {
             forwardVector = Vector2.right;
         }
@@ -173,8 +162,10 @@ public class MonsterController : MonoBehaviour
         return Physics2D.Raycast(monsterTransform.position, direction, distance, layer);
     }
 
-    void SetMonsterForward(float yRotationValue)
+    void SetMonsterForward(float dirX)
     {
-        monsterTransform.rotation = Quaternion.Euler(0f, yRotationValue, 0f);
+        var rotation = dirX > 0 ? RightYRotationValue : LeftYRotationValue;
+
+        monsterTransform.rotation = Quaternion.Euler(0f, rotation, 0f);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class InputFieldPopup : MonoBehaviour, IPopup
+public class InputFieldPopup : MonoBehaviour, IPopup, IWindow
 {
     [SerializeField]
     TextMeshProUGUI title;
@@ -11,12 +11,6 @@ public class InputFieldPopup : MonoBehaviour, IPopup
     TextMeshProUGUI content;
 
     public PopupType Type { get; } = PopupType.InputField;
-    public GameObject ThisGameObject { get; private set; }
-
-    void Awake()
-    {
-        ThisGameObject = gameObject;
-    }
 
     public void SetPopup(string titleText, string contentText)
     {
@@ -27,5 +21,15 @@ public class InputFieldPopup : MonoBehaviour, IPopup
     public void OnPressOkButton()
     {
         PopupManager.Instance.ClosePopup(Type);
+    }
+    
+    public void Open()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -44,7 +44,7 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
         var popup = popupPools[(int)type].Get();
         popup.SetPopup(title, content);
         
-        WindowManager.Instance.OpenAndPushIntoStack(popup.ThisGameObject);
+        WindowManager.Instance.OpenAndPushIntoStack((IWindow)popup);
     }
 
     public void ClosePopup(PopupType type)
@@ -52,7 +52,7 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
         var popupObj = WindowManager.Instance.CloseAndPopFromStack();
         if (popupObj == null) return;
         
-        var popup = popupObj.GetComponent<IPopup>();
+        var popup = (IPopup)popupObj;
         if (popup.Type == type)
         {
             popupPools[(int)type].Set(popup);
