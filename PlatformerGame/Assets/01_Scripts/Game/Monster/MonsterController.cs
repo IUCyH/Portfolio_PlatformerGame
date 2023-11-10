@@ -117,6 +117,7 @@ public class MonsterController : MonoBehaviour
             hp = maxHp;
             GameSystemManager.Instance.UpdateStateBar(StateBar.levelUpCost, LevelUpCost);
             gameObject.SetActive(false);
+            DropItem();
             MonsterManager.Instance.DestroyMonster(this);
         }
     }
@@ -126,6 +127,13 @@ public class MonsterController : MonoBehaviour
         if (!playerDetected) return;
         
         playerCtr.SetDamage(attackDamage);
+    }
+
+    void DropItem()
+    {
+        //var item = ItemManager.Instance.CreateItem();
+        
+       // item.Init(transform.position);
     }
 
     bool BoundaryWallDetected()

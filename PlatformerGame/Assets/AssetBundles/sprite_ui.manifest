@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 1099568946
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0ecc4715059bffe4e25dfb5932b70144
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/02_Sprites/Exclamation point/Exclamation point1 (128 x 128).png
+- Assets/02_Sprites/Exclamation point/Exclamation point3 (256 x 256).png
+- Assets/02_Sprites/UI/Titles.png
+- Assets/02_Sprites/Cross/Cross2 (128 x 128).png
+- Assets/02_Sprites/Check mark/Check mark2 (128 x 128).png
+- Assets/02_Sprites/Background.png
+- Assets/02_Sprites/Exclamation point/Exclamation point2 (128 x 128).png
+- Assets/02_Sprites/UI/Skill_Gauge.png
+- Assets/02_Sprites/Exclamation point/Exclamation point2 (256 x 256).png
+- Assets/02_Sprites/UI/UI.png
+- Assets/02_Sprites/Exclamation point/Exclamation point1 (256 x 256).png
+- Assets/02_Sprites/Cross/Cross2 (256 x 256).png
+- Assets/02_Sprites/UI/Hp_Gauge.png
+- Assets/02_Sprites/Exclamation point/Exclamation point3 (128 x 128).png
+- Assets/02_Sprites/Check mark/Check mark2 (256 x 256).png
+Dependencies: []
