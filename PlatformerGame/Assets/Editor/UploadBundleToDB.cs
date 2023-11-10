@@ -27,7 +27,8 @@ public class UploadBundleToDB : EditorWindow
             
             if (fileName.Contains("."))
             {
-                name = fileName.Split('.')[0];
+                var split = fileName.Split('.');
+                name = split[0];
             }
 
             if (bundleDicList.ContainsKey(name))
@@ -39,10 +40,34 @@ public class UploadBundleToDB : EditorWindow
                 bundleDicList.Add(name, new Dictionary<string, string>());
                 bundleDicList[name].Add(fileName, fileName);
             }
-
+            if (fileName.Contains("manifest"))
+            {
+                var crc = GetCRC(Path.Combine(Application.dataPath, "AssetBundles", fileName));
+                bundleDicList[name].Add("CRC", crc);
+            }
+            
             db.Collection("AssetBundleNames").Document(name).SetAsync(bundleDicList[name]);
 
             spriteRef.Child(fileName).PutFileAsync(Path.Combine(Application.dataPath, "AssetBundles", fileName));
         }
+    }
+
+    static string GetCRC(string path)
+    {
+        StreamReader streamReader = new StreamReader(path);
+        string crc = null;
+        
+        while (!streamReader.EndOfStream)
+        {
+            var line = streamReader.ReadLine();
+            if (line.Contains("CRC"))
+            {
+                crc = line.Split(':')[1];
+                crc = crc.Trim();
+            }
+        }
+
+        streamReader.Close();
+        return crc;
     }
 }
