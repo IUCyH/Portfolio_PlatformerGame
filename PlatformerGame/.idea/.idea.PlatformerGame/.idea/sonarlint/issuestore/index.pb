@@ -89,3 +89,5 @@ Q
 !Assets/Editor/BuildAssetBundle.cs,5\8\580b264a99c193b5227ba229e170ae4a91cf7c7a
 V
 &Assets/01_Scripts/Data/PatchManager.cs,4\5\45218ee4fe6c28025f1e88f3e06685834a4c62a6
+Z
+*Assets/01_Scripts/Util/DictionaryToJson.cs,f\d\fd6939d691e33d76caa428e5351d2527f749225b

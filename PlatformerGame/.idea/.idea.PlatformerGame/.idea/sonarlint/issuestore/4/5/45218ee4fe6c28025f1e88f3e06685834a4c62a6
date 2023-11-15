@@ -1,5 +1,6 @@
 
-:csharpsquid:S3168"Return 'Task' instead.(Ì®Öª8£¶Š¥»1
-Hcsharpsquid:S3903"+Move 'PatchManager' into a named namespace.(›Ì†Ü
-bcsharpsquid:S1075"?Refactor your code not to use hardcoded absolute paths or URIs.(«ùÒ*8¼îÌ¦»1
-Xcsharpsquid:S1135&"4Complete the task associated to this 'TODO' comment.(÷“­ï8ŠÈ¦»1
+:csharpsquid:S3168"Return 'Task' instead.(Ì®Öª8£¶Š¥»1
+:csharpsquid:S3168|"Return 'Task' instead.(žŠý¸8¶­Ö¿»1
+Hcsharpsquid:S3903"+Move 'PatchManager' into a named namespace.(›Ì†Ü
+wcsharpsquid:S32678"NLoop should be simplified by calling Select(keyValuePair => keyValuePair.Key))(×‡àºÿÿÿÿÿ8¯‹î¾»1
+bcsharpsquid:S1075"?Refactor your code not to use hardcoded absolute paths or URIs.(«ùÒ*8¼îÌ¦»1

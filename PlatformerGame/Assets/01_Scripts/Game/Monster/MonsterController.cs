@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MonsterController : MonoBehaviour
 {
@@ -16,10 +17,10 @@ public class MonsterController : MonoBehaviour
     SpriteRenderer monsterSprite;
 
     Vector3 dir = Vector3.right;
-    Vector3 originPos;
     float targetPosX;
     [SerializeField]
     float maxDistance;
+    float distFromStartPoint;
     [SerializeField]
     float maxWallDetectionDist;
     [SerializeField]
@@ -38,6 +39,7 @@ public class MonsterController : MonoBehaviour
     bool playerDetected;
     
     public float LevelUpCost { get; private set; }
+    public MonsterField BelongedField { get; set; }
 
     public void InitMonster(Transform parent)
     {
@@ -50,8 +52,8 @@ public class MonsterController : MonoBehaviour
         monsterSprite = GetComponent<SpriteRenderer>();
 
         monsterTransform.SetParent(parent);
-        originPos = monsterTransform.position;
-        targetPosX = originPos.x + maxDistance * dir.x;
+        targetPosX = transform.position.x + maxDistance * dir.x;
+        distFromStartPoint = Random.Range(5f, maxDistance);
         LevelUpCost = 3f;
     }
 
@@ -67,11 +69,11 @@ public class MonsterController : MonoBehaviour
             isMoving = false;
             return;
         }
-        
+
         if ((targetPosX - monsterTransform.position.x) * dir.x <= 0f || BoundaryWallDetected())
         {
-            dir *= -1;
-            targetPosX = originPos.x + maxDistance * dir.x;
+            dir *= -1f;
+            targetPosX = ((BelongedField.MaxSpawnPositionOnLeft.x + BelongedField.MaxSpawnPositionOnRight.x) / 2) + distFromStartPoint * dir.x;
             
             SetMonsterForward(dir.x);
         }
@@ -105,7 +107,7 @@ public class MonsterController : MonoBehaviour
     {
         var pos = transform.position;
         pos.x += monsterSprite.size.x / 2;
-        pos.y += (monsterSprite.size.y / 2);
+        pos.y += monsterSprite.size.y / 2;
         
         hp -= damage;
         sb.Clear();
