@@ -4,27 +4,43 @@ using UnityEngine;
 
 public class ItemManager : Singleton<ItemManager>
 {
-    ObjectPool<IItem> itemPool;
-    List<IItem> tempItemList = new List<IItem>();
+    ObjectPool<Item> itemPool;
+    IItem[] itemScripts;
     [SerializeField]
     int randomSelectItemLimit;
 
     protected override void OnStart()
     {
-        var items = Resources.LoadAll<GameObject>("Prefabs/Item");
-        /*itemPool = new ObjectPool<IItem>(2, () =>
+        var itemSprites = Resources.LoadAll<Sprite>("Sprites/RpgItems1");
+        var itemDummy = Resources.Load<GameObject>("Prefabs/Item/ItemDummy");
+        var itemPrefab = Resources.Load<GameObject>("Prefabs/Item/Item");
+        itemPool = new ObjectPool<Item>(5, () =>
         {
-            s
-        });*/
+            var obj = Instantiate(itemPrefab);
+            obj.transform.SetParent(transform);
+            obj.transform.position = Vector3.zero;
+            obj.transform.localScale = Vector3.one;
+            
+            obj.SetActive(false);
+
+            return obj.GetComponent<Item>();
+        });
+
+        itemScripts = itemDummy.GetComponents<IItem>();
+        for(int i = 0; i < itemSprites.Length; i++) Debug.Log(itemSprites[i]);
     }
 
-    /*public IItem CreateItem()
+    public void CreateItem(Vector3 initialPos)
     {
+        var item = itemPool.Get();
+        var itemScript = Random.Range(0, itemScripts.Length);
         
+        item.AddItem(itemScripts[itemScript]);
+        item.Init(initialPos);
     }
 
     void CleanList()
     {
         
-    }*/
+    }
 }

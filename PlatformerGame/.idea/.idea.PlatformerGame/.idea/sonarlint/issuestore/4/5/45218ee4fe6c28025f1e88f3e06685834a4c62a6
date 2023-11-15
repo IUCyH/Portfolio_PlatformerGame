@@ -1,6 +1,7 @@
 
-:csharpsquid:S3168"Return 'Task' instead.(Ì®Öª8£¶Š¥»1
-:csharpsquid:S3168|"Return 'Task' instead.(Šı¸8¶­Ö¿»1
-Hcsharpsquid:S3903"+Move 'PatchManager' into a named namespace.(›Ì†Ü
-wcsharpsquid:S32678"NLoop should be simplified by calling Select(keyValuePair => keyValuePair.Key))(×‡àºÿÿÿÿÿ8¯‹î¾»1
-bcsharpsquid:S1075"?Refactor your code not to use hardcoded absolute paths or URIs.(«ùÒ*8¼îÌ¦»1
+:csharpsquid:S3168"Return 'Task' instead.(Ì®Öª8ÒÑÃ½1
+;csharpsquid:S3168‚"Return 'Task' instead.(Šı¸8ÒÑÃ½1
+Ocsharpsquid:S3903"+Move 'PatchManager' into a named namespace.(›Ì†Ü8ÒÑÃ½1
+wcsharpsquid:S32678"NLoop should be simplified by calling Select(keyValuePair => keyValuePair.Key))(×‡àºÿÿÿÿÿ8ÒÑÃ½1
+icsharpsquid:S3267“"ELoop should be simplified by calling Select(document => document.Id))(œßã8ßÅ½1
+bcsharpsquid:S1075"?Refactor your code not to use hardcoded absolute paths or URIs.(«ùÒ*8ÒÑÃ½1

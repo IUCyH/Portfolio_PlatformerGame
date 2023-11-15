@@ -94,6 +94,12 @@ public class PatchManager : Singleton_DontDestroy<PatchManager>
     {
         var path = Path.Combine(Application.persistentDataPath, AssetBundleCacheFolderName);
         var crcInfoPath = Path.Combine(path, "CRCInfos.txt");
+        
+        if (File.Exists(crcInfoPath))
+        {
+            File.Delete(crcInfoPath);
+        }
+        
         StreamWriter streamWriter = new StreamWriter(crcInfoPath);
         DirectoryInfo directoryInfo = new DirectoryInfo(path);
         FileInfo[] files = directoryInfo.GetFiles();
@@ -153,11 +159,14 @@ public class PatchManager : Singleton_DontDestroy<PatchManager>
                 }
             }
         }
+        
+        await DownloadNewlyOutBundles();
     }
 
-    IEnumerator Coroutine_DownloadNewBundle(string fileName)
+    IEnumerator Coroutine_DownloadNewBundle(string fileName, bool createNewCRCFile = false)
     {
         var bundleRef = storage.Child(SpriteFolderName).Child(fileName);
+        Debug.Log(fileName);
         var manifestRef = storage.Child(SpriteFolderName).Child(fileName + ".manifest");
         Uri uri = null;
 
@@ -171,7 +180,11 @@ public class PatchManager : Singleton_DontDestroy<PatchManager>
         yield return request.SendWebRequest();
 
         var bundlePath = Path.Combine(Application.persistentDataPath, AssetBundleCacheFolderName, fileName);
-        File.Delete(bundlePath);
+        if (File.Exists(bundlePath))
+        {
+            File.Delete(bundlePath);
+        }
+
         File.WriteAllBytes(bundlePath, request.downloadHandler.data);
 
         uri = null;
@@ -185,24 +198,36 @@ public class PatchManager : Singleton_DontDestroy<PatchManager>
         yield return request.SendWebRequest();
 
         var manifestPath = Path.Combine(Application.persistentDataPath, AssetBundleCacheFolderName, fileName + ".manifest");
-        File.Delete(manifestPath);
+        if (File.Exists(manifestPath))
+        {
+            File.Delete(manifestPath);
+        }
+
         File.WriteAllBytes(manifestPath, request.downloadHandler.data);
 
-        using (StreamReader streamReader = new StreamReader(manifestPath))
+        if (!createNewCRCFile)
         {
-            while (!streamReader.EndOfStream)
+            using (StreamReader streamReader = new StreamReader(manifestPath))
             {
-                var line = streamReader.ReadLine();
-                if (line == null) continue;
-
-                if (line.Contains("CRC"))
+                while (!streamReader.EndOfStream)
                 {
-                    var crc = line.Split(':')[1];
-                    crc = crc.Trim();
-                    UpdateCRCInfoFile(fileName, crc);
-                    break;
+                    var line = streamReader.ReadLine();
+                    if (line == null) continue;
+
+                    if (line.Contains("CRC"))
+                    {
+                        var crc = line.Split(':')[1];
+                        crc = crc.Trim();
+                        UpdateCRCInfoFile(fileName, crc);
+                        break;
+                    }
                 }
             }
+        }
+
+        if (createNewCRCFile)
+        {
+            CreateCRCInfoFile();
         }
     }
 
@@ -235,6 +260,37 @@ public class PatchManager : Singleton_DontDestroy<PatchManager>
             for (int i = 0; i < lines.Count; i++)
             {
                 streamWriter.WriteLine(lines[i]);
+            }
+        }
+    }
+
+    async Task DownloadNewlyOutBundles()
+    {
+        var path = Path.Combine(Application.persistentDataPath, AssetBundleCacheFolderName);
+        DirectoryInfo directoryInfo = new DirectoryInfo(path);
+        var files = directoryInfo.GetFiles();
+        var bundleRef = db.Collection("AssetBundleNames");
+        var snapshot = await bundleRef.GetSnapshotAsync();
+
+        foreach (var document in snapshot.Documents)
+        {
+            bool shouldDownload = true;
+            string fileName = string.Empty;
+            for (int i = 0; i < files.Length; i++)
+            {
+                if(files[i].Name.Contains("manifest") || files[i].Name.Contains("txt")) continue;
+
+                fileName = document.Id;
+                if (document.Id == files[i].Name)
+                {
+                    shouldDownload = false;
+                    break;
+                }
+            }
+
+            if (shouldDownload)
+            {
+                StartCoroutine(Coroutine_DownloadNewBundle(fileName, true));
             }
         }
     }

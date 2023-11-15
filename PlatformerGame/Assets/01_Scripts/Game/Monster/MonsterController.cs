@@ -133,9 +133,7 @@ public class MonsterController : MonoBehaviour
 
     void DropItem()
     {
-        //var item = ItemManager.Instance.CreateItem();
-        
-       // item.Init(transform.position);
+        ItemManager.Instance.CreateItem(transform.position);
     }
 
     bool BoundaryWallDetected()

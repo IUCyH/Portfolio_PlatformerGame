@@ -91,3 +91,13 @@ V
 &Assets/01_Scripts/Data/PatchManager.cs,4\5\45218ee4fe6c28025f1e88f3e06685834a4c62a6
 Z
 *Assets/01_Scripts/Util/DictionaryToJson.cs,f\d\fd6939d691e33d76caa428e5351d2527f749225b
+^
+.Assets/01_Scripts/Game/Monster/MonsterField.cs,8\6\8660184d8481629c3b238355a65792b44b226420
+N
+Assets/01_Scripts/Item/Item.cs,9\e\9e3a32943cdbd7efad08336a04dc65817261712c
+Z
+*Assets/01_Scripts/Item/ItemScripts/Wand.cs,8\7\875afc0b0bbefb08f888bf6fb0552ef2783bc8c9
+[
++Assets/01_Scripts/Item/ItemScripts/Armor.cs,c\1\c193c17e790039e8c3da29238dc6d9a2129250c4
+[
++Assets/01_Scripts/Item/ItemScripts/Sword.cs,9\7\97dd9224facc9ca0e2fa6555ecfc9caad20c6fae
