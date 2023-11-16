@@ -55,6 +55,8 @@ public class MonsterController : MonoBehaviour
         targetPosX = transform.position.x + maxDistance * dir.x;
         distFromStartPoint = Random.Range(5f, maxDistance);
         LevelUpCost = 3f;
+
+        monsterSprite.sprite = SpriteTable.Instance.GetSprite(KindOfAssetBundle.Player, "Monster_Idle");
     }
 
     public void SetMonsterSpawnPos(Vector3 spawnPos)

@@ -21,6 +21,19 @@ public class GameSystemManager : Singleton<GameSystemManager>
     protected override void OnStart()
     {
         levelCostBar.fillAmount = 0f;
+        InitGameSprites();
+    }
+
+    void InitGameSprites()
+    {
+        var sprites = FindObjectsByType<SpriteRenderer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (sprites[i].CompareTag("Player") || sprites[i].CompareTag("Monster")) continue;
+
+            sprites[i].sprite = SpriteTable.Instance.GetSprite(KindOfAssetBundle.UI, sprites[i].tag);
+        }
     }
 
     public void UpdateStateBar(StateBar state, float cost)

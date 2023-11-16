@@ -337,11 +337,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BS Idle
+      name: Player_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -362,7 +374,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BS Attack
+      name: Player_Attack
       rect:
         serializedVersion: 2
         x: 31
@@ -1475,7 +1487,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGU Idle
+      name: Monster_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -1841,12 +1853,9 @@ TextureImporter:
       BGU Die: -797345288293334197
       BGU Hit: -6180721501070938765
       BGU Hit Red: -8110590899558308026
-      BGU Idle: 661860490801623818
-      BS Attack: -3387478527075654864
       BS Die: -5877259873991932285
       BS Hit: -7808734593389313954
       BS Hit Red: 4837840602407752856
-      BS Idle: -3154150011874791226
       BSU Attack: 7893245450136125235
       BSU Die: 5145048823938965306
       BSU Hit: 631651796801477924
@@ -1856,6 +1865,9 @@ TextureImporter:
       BW Idle: 3805063247507766641
       BWU Attack: 1814896009074319080
       BWU Idle: 1145669499519311739
+      Monster_Idle: 661860490801623818
+      Player_Attack: -3387478527075654864
+      Player_Idle: -3154150011874791226
       RA Attack: 5026972546934958715
       RA Die: 842016502522805355
       RA Hit: 8439226999888801368

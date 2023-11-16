@@ -15,7 +15,7 @@ public class MonsterManager : Singleton<MonsterManager>
     [SerializeField]
     float minDistanceBetweenTwoMonsters;
 
-    protected override void OnAwake()
+    protected override void OnStart()
     {
         monsterPool = new ObjectPool<MonsterController>(5, () =>
         {

@@ -187,6 +187,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -485,7 +497,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Panel
+      name: MovingPlatform
       rect:
         serializedVersion: 2
         x: 25
@@ -506,7 +518,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bar Front
+      name: Portal
       rect:
         serializedVersion: 2
         x: 46
@@ -622,7 +634,6 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Bar Back: 5300179025838392481
-      Bar Front: 6998131782875741384
       Health C: -2145097280388239572
       Health L: 1436338628549066657
       Health R: -5866952569684716689
@@ -631,7 +642,8 @@ TextureImporter:
       Icon Cost: 2047483964318851028
       Icon Hp: -2269638749862755701
       Icon Upgrade: -6065768427115596876
-      Panel: -6522886353871927248
+      MovingPlatform: -6522886353871927248
+      Portal: 6998131782875741384
       Portrait A: 6943562768184086589
       Portrait AU: -4535586968756965052
       Portrait G: 7293623749340134194

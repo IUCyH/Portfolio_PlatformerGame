@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
         hp = maxHP;
         playerTransform = transform;
         playerAnimation = new PlayerAnimation(GetComponent<Animator>());
+
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = SpriteTable.Instance.GetSprite(KindOfAssetBundle.Player, "Player_Idle");
     }
 
     void Update()

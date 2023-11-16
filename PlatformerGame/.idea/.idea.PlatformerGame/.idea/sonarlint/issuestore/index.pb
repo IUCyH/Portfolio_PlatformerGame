@@ -71,12 +71,6 @@ V
 &Assets/01_Scripts/Util/InputManager.cs,f\a\fa61141122e3906121a13102dbb9c3eb72bb4477
 O
 Assets/01_Scripts/Item/IItem.cs,3\e\3e5d74f0f3dc0a45a21405453aa2e2c54c34e17b
-S
-#Assets/01_Scripts/Item/Item/Wand.cs,c\5\c5a2935560281c19ca9b4457b5164d2f232f3cff
-T
-$Assets/01_Scripts/Item/Item/Armor.cs,4\0\40e4fcbc55e4752eb4368c9a25d44e2a25be366f
-T
-$Assets/01_Scripts/Item/Item/Sword.cs,4\e\4ef931b5d5fa6b837d1706c2158e052a67870fcc
 T
 $Assets/01_Scripts/Util/ObjectPool.cs,f\f\ff8952399e8f8d0a2d9e4d97ab3cc09601ceee0e
 U
@@ -95,9 +89,5 @@ Z
 .Assets/01_Scripts/Game/Monster/MonsterField.cs,8\6\8660184d8481629c3b238355a65792b44b226420
 N
 Assets/01_Scripts/Item/Item.cs,9\e\9e3a32943cdbd7efad08336a04dc65817261712c
-Z
-*Assets/01_Scripts/Item/ItemScripts/Wand.cs,8\7\875afc0b0bbefb08f888bf6fb0552ef2783bc8c9
-[
-+Assets/01_Scripts/Item/ItemScripts/Armor.cs,c\1\c193c17e790039e8c3da29238dc6d9a2129250c4
-[
-+Assets/01_Scripts/Item/ItemScripts/Sword.cs,9\7\97dd9224facc9ca0e2fa6555ecfc9caad20c6fae
+U
+%Assets/01_Scripts/Data/SpriteTable.cs,1\c\1cbd2ea52bb5b3edbe308cfb153d7e52b5863b22
