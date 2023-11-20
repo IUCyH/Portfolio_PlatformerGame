@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IItem
 {
+    Sprite ItemImage { get; set; }
+    
     void Use();
     void Destroy();
 }

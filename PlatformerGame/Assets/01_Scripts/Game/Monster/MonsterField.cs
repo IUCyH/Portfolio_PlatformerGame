@@ -30,12 +30,6 @@ public class MonsterField : MonoBehaviour
         
         while (true)
         {
-            for (int i = 0; i < CreatedMonsters.Count; i++)
-            {
-                CreatedMonsters[i].Move();
-                CreatedMonsters[i].Attack();
-            }
-
             if (CreatedMonsters.Count < 1)
             {
                 timer += Time.deltaTime;
@@ -44,6 +38,12 @@ public class MonsterField : MonoBehaviour
                     MonsterManager.Instance.CreateMonsters(this, MonsterCreateCount);
                     timer = 0f;
                 }
+            }
+            
+            for (int i = 0; i < CreatedMonsters.Count; i++)
+            {
+                CreatedMonsters[i].Move();
+                CreatedMonsters[i].Attack();
             }
 
             yield return null;

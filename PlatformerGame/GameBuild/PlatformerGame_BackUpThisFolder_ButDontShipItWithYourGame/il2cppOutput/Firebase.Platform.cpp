@@ -89,7 +89,6 @@ struct InterfaceFuncInvoker0
 
 struct AsyncLocal_1_t1D3339EA4C8650D2DEDDF9553E5C932B3DC2CCFD;
 struct Dictionary_2_t73D7B210F00FD83B4F194279B052C32E9FCB1D04;
-struct Dictionary_2_tAEFECB7912C437DA011A30BE6FCDFBF86D4D0B29;
 struct Dictionary_2_t685E1072D6BF5D03945108D75216A223A8EA7FBB;
 struct Dictionary_2_t5C32AF17A5801FB3109E5B0E622BA8402A04E08E;
 struct EventHandler_1_tF2D41B212D800E7E7D00F9BDEA817E57153988BF;
@@ -157,7 +156,6 @@ struct IAppConfigExtensions_t2BC1AFEF8FF5F2A7D5B45F23000CEE8FEE376418;
 struct IClockService_t62FFADE4F3DABB6EBE3869EEBE8C577963F1A026;
 struct IDictionary_t6D03155AF1FA9083817AA5B6AD7DEEACC26AB220;
 struct IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA;
-struct IFirebaseAppPlatform_tB44DDF88ADD112DC55E9C5EF84C774D244C8C228;
 struct IFirebaseAppUtils_t61EDF19372DFE7348E02194135E2F3B8801E3391;
 struct ILoggingService_t39576CA38C73068394A2E2032D0873F962DA9DF4;
 struct IPrincipal_tE7AF5096287F6C3472585E124CB38FF2A51EAB5F;
@@ -224,7 +222,6 @@ IL2CPP_EXTERN_C RuntimeClass* GameObject_t76FEDD663AB33C991A9C9A2312933765109421
 IL2CPP_EXTERN_C RuntimeClass* IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IEnumerator_1_tF15715088C2FF1D64704AE886A3A152AFCECCC36_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA_il2cpp_TypeInfo_var;
-IL2CPP_EXTERN_C RuntimeClass* IFirebaseAppPlatform_tB44DDF88ADD112DC55E9C5EF84C774D244C8C228_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IFirebaseAppUtils_t61EDF19372DFE7348E02194135E2F3B8801E3391_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* List_1_tA61E6ACDC88C89A9523D28C560996ABFF548352B_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD_il2cpp_TypeInfo_var;
@@ -273,7 +270,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteralA4F2DAAB1E148143AA39D4D0EC6AE18B58AC0AF6
 IL2CPP_EXTERN_C String_t* _stringLiteralC2ABD53443E87B1D4332B55DE89F3F4C04D71253;
 IL2CPP_EXTERN_C String_t* _stringLiteralDB797A4D97C7FD6146460C6DC4591BE1D9CE6A0B;
 IL2CPP_EXTERN_C String_t* _stringLiteralF906AF52934523A28A29533224E8CEEDAC1486F2;
-IL2CPP_EXTERN_C const RuntimeMethod* AppConfigExtensions_GetState_TisString_t_m1E80B3A896579330C6AE8DAA1E228BCA5816FB0A_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2_TryGetValue_m523AD6A503FCF15DD28F0785FAE73C3A78F80048_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2__ctor_m4FB85806B2D5CF8ED85E32F65BEF2CB51759EC9C_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2__ctor_m72D8077DA89EFD2BE1F61E6BE812DFB87A61CE5D_RuntimeMethod_var;
@@ -1260,7 +1256,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FirebaseHandler_RunOnMainThread_TisIl2Cp
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void EventHandler_1_Invoke_mB8EBD394BCA1574F4FE9C1C05A4F246099C4DA48_gshared_inline (EventHandler_1_t5629179164803EFAE40F6023484C1674B4493577* __this, RuntimeObject* ___0_sender, Il2CppFullySharedGenericAny ___1_e, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainThreadProperty_1_get_Value_m02A51D9C98013E649DA985C0E5F7DF7D7F37B7E3_gshared (MainThreadProperty_1_t41239AD3F58198C8E277C1724E5E8A5BD9500734* __this, Il2CppFullySharedGenericAny* il2cppRetVal, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainThreadProperty_1__ctor_mE144EAD10D943153DDF983131F0C720809BE2D9D_gshared (MainThreadProperty_1_t41239AD3F58198C8E277C1724E5E8A5BD9500734* __this, Func_1_tBB8824FA8746333BFFF3AB3CE4A41B58450AF431* ___0_getPropertyDelegate, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AppConfigExtensions_GetState_TisIl2CppFullySharedGenericAny_m64084357B28DFBEAD5F45F6FEEEC2695D92DCE5A_gshared (RuntimeObject* ___0_app, int32_t ___1_state, Dictionary_2_tAEFECB7912C437DA011A30BE6FCDFBF86D4D0B29* ___2_store, Il2CppFullySharedGenericAny* il2cppRetVal, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_NO_INLINE IL2CPP_METHOD_ATTR void List_1_AddWithResize_mA6DFDBC2B22D6318212C6989A34784BD8303AF33_gshared (List_1_tDBA89B0E21BAC58CFBD3C1F76E4668E3B562761A* __this, Il2CppFullySharedGenericAny ___0_item, const RuntimeMethod* method) ;
 
 inline void List_1__ctor_mD910536376B8EBB5BDB30088BE4FE395391592F3 (List_1_tA61E6ACDC88C89A9523D28C560996ABFF548352B* __this, const RuntimeMethod* method)
@@ -1522,13 +1517,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Delegate_t* Delegate_Combine_m1F725AEF318BE6F
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FieldInfo_SetValue_mD8C0DA3A1A0CFF073F971622BBDBAAB6688B4B6C (FieldInfo_t* __this, RuntimeObject* ___0_obj, RuntimeObject* ___1_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Delegate_t* Delegate_Remove_m8B7DD5661308FA972E23CA1CC3FC9CEB355504E3 (Delegate_t* ___0_source, Delegate_t* ___1_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_IsNullOrEmpty_mEA9E3FB005AC28FE02E69FCF95A7B8456192B478 (String_t* ___0_value, const RuntimeMethod* method) ;
-inline String_t* AppConfigExtensions_GetState_TisString_t_m1E80B3A896579330C6AE8DAA1E228BCA5816FB0A (RuntimeObject* ___0_app, int32_t ___1_state, Dictionary_2_t73D7B210F00FD83B4F194279B052C32E9FCB1D04* ___2_store, const RuntimeMethod* method)
-{
-	String_t* il2cppRetVal;
-	((  void (*) (RuntimeObject*, int32_t, Dictionary_2_tAEFECB7912C437DA011A30BE6FCDFBF86D4D0B29*, Il2CppFullySharedGenericAny*, const RuntimeMethod*))AppConfigExtensions_GetState_TisIl2CppFullySharedGenericAny_m64084357B28DFBEAD5F45F6FEEEC2695D92DCE5A_gshared)(___0_app, ___1_state, (Dictionary_2_tAEFECB7912C437DA011A30BE6FCDFBF86D4D0B29*)___2_store, (Il2CppFullySharedGenericAny*)&il2cppRetVal, method);
-	return il2cppRetVal;
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Uri_op_Inequality_m64BE981CDF88B751677B80D883B201BF3CFD83F7 (Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___0_uri1, Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___1_uri2, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Uri__ctor_m6CA436E6AD2768A121FA851CBEEFA3623E849D3A (Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* __this, String_t* ___0_uriString, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AppConfigExtensions__ctor_mAAB3762C447D2387878715D18F41BADFE2DB001F (AppConfigExtensions_t6B8627CD4EFF8F05D2F749CC406E5E12F04CEE48* __this, const RuntimeMethod* method) ;
 inline void Dictionary_2__ctor_m4FB85806B2D5CF8ED85E32F65BEF2CB51759EC9C (Dictionary_2_t73D7B210F00FD83B4F194279B052C32E9FCB1D04* __this, const RuntimeMethod* method)
@@ -3114,20 +3102,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Services__cctor_mA49E5137FA072E8742842A1
 		return;
 	}
 }
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Services_get_AppConfig_mC08EC98ACB1D5FAC108C084898388231487E9DEF (const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Services_t4EDE95322734B379A0DA3AAEF079E28E9132D69E_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		il2cpp_codegen_runtime_class_init_inline(Services_t4EDE95322734B379A0DA3AAEF079E28E9132D69E_il2cpp_TypeInfo_var);
-		RuntimeObject* L_0 = ((Services_t4EDE95322734B379A0DA3AAEF079E28E9132D69E_StaticFields*)il2cpp_codegen_static_fields_for(Services_t4EDE95322734B379A0DA3AAEF079E28E9132D69E_il2cpp_TypeInfo_var))->___U3CAppConfigU3Ek__BackingField;
-		return L_0;
-	}
-}
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Services_set_AppConfig_mBB4502D93EFA0ACF3AF805439C02F2E25A189DDF (RuntimeObject* ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3219,20 +3193,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FirebaseAppUtilsStub_PollCallbacks_mB4F4
 {
 	{
 		return;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* FirebaseAppUtilsStub_GetDefaultInstance_mC20A8C9F16A70117B9BB5D5081146CB75CBCD4BF (FirebaseAppUtilsStub_tA2C798DD03529908BA1CC968E5CD737BA58F5A02* __this, const RuntimeMethod* method) 
-{
-	RuntimeObject* V_0 = NULL;
-	{
-		V_0 = (RuntimeObject*)NULL;
-		goto IL_0005;
-	}
-
-IL_0005:
-	{
-		RuntimeObject* L_0 = V_0;
-		return L_0;
 	}
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t FirebaseAppUtilsStub_GetLogLevel_mE32FBF80367DE28198974386C8E0F17CFD2B925F (FirebaseAppUtilsStub_tA2C798DD03529908BA1CC968E5CD737BA58F5A02* __this, const RuntimeMethod* method) 
@@ -4618,7 +4578,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FirebaseLogger_LogMessage_mA369905E81D1C
 		L_0 = FirebaseHandler_get_AppUtils_m5D80C76317AFA8DBEEFEF2427573A6EE7B6F7B27_inline(NULL);
 		NullCheck(L_0);
 		int32_t L_1;
-		L_1 = InterfaceFuncInvoker0< int32_t >::Invoke(3, IFirebaseAppUtils_t61EDF19372DFE7348E02194135E2F3B8801E3391_il2cpp_TypeInfo_var, L_0);
+		L_1 = InterfaceFuncInvoker0< int32_t >::Invoke(2, IFirebaseAppUtils_t61EDF19372DFE7348E02194135E2F3B8801E3391_il2cpp_TypeInfo_var, L_0);
 		V_0 = L_1;
 		int32_t L_2 = ___0_logLevel;
 		int32_t L_3 = V_0;
@@ -4953,7 +4913,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool FirebaseEditorDispatcher_get_EditorIsPla
 		PropertyInfo_t* L_9 = V_2;
 		NullCheck(L_9);
 		RuntimeObject* L_10;
-		L_10 = VirtualFuncInvoker2< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(21, L_9, NULL, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
+		L_10 = VirtualFuncInvoker2< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(22, L_9, NULL, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
 		V_4 = ((*(bool*)((bool*)(bool*)UnBox(L_10, Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_il2cpp_TypeInfo_var))));
 		goto IL_0042;
 	}
@@ -5024,7 +4984,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool FirebaseEditorDispatcher_get_EditorIsPla
 		PropertyInfo_t* L_9 = V_2;
 		NullCheck(L_9);
 		RuntimeObject* L_10;
-		L_10 = VirtualFuncInvoker2< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(21, L_9, NULL, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
+		L_10 = VirtualFuncInvoker2< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(22, L_9, NULL, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
 		V_4 = ((*(bool*)((bool*)(bool*)UnBox(L_10, Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_il2cpp_TypeInfo_var))));
 		goto IL_0042;
 	}
@@ -5593,105 +5553,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AppConfigExtensions__ctor_mAAB3762C447D2
 	{
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
 		return;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* AppConfigExtensions_GetDatabaseUrl_m2B0BEFE705912EF00E39B23ABE51BA2046A28D5B (AppConfigExtensions_t6B8627CD4EFF8F05D2F749CC406E5E12F04CEE48* __this, RuntimeObject* ___0_app, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AppConfigExtensions_GetState_TisString_t_m1E80B3A896579330C6AE8DAA1E228BCA5816FB0A_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AppConfigExtensions_t6B8627CD4EFF8F05D2F749CC406E5E12F04CEE48_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IFirebaseAppPlatform_tB44DDF88ADD112DC55E9C5EF84C774D244C8C228_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	String_t* V_0 = NULL;
-	bool V_1 = false;
-	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* V_2 = NULL;
-	String_t* V_3 = NULL;
-	int32_t G_B3_0 = 0;
-	String_t* G_B7_0 = NULL;
-	{
-		RuntimeObject* L_0 = ___0_app;
-		il2cpp_codegen_runtime_class_init_inline(AppConfigExtensions_t6B8627CD4EFF8F05D2F749CC406E5E12F04CEE48_il2cpp_TypeInfo_var);
-		Dictionary_2_t73D7B210F00FD83B4F194279B052C32E9FCB1D04* L_1 = ((AppConfigExtensions_t6B8627CD4EFF8F05D2F749CC406E5E12F04CEE48_StaticFields*)il2cpp_codegen_static_fields_for(AppConfigExtensions_t6B8627CD4EFF8F05D2F749CC406E5E12F04CEE48_il2cpp_TypeInfo_var))->___SStringState;
-		String_t* L_2;
-		L_2 = AppConfigExtensions_GetState_TisString_t_m1E80B3A896579330C6AE8DAA1E228BCA5816FB0A(L_0, 0, L_1, AppConfigExtensions_GetState_TisString_t_m1E80B3A896579330C6AE8DAA1E228BCA5816FB0A_RuntimeMethod_var);
-		V_0 = L_2;
-		String_t* L_3 = V_0;
-		bool L_4;
-		L_4 = String_IsNullOrEmpty_mEA9E3FB005AC28FE02E69FCF95A7B8456192B478(L_3, NULL);
-		if (!L_4)
-		{
-			goto IL_001c;
-		}
-	}
-	{
-		RuntimeObject* L_5 = ___0_app;
-		G_B3_0 = ((!(((RuntimeObject*)(RuntimeObject*)L_5) <= ((RuntimeObject*)(RuntimeObject*)NULL)))? 1 : 0);
-		goto IL_001d;
-	}
-
-IL_001c:
-	{
-		G_B3_0 = 0;
-	}
-
-IL_001d:
-	{
-		V_1 = (bool)G_B3_0;
-		bool L_6 = V_1;
-		if (!L_6)
-		{
-			goto IL_003d;
-		}
-	}
-	{
-		RuntimeObject* L_7 = ___0_app;
-		NullCheck(L_7);
-		Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* L_8;
-		L_8 = InterfaceFuncInvoker0< Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* >::Invoke(1, IFirebaseAppPlatform_tB44DDF88ADD112DC55E9C5EF84C774D244C8C228_il2cpp_TypeInfo_var, L_7);
-		V_2 = L_8;
-		Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* L_9 = V_2;
-		il2cpp_codegen_runtime_class_init_inline(Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E_il2cpp_TypeInfo_var);
-		bool L_10;
-		L_10 = Uri_op_Inequality_m64BE981CDF88B751677B80D883B201BF3CFD83F7(L_9, (Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E*)NULL, NULL);
-		if (L_10)
-		{
-			goto IL_0035;
-		}
-	}
-	{
-		G_B7_0 = ((String_t*)(NULL));
-		goto IL_003b;
-	}
-
-IL_0035:
-	{
-		Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* L_11 = V_2;
-		NullCheck(L_11);
-		String_t* L_12;
-		L_12 = VirtualFuncInvoker0< String_t* >::Invoke(3, L_11);
-		G_B7_0 = L_12;
-	}
-
-IL_003b:
-	{
-		V_0 = G_B7_0;
-	}
-
-IL_003d:
-	{
-		String_t* L_13 = V_0;
-		V_3 = L_13;
-		goto IL_0041;
-	}
-
-IL_0041:
-	{
-		String_t* L_14 = V_3;
-		return L_14;
 	}
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AppConfigExtensions__cctor_m6837C81C09BF5052B844FD3B68AC8A445498B12E (const RuntimeMethod* method) 

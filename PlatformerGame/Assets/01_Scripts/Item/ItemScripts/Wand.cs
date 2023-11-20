@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Wand : MonoBehaviour, IItem
 {
+    public Sprite ItemImage { get; set; }
+    
     public void Use()
     {
         

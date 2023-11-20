@@ -14,12 +14,14 @@ public class DataManager : Singleton_DontDestroy<DataManager>
     FirebaseFirestore db;
     string uuid;
 
-    protected override void OnAwake()
+    public PlayerData PlayerData => playerData;
+
+    protected override async void OnAwake()
     {
         db = FirebaseFirestore.DefaultInstance;
         uuid = SystemInfo.deviceUniqueIdentifier;
         
-        Load();
+        await Load();
     }
 
     public void Save()
@@ -37,7 +39,7 @@ public class DataManager : Singleton_DontDestroy<DataManager>
         });
     }
 
-    public async void Load()
+    public async Task Load()
     {
         var userRef = db.Collection(PlayerDataCollection).Document(uuid);
         var snapShot = await userRef.GetSnapshotAsync();
@@ -46,10 +48,11 @@ public class DataManager : Singleton_DontDestroy<DataManager>
         {
             playerData = new PlayerData
             {
-                attackDamage = 5f,
+                name = "User",
+                maxHP = 100f,
                 hp = 100f,
                 level = 1,
-                name = "User"
+                levelUpProgress = 0f
             };
             
             Save();

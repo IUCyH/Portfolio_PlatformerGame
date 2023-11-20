@@ -18,7 +18,7 @@ public class PopupManager : Singleton_DontDestroy<PopupManager>
 
     protected override void OnStart()
     {
-        var popups = Resources.LoadAll<GameObject>("Prefabs");
+        var popups = Resources.LoadAll<GameObject>("Prefabs/Popup");
         popupPools = new List<ObjectPool<IPopup>>();
 
         for (int i = 0; i < popups.Length; i++)

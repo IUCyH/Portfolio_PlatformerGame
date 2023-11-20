@@ -11,7 +11,6 @@ public class ItemManager : Singleton<ItemManager>
 
     protected override void OnStart()
     {
-        var itemSprites = Resources.LoadAll<Sprite>("Sprites/RpgItems1");
         var itemDummy = Resources.Load<GameObject>("Prefabs/Item/ItemDummy");
         var itemPrefab = Resources.Load<GameObject>("Prefabs/Item/Item");
         itemPool = new ObjectPool<Item>(5, () =>
@@ -27,7 +26,6 @@ public class ItemManager : Singleton<ItemManager>
         });
 
         itemScripts = itemDummy.GetComponents<IItem>();
-        for(int i = 0; i < itemSprites.Length; i++) Debug.Log(itemSprites[i]);
     }
 
     public void CreateItem(Vector3 initialPos)
@@ -35,8 +33,7 @@ public class ItemManager : Singleton<ItemManager>
         var item = itemPool.Get();
         var itemScript = Random.Range(0, itemScripts.Length);
         
-        item.AddItem(itemScripts[itemScript]);
-        item.Init(initialPos);
+        item.Init(initialPos, itemScripts[itemScript]);
     }
 
     void CleanList()

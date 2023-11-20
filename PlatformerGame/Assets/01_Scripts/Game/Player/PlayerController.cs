@@ -33,20 +33,17 @@ public class PlayerController : MonoBehaviour
     Image hpBar;
     
     PlayerState playerState = PlayerState.Idle;
-    PlayerState prevState = PlayerState.Idle;
-    [SerializeField]
-    float maxHP;
-    float hp;
     bool stopMovement;
+
+    float MaxHP => DataManager.Instance.PlayerData.maxHP;
+    float Hp { get => DataManager.Instance.PlayerData.hp; set => DataManager.Instance.PlayerData.hp = value; }
 
     void Start()
     {
-        hp = maxHP;
+        if(Hp <= 0f) Hp = 100f;
+        hpBar.fillAmount = Hp / MaxHP;
         playerTransform = transform;
         playerAnimation = new PlayerAnimation(GetComponent<Animator>());
-
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = SpriteTable.Instance.GetSprite(KindOfAssetBundle.Player, "Player_Idle");
     }
 
     void Update()
@@ -104,10 +101,10 @@ public class PlayerController : MonoBehaviour
 
     public void SetDamage(float damage)
     {
-        if (hp <= 0f) return;
+        if (Hp <= 0f) return;
         
-        hp -= damage;
-        InGameUIManager.Instance.UpdateImageFillAmount(hpBar, damage / maxHP);
+        Hp -= damage;
+        InGameUIManager.Instance.UpdateImageFillAmount(hpBar, damage / MaxHP);
     }
     
     public void SetPlayerState(PlayerState state)
@@ -153,8 +150,6 @@ public class PlayerController : MonoBehaviour
 
     void PlayAnimationByPlayerState()
     {
-        if (playerState == prevState) return;
-
         switch (playerState)
         {
             case PlayerState.Idle:
@@ -173,7 +168,5 @@ public class PlayerController : MonoBehaviour
                 PlayAnimation(PlayerAnimations.Die);
                 break;
         }
-
-        prevState = playerState;
     }
 }

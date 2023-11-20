@@ -32,13 +32,13 @@ public class MonsterController : MonoBehaviour
     [SerializeField]
     float maxHp;
     float hp;
+    [Range(0f, 1f)]
+    float levelUpCost;
     int playerLayer;
     int boundaryWallLayer;
     bool isMoving;
     bool isAttacking;
-    bool playerDetected;
     
-    public float LevelUpCost { get; private set; }
     public MonsterField BelongedField { get; set; }
 
     public void InitMonster(Transform parent)
@@ -54,9 +54,7 @@ public class MonsterController : MonoBehaviour
         monsterTransform.SetParent(parent);
         targetPosX = transform.position.x + maxDistance * dir.x;
         distFromStartPoint = Random.Range(5f, maxDistance);
-        LevelUpCost = 3f;
-
-        monsterSprite.sprite = SpriteTable.Instance.GetSprite(KindOfAssetBundle.Player, "Monster_Idle");
+        levelUpCost = 0.5f;
     }
 
     public void SetMonsterSpawnPos(Vector3 spawnPos)
@@ -92,9 +90,9 @@ public class MonsterController : MonoBehaviour
     public void Attack()
     {
         var forward = GetMonsterForward();
-        playerDetected = UseRayCast(forward, maxPlayerDetectionDist, playerLayer);
+        var playerDetected = UseRayCast(forward, maxPlayerDetectionDist, playerLayer);
 
-        if (!isAttacking && playerDetected) //애니메이션 재생 함수는 딱 한번만 호출되야 하므로 isAttacking이 false일때를 조건으로 추가
+        if (playerDetected) //애니메이션 재생 함수는 딱 한번만 호출되야 하므로 isAttacking이 false일때를 조건으로 추가
         {
             isAttacking = true;
             monsterAnimation.Play(MonsterMotions.Attack);
@@ -119,7 +117,7 @@ public class MonsterController : MonoBehaviour
         if (hp < 0f)
         {
             hp = maxHp;
-            GameSystemManager.Instance.UpdateStateBar(StateBar.levelUpCost, LevelUpCost);
+            GameSystemManager.Instance.UpdateStateBar(StateBar.levelUpCost, levelUpCost);
             gameObject.SetActive(false);
             DropItem();
             MonsterManager.Instance.DestroyMonster(this);
@@ -128,8 +126,6 @@ public class MonsterController : MonoBehaviour
 
     public void GiveDamageToPlayer()
     {
-        if (!playerDetected) return;
-        
         playerCtr.SetDamage(attackDamage);
     }
 
@@ -164,11 +160,6 @@ public class MonsterController : MonoBehaviour
 
     RaycastHit2D UseRayCast(Vector2 direction, float distance, int layer)
     {
-        Color rayColor = layer == playerLayer ? Color.magenta : Color.white;
-        var debugPos = monsterTransform.position;
-        debugPos.y += 0.5f;
-        Debug.DrawRay(debugPos, direction * distance, rayColor);
-
         return Physics2D.Raycast(monsterTransform.position, direction, distance, layer);
     }
 

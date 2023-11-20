@@ -15,17 +15,21 @@ public class SpriteTable : Singleton_DontDestroy<SpriteTable>
     [SerializeField]
     List<AssetBundle> assetBundles = new List<AssetBundle>();
 
+    public bool LoadDone { get; private set; }
+    
     protected override void OnAwake()
     {
-        LoadAssetBundles();
+        StartCoroutine(LoadAssetBundles());
     }
 
-    void LoadAssetBundles()
+    IEnumerator LoadAssetBundles()
     {
+        while (!PatchManager.Instance.PatchDone) yield return null;
+        
         var path = Path.Combine(Application.persistentDataPath, "AssetBundles_Platformer");
         DirectoryInfo directoryInfo = new DirectoryInfo(path);
         FileInfo[] files = directoryInfo.GetFiles();
-
+        
         for (int i = 0; i < files.Length; i++)
         {
             if (files[i].Name.Contains("manifest") || files[i].Name.Contains("txt")) continue;
@@ -36,6 +40,8 @@ public class SpriteTable : Singleton_DontDestroy<SpriteTable>
                 assetBundles.Add(bundle);
             }
         }
+
+        LoadDone = true;
     }
 
     public Sprite GetSprite(KindOfAssetBundle kindOfAssetBundle, string spriteName)

@@ -91,3 +91,15 @@ N
 Assets/01_Scripts/Item/Item.cs,9\e\9e3a32943cdbd7efad08336a04dc65817261712c
 U
 %Assets/01_Scripts/Data/SpriteTable.cs,1\c\1cbd2ea52bb5b3edbe308cfb153d7e52b5863b22
+Z
+*Assets/01_Scripts/Util/SceneLoadManager.cs,2\7\27814c28bf0f636734465d640f6dac7a84c592fc
+[
++Assets/01_Scripts/Item/ItemScripts/Armor.cs,c\1\c193c17e790039e8c3da29238dc6d9a2129250c4
+[
++Assets/01_Scripts/Item/ItemScripts/Sword.cs,9\7\97dd9224facc9ca0e2fa6555ecfc9caad20c6fae
+Z
+*Assets/01_Scripts/Item/ItemScripts/Wand.cs,8\7\875afc0b0bbefb08f888bf6fb0552ef2783bc8c9
+_
+/Assets/01_Scripts/Util/Singleton_DontDestroy.cs,b\b\bb289e781b900fb3fbd9b4eb75ee46c046737e68
+S
+#Assets/01_Scripts/Util/Singleton.cs,c\6\c61ab30f31faca5c367535eaaf68230e42c672db

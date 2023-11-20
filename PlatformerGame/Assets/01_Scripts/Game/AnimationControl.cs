@@ -6,16 +6,15 @@ using UnityEngine;
 public class AnimationControl
 {
     Animator animator;
-    int[] animIDs;
+    string[] animNames;
     float[] animRunningTimes;
 
-    int prevMotion;
+    string prevMotion;
 
     protected void Init(Animator animator, int numberOfMotions)
     {
-        //Debug.Log("Name : " + this + " " + "motions : " + numberOfMotions);
         this.animator = animator;
-        animIDs = new int[numberOfMotions];
+        animNames = new string[numberOfMotions];
         animRunningTimes = new float[numberOfMotions];
         
         var length = numberOfMotions;
@@ -24,32 +23,23 @@ public class AnimationControl
         for (int i = 0; i < length; i++)
         {
             var clip = clips[i];
-            var id = Animator.StringToHash(clip.name);
-            
-            animIDs[i] = id;
+            animNames[i] = clip.name;
             animRunningTimes[i] = clip.length;
         }
 
-        prevMotion = animIDs[0];
-        
-        //Debug.Log(this);
-        //for checking
-        for (int i = 0; i < length; i++)
-        {
-            /*Debug.Log(clips[i].name);
-            Debug.Log(animIDs[i]);
-            Debug.Log(animRunningTimes[i]);*/
-        }
+        prevMotion = animNames[0];
     }
 
     protected void Play(int motion)
     {
-        var animId = animIDs[motion];
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animNames[motion])) return;
+        
+        var animName = animNames[motion];
         
         animator.ResetTrigger(prevMotion);
-        animator.SetTrigger(animId);
+        animator.SetTrigger(animName);
         
-        prevMotion = animId;
+        prevMotion = animName;
     }
 
     protected float GetRunningTime(int motion)

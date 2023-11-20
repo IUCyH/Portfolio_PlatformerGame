@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Armor : MonoBehaviour, IItem
 {
+    public Sprite ItemImage { get; set; }
+    
     public void Use()
     {
         
